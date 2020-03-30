@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>try_bi</RootNamespace>
+    <AssemblyName>try_bi</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\rootweb\donet\pos\Pos Biensi\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ic_apk_biensi_alternative_01_22w_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E253ED6C613E3322F34BB3334CA00A375F3AC122</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>try_bi_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>try_bi.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data, Version=5.0.1964.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Devart\dotConnect\MySQL\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Linq">
+      <HintPath>..\..\..\..\..\Desktop\Devart.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql, Version=8.11.1172.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Devart\dotConnect\MySQL\Devart.Data.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql.Design, Version=8.11.1172.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Devart.Data.MySql.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql.Linq">
+      <HintPath>..\..\..\..\..\Desktop\Devart.Data.MySql.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql.Vs, Version=8.13.1366.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Devart.Data.MySql.Vs.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.2.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PrinterUtility, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\PrinterUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Pos Biensi\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
+    <Reference Include="Vse.Web.Serialization">
+      <HintPath>C:\Program Files\Pos Biensi\Vse.Web.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddTransLine.cs" />
+    <Compile Include="APIModel.cs" />
+    <Compile Include="API_Article.cs" />
+    <Compile Include="API_Article_Single.cs" />
+    <Compile Include="API_CekVersion.cs" />
+    <Compile Include="API_Check_Transaction_Count.cs" />
+    <Compile Include="API_Closing_shift.cs" />
+    <Compile Include="API_Closing_Store.cs" />
+    <Compile Include="API_DeliveryOrderConfirm.cs" />
+    <Compile Include="API_DeviceCode.cs" />
+    <Compile Include="API_FTPServer.cs" />
+    <Compile Include="API_HO_Article.cs" />
+    <Compile Include="API_DownloadSyncDetail.cs" />
+    <Compile Include="API_HO_Transactiontype.cs" />
+    <Compile Include="API_Inventory.cs" />
+    <Compile Include="API_Post_Inout.cs" />
+    <Compile Include="API_StockTake.cs" />
+    <Compile Include="API_UpdateSyncDetail.cs" />
+    <Compile Include="API_UploadSync.cs" />
+    <Compile Include="AppSetting.cs" />
+    <Compile Include="BackDateRunningNumber.cs" />
+    <Compile Include="cek_version.cs" />
+    <Compile Include="charge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="charge.Designer.cs">
+      <DependentUpon>charge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Coba_Print_Baru.cs" />
+    <Compile Include="CRUD.cs" />
+    <Compile Include="DataContext1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataContext1.lqml</DependentUpon>
+    </Compile>
+    <Compile Include="DataContextSQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataContextSQL.lqml</DependentUpon>
+    </Compile>
+    <Compile Include="DataContextSQL_POS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataContextSQL_POS.lqml</DependentUpon>
+    </Compile>
+    <Compile Include="datagridview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="datagridview.Designer.cs">
+      <DependentUpon>datagridview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Del_Trans_Hold.cs" />
+    <Compile Include="DevCode.cs" />
+    <Compile Include="DiscountAfterUseProm.cs" />
+    <Compile Include="DiscountAfterUsePromNew.cs" />
+    <Compile Include="DiscountApi.cs" />
+    <Compile Include="DiscountCalculate.cs" />
+    <Compile Include="DiscountCalculateNew.cs" />
+    <Compile Include="DiscountItemAPI.cs" />
+    <Compile Include="DiscountMaster.cs" />
+    <Compile Include="DownloadSyncFile.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Conenctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Conenctor.Designer.cs">
+      <DependentUpon>Form_Conenctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_First_Opened.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_First_Opened.Designer.cs">
+      <DependentUpon>Form_First_Opened.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Popup.Designer.cs">
+      <DependentUpon>Form_Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetStockTake.cs" />
+    <Compile Include="HO_Print.cs" />
+    <Compile Include="Inv_Line.cs" />
+    <Compile Include="koneksi.cs" />
+    <Compile Include="LinkApi.cs" />
+    <Compile Include="MO_SearchArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MO_SearchArticle.Designer.cs">
+      <DependentUpon>MO_SearchArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFunctionPrinter.cs" />
+    <Compile Include="payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="payment.Designer.cs">
+      <DependentUpon>payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintRataKanan.cs" />
+    <Compile Include="PrintThermal.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawPrinterHelper.cs" />
+    <Compile Include="ResultLine .cs" />
+    <Compile Include="RetailEnum.cs" />
+    <Compile Include="RO_SearchArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RO_SearchArticle.Designer.cs">
+      <DependentUpon>RO_SearchArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RT_SearchArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RT_SearchArticle.Designer.cs">
+      <DependentUpon>RT_SearchArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RunningNumber.cs" />
+    <Compile Include="SearchArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchArticle.Designer.cs">
+      <DependentUpon>SearchArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchArticleHo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchArticleHo.Designer.cs">
+      <DependentUpon>SearchArticleHo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Article_In_Out.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Article_In_Out.Designer.cs">
+      <DependentUpon>UC_Article_In_Out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Article_IO_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Article_IO_List.Designer.cs">
+      <DependentUpon>UC_Article_IO_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Closing_Shift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Closing_Shift.Designer.cs">
+      <DependentUpon>UC_Closing_Shift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Closing_Store.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Closing_Store.Designer.cs">
+      <DependentUpon>UC_Closing_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_coba.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_coba.Designer.cs">
+      <DependentUpon>uc_coba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DO.Designer.cs">
+      <DependentUpon>UC_DO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DO_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DO_List.Designer.cs">
+      <DependentUpon>UC_DO_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Inven_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Inven_List.Designer.cs">
+      <DependentUpon>UC_Inven_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc_kembalian.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_kembalian.Designer.cs">
+      <DependentUpon>uc_kembalian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_MO_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_MO_List.Designer.cs">
+      <DependentUpon>UC_MO_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Mut_order.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Mut_order.Designer.cs">
+      <DependentUpon>UC_Mut_order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Petty_Cash.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Petty_Cash.Designer.cs">
+      <DependentUpon>UC_Petty_Cash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Petty_Cash_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Petty_Cash_List.Designer.cs">
+      <DependentUpon>UC_Petty_Cash_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Popup_Info.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Popup_Info.Designer.cs">
+      <DependentUpon>UC_Popup_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Promotion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Promotion.Designer.cs">
+      <DependentUpon>UC_Promotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Req_order.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Req_order.Designer.cs">
+      <DependentUpon>UC_Req_order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Ret_order.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Ret_order.Designer.cs">
+      <DependentUpon>UC_Ret_order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_RO_list.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_RO_list.Designer.cs">
+      <DependentUpon>UC_RO_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_RT_list.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_RT_list.Designer.cs">
+      <DependentUpon>UC_RT_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Stock_Take.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Stock_Take.Designer.cs">
+      <DependentUpon>UC_Stock_Take.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SyncDownloadFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SyncDownloadFile.Designer.cs">
+      <DependentUpon>UC_SyncDownloadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SyncStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SyncStore.Designer.cs">
+      <DependentUpon>UC_SyncStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SyncUploadFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SyncUploadFile.Designer.cs">
+      <DependentUpon>UC_SyncUploadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Trans_hist.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Trans_hist.Designer.cs">
+      <DependentUpon>UC_Trans_hist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Inv.cs" />
+    <Compile Include="UploadSyncFile.cs" />
+    <Compile Include="Void_Trans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Void_Trans.Designer.cs">
+      <DependentUpon>Void_Trans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_ChangePass.Designer.cs">
+      <DependentUpon>W_ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_desc_ReqO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_desc_ReqO.Designer.cs">
+      <DependentUpon>w_desc_ReqO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_disc_GetArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_disc_GetArticle.Designer.cs">
+      <DependentUpon>W_disc_GetArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_DO_Confirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_DO_Confirm.Designer.cs">
+      <DependentUpon>W_DO_Confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_edc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_edc.Designer.cs">
+      <DependentUpon>w_edc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_edc_closing_shift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_edc_closing_shift.Designer.cs">
+      <DependentUpon>w_edc_closing_shift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_edc_closing_store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_edc_closing_store.Designer.cs">
+      <DependentUpon>w_edc_closing_store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_editQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_editQty.Designer.cs">
+      <DependentUpon>w_editQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_EditQty_DO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_EditQty_DO.Designer.cs">
+      <DependentUpon>W_EditQty_DO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_edit_sales_price.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_edit_sales_price.Designer.cs">
+      <DependentUpon>w_edit_sales_price.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_edit_SPG_ID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_edit_SPG_ID.Designer.cs">
+      <DependentUpon>w_edit_SPG_ID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_form_closing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_form_closing.Designer.cs">
+      <DependentUpon>w_form_closing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_form_closing_shift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_form_closing_shift.Designer.cs">
+      <DependentUpon>w_form_closing_shift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_input_expense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_input_expense.Designer.cs">
+      <DependentUpon>w_input_expense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_logout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_logout.Designer.cs">
+      <DependentUpon>w_logout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_PettyCash_Confirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_PettyCash_Confirm.Designer.cs">
+      <DependentUpon>W_PettyCash_Confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_petty_to_cashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_petty_to_cashier.Designer.cs">
+      <DependentUpon>w_petty_to_cashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_Promotion_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_Promotion_Popup.Designer.cs">
+      <DependentUpon>W_Promotion_Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_remark_RT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_remark_RT.Designer.cs">
+      <DependentUpon>W_remark_RT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_split.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_split.Designer.cs">
+      <DependentUpon>w_split.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_split_edc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_split_edc.Designer.cs">
+      <DependentUpon>w_split_edc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_StockTake_Confirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_StockTake_Confirm.Designer.cs">
+      <DependentUpon>W_StockTake_Confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="w_stock_take.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w_stock_take.Designer.cs">
+      <DependentUpon>w_stock_take.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_Voucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_Voucher.Designer.cs">
+      <DependentUpon>W_Voucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="W_Vou_Confirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_Vou_Confirm.Designer.cs">
+      <DependentUpon>W_Vou_Confirm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="charge.resx">
+      <DependentUpon>charge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="datagridview.resx">
+      <DependentUpon>datagridview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Conenctor.resx">
+      <DependentUpon>Form_Conenctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_First_Opened.resx">
+      <DependentUpon>Form_First_Opened.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Popup.resx">
+      <DependentUpon>Form_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MO_SearchArticle.resx">
+      <DependentUpon>MO_SearchArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="payment.resx">
+      <DependentUpon>payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="Report.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="RO_SearchArticle.resx">
+      <DependentUpon>RO_SearchArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RT_SearchArticle.resx">
+      <DependentUpon>RT_SearchArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchArticle.resx">
+      <DependentUpon>SearchArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchArticleHo.resx">
+      <DependentUpon>SearchArticleHo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Article_In_Out.resx">
+      <DependentUpon>UC_Article_In_Out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Article_IO_List.resx">
+      <DependentUpon>UC_Article_IO_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Closing_Shift.resx">
+      <DependentUpon>UC_Closing_Shift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Closing_Store.resx">
+      <DependentUpon>UC_Closing_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_coba.resx">
+      <DependentUpon>uc_coba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DO.resx">
+      <DependentUpon>UC_DO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DO_List.resx">
+      <DependentUpon>UC_DO_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Inven_List.resx">
+      <DependentUpon>UC_Inven_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc_kembalian.resx">
+      <DependentUpon>uc_kembalian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_MO_List.resx">
+      <DependentUpon>UC_MO_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Mut_order.resx">
+      <DependentUpon>UC_Mut_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Petty_Cash.resx">
+      <DependentUpon>UC_Petty_Cash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Petty_Cash_List.resx">
+      <DependentUpon>UC_Petty_Cash_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Popup_Info.resx">
+      <DependentUpon>UC_Popup_Info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Promotion.resx">
+      <DependentUpon>UC_Promotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Req_order.resx">
+      <DependentUpon>UC_Req_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Ret_order.resx">
+      <DependentUpon>UC_Ret_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_RO_list.resx">
+      <DependentUpon>UC_RO_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_RT_list.resx">
+      <DependentUpon>UC_RT_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Stock_Take.resx">
+      <DependentUpon>UC_Stock_Take.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SyncDownloadFile.resx">
+      <DependentUpon>UC_SyncDownloadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SyncStore.resx">
+      <DependentUpon>UC_SyncStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SyncUploadFile.resx">
+      <DependentUpon>UC_SyncUploadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Trans_hist.resx">
+      <DependentUpon>UC_Trans_hist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Void_Trans.resx">
+      <DependentUpon>Void_Trans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_ChangePass.resx">
+      <DependentUpon>W_ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_desc_ReqO.resx">
+      <DependentUpon>w_desc_ReqO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_disc_GetArticle.resx">
+      <DependentUpon>W_disc_GetArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_DO_Confirm.resx">
+      <DependentUpon>W_DO_Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_edc.resx">
+      <DependentUpon>w_edc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_edc_closing_shift.resx">
+      <DependentUpon>w_edc_closing_shift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_edc_closing_store.resx">
+      <DependentUpon>w_edc_closing_store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_editQty.resx">
+      <DependentUpon>w_editQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_EditQty_DO.resx">
+      <DependentUpon>W_EditQty_DO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_edit_sales_price.resx">
+      <DependentUpon>w_edit_sales_price.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_edit_SPG_ID.resx">
+      <DependentUpon>w_edit_SPG_ID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_form_closing.resx">
+      <DependentUpon>w_form_closing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_form_closing_shift.resx">
+      <DependentUpon>w_form_closing_shift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_input_expense.resx">
+      <DependentUpon>w_input_expense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_logout.resx">
+      <DependentUpon>w_logout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_PettyCash_Confirm.resx">
+      <DependentUpon>W_PettyCash_Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_petty_to_cashier.resx">
+      <DependentUpon>w_petty_to_cashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_Promotion_Popup.resx">
+      <DependentUpon>W_Promotion_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_remark_RT.resx">
+      <DependentUpon>W_remark_RT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_split.resx">
+      <DependentUpon>w_split.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_split_edc.resx">
+      <DependentUpon>w_split_edc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_StockTake_Confirm.resx">
+      <DependentUpon>W_StockTake_Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="w_stock_take.resx">
+      <DependentUpon>w_stock_take.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_Voucher.resx">
+      <DependentUpon>W_Voucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_Vou_Confirm.resx">
+      <DependentUpon>W_Vou_Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataContext1.Diagram1.view">
+      <DependentUpon>DataContext1.lqml</DependentUpon>
+    </None>
+    <None Include="DataContext1.edps">
+      <DependentUpon>DataContext1.lqml</DependentUpon>
+    </None>
+    <None Include="DataContext1.lqml">
+      <Generator>DevartLinqToSqlGenerator</Generator>
+      <LastGenOutput>DataContext1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataContextSQL.Diagram1.view">
+      <DependentUpon>DataContextSQL.lqml</DependentUpon>
+    </None>
+    <None Include="DataContextSQL.edps">
+      <DependentUpon>DataContextSQL.lqml</DependentUpon>
+    </None>
+    <None Include="DataContextSQL.lqml">
+      <Generator>DevartLinqToSqlGenerator</Generator>
+      <LastGenOutput>DataContextSQL.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataContextSQL_POS.Diagram1.view">
+      <DependentUpon>DataContextSQL_POS.lqml</DependentUpon>
+    </None>
+    <None Include="DataContextSQL_POS.edps">
+      <DependentUpon>DataContextSQL_POS.lqml</DependentUpon>
+    </None>
+    <None Include="DataContextSQL_POS.lqml">
+      <Generator>DevartLinqToSqlGenerator</Generator>
+      <LastGenOutput>DataContextSQL_POS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dbDataSet.xsc">
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbDataSet.xss">
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="try_bi_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ic_apk_biensi_alternative_01_22w_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

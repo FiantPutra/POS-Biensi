@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "try_bi", "try_bi\try_bi.csproj", "{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PosBiensi", "PosBiensi\PosBiensi.vdproj", "{D8C8EE17-3730-406A-AA97-9E8AA255BE43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2875149F-6A8A-4BBE-97F7-8F203B1E1B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C8EE17-3730-406A-AA97-9E8AA255BE43}.Debug|Any CPU.ActiveCfg = Release
+		{D8C8EE17-3730-406A-AA97-9E8AA255BE43}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3750595D-C749-4A5C-9F0F-55F4E0AA7895}
+	EndGlobalSection
+EndGlobal

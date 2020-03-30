@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Biensi" EntityNamespace="BiensiPOSContext" ContextNamespace="BiensiPOSContext" Class="BiensiPOSDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="89594f06-eed4-4a81-9ba4-91f9749f2142" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Biensi;Integrated Security=False;Persist Security Info=True;User ID=biensi_pos;Password=admin12345!" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.article" Member="Articles">
+    <Type Name="Article" ed:Guid="84907a12-837d-44fd-827e-6228589af64b">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="d665853d-3c46-458f-be1d-794319d67b96" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="526a1ce5-e410-4527-bd8a-78af2ef9ab01" />
+      <Column Name="ARTICLE_NAME" Member="ARTICLENAME" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="9b2ceedc-b4e8-41cc-84a2-b8cd4819398d" />
+      <Column Name="BRAND" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0d1fb1ab-a8c5-4b17-a2dc-332b60506755" />
+      <Column Name="GENDER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6f8a04f1-b095-409e-8f5d-b5631f94be57" />
+      <Column Name="DEPARTMENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4892c730-a3af-4c8a-911c-34df6edb2734" />
+      <Column Name="DEPARTMENT_TYPE" Member="DEPARTMENTTYPE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0aab36a9-d4b8-4a72-8cbb-b01089846409" />
+      <Column Name="SIZE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d01e6b10-50ae-4a1b-9c7f-6f768122c3b7" />
+      <Column Name="COLOR" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8c253958-7a20-485e-93c3-59fa8b882808" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="75b0f891-2c94-475a-a363-a5f50e622b22" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="0144a882-0b2e-415f-8751-ca0b3fc5a903" />
+      <Column Name="ARTICLE_ID_ALIAS" Member="ARTICLEIDALIAS" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="99dad926-8535-483f-b07a-7a47129b6672" />
+      <Column Name="IS_SERVICE" Member="ISSERVICE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="fdf564fa-478b-48ae-ad36-951dfd51f95b" />
+    </Type>
+  </Table>
+  <Table Name="dbo.article_ho" Member="ArticleHos">
+    <Type Name="ArticleHo" ed:Guid="40242591-2751-42ca-bd0d-c7d8a1759a88">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="a90277e5-2d86-4c2a-9fe0-32c30355e2d5" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4ed6e93a-ef5f-417a-be60-87ca8b08f27a" />
+      <Column Name="ARTICLE_NAME" Member="ARTICLENAME" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="6c3ae21f-f5bf-47bf-91ef-017b12516190" />
+      <Column Name="BRAND" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ec120dac-a587-4184-ab78-eef94de72976" />
+      <Column Name="GENDER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e0cd273f-7582-4080-a3c5-90ef9ee2dad7" />
+      <Column Name="DEPARTMENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e8219429-cd73-4525-85bb-214ec5d7a64e" />
+      <Column Name="DEPARTMENT_TYPE" Member="DEPARTMENTTYPE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2cb5e21a-cd34-4612-b16e-558338bee021" />
+      <Column Name="SIZE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8f9048b0-42ec-4da3-a2e1-44d35507d42c" />
+      <Column Name="COLOR" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3beb00bb-0496-46e2-a21f-cf8f47b171ee" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="bf8874bb-e17b-40d1-82c9-9232d48a7749" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="898e4b96-3e06-4fb5-ba9c-0c0fa437885a" />
+      <Column Name="ARTICLE_ID_ALIAS" Member="ARTICLEIDALIAS" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="517506e8-91fd-4ba8-a18b-58f12774ff32" />
+      <Column Name="IS_SERVICE" Member="ISSERVICE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="1a48bbd1-1900-436c-a29f-e529dc567703" />
+    </Type>
+  </Table>
+  <Table Name="dbo.auto_number" Member="AutoNumbers">
+    <Type Name="AutoNumber" ed:Guid="f0d99ac2-3914-4990-a971-00dfea2cdbae">
+      <Column Name="Store_Code" Member="StoreCode" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="500c477b-1e2d-44ce-9299-e0b2eecd050b" />
+      <Column Name="Year" Type="System.String" DbType="VARCHAR(2) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'19'" MaxLength="2" ed:ValidateMaxLength="2" ed:ValidateRequired="true" ed:Guid="a5eae360-597d-41eb-ac29-75dc39b7b495" />
+      <Column Name="Month" Type="System.String" DbType="VARCHAR(2) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="2" ed:ValidateMaxLength="2" ed:ValidateRequired="true" ed:Guid="f4cddd3a-8bd7-4079-a2a1-f355ab485053" />
+      <Column Name="Number" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="9651a873-d9f3-43bf-bc7d-75a2a5f8c208" />
+      <Column Name="Type_Trans" Member="TypeTrans" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5d4bcbbf-7dde-4529-bbc9-a3ae14a50ae8" />
+      <Column Name="Dev_Code" Member="DevCode" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1c125b59-cf72-4391-95eb-a1a5f545ffef" />
+    </Type>
+  </Table>
+  <Table Name="dbo.auto_number_backdate" Member="AutoNumberBackdates">
+    <Type Name="AutoNumberBackdate" ed:Guid="e4c11847-8b06-42a3-98bb-26956486be1e">
+      <Column Name="Store_Code" Member="StoreCode" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8a49a47e-6cb2-4dd8-b53b-a1778e068fd2" />
+      <Column Name="Month" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="96a998bc-72e6-4534-9cf4-e0579482af98" />
+      <Column Name="Number" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3e3dac05-fb3f-49d3-94fc-1284d02f45e4" />
+      <Column Name="Type_Trans" Member="TypeTrans" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f4d042c1-fd7a-4e6b-b80e-7a0f87d15ba7" />
+      <Column Name="BackDate" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="aae7b601-b5f4-4362-bc42-2b7b7cf0512d" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bank" Member="Banks">
+    <Type Name="Bank" ed:Guid="c8c91b51-d407-4755-9ba1-007a7ee1b208">
+      <Column Name="BANK_ID" Member="BANKID" Type="System.String" DbType="VARCHAR(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="11" ed:ValidateMaxLength="11" ed:ValidateRequired="true" ed:Guid="d44cbefc-6e06-49c5-a3fb-b8f3a680163a" />
+      <Column Name="BANK_NAME" Member="BANKNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c518c3e4-702a-413a-94d0-3bec5cc59ac8" />
+    </Type>
+  </Table>
+  <Table Name="dbo.brand" Member="Brands">
+    <Type Name="Brand" ed:Guid="4b79ddce-8b17-499e-aa24-9f7451039fe4">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="dc57f207-6e3d-4d8e-8d5f-b473cae13dda" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="52bb333b-1f06-43da-857f-55c825f80d24" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="754936c7-ecca-42f1-8573-3380f2bbb770" />
+    </Type>
+  </Table>
+  <Table Name="dbo.budget_store" Member="BudgetStores">
+    <Type Name="BudgetStore" ed:Guid="917bf9f0-daa2-400b-bc6f-8b8696a3a84a">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="73521f7c-eac8-4646-9b07-3fe1cef6f147" />
+      <Column Name="BUDGET_ID" Member="BUDGETID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="78b0cbe0-cb36-4c58-8e91-57be90eeb055" />
+      <Column Name="BUDGET_TO_STORE" Member="BUDGETTOSTORE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="12e66ed1-60f5-4822-aa57-79b77358ce2e" />
+      <Column Name="BUDGET_TO_CASHIER" Member="BUDGETTOCASHIER" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="224509a4-7d73-4a0f-9c89-6c22f10b7521" />
+      <Column Name="DELIVERY_DATE" Member="DELIVERYDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b83241a2-49da-420f-9b19-2746e0ddcb5a" />
+      <Column Name="USED_DATE" Member="USEDDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c995ae92-3797-4894-9709-19dfcff03a4c" />
+    </Type>
+  </Table>
+  <Table Name="dbo.closing_shift" Member="ClosingShifts">
+    <Type Name="ClosingShift" ed:Guid="602a6b4e-e8aa-4dbb-96a9-0e1a8bf274a4">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="2f90e1a6-3743-4ed9-bfd9-cfce5508df23" />
+      <Column Name="ID_SHIFT" Member="IDSHIFT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="41c148bf-b07a-416f-8038-66471ee747b8" />
+      <Column Name="STORE_ID" Member="STOREID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6a417408-8adc-481e-bb17-2197ab0e3e12" />
+      <Column Name="SHIFT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f06ec90e-26f7-4a7b-9ad0-eb6e65888784" />
+      <Column Name="OPENING_TIME" Member="OPENINGTIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f6d03277-4b32-4df5-82a8-7bdb9b39f5ac" />
+      <Column Name="CLOSING_TIME" Member="CLOSINGTIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="26fe6b4f-8fd8-4ca5-aaa7-aa3d0e78b8c0" />
+      <Column Name="OPENING_TRANS_BALANCE" Member="OPENINGTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="37e41b0d-2339-4310-9f73-5f1ca1f9fa49" />
+      <Column Name="CLOSING_TRANS_BALANCE" Member="CLOSINGTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="5b1610a5-8fbb-46d6-8746-6daf8a59bbf8" />
+      <Column Name="REAL_TRANS_BALANCE" Member="REALTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="1f8dafc2-d36e-47fc-994f-b432991cd99a" />
+      <Column Name="DISPUTE_TRANS_BALANCE" Member="DISPUTETRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="6a1a206e-f3aa-4a75-8d14-eeae1fef14ce" />
+      <Column Name="OPENING_PETTY_CASH" Member="OPENINGPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="ead33755-abe0-40b4-8c4c-1134f64bcfc1" />
+      <Column Name="CLOSING_PETTY_CASH" Member="CLOSINGPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="5f4b702b-cf2b-41c9-b1a6-f23dba79b11d" />
+      <Column Name="REAL_PETTY_CASH" Member="REALPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="248affb8-db1f-41af-9a41-b0d1f3a555ea" />
+      <Column Name="DISPUTE_PETTY_CASH" Member="DISPUTEPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="29886ce1-c662-40be-98a4-9b77686ec426" />
+      <Column Name="OPENING_DEPOSIT" Member="OPENINGDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="bfacd420-eb4c-4683-a553-caa8e4aad740" />
+      <Column Name="CLOSING_DEPOSIT" Member="CLOSINGDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="f724e611-6e08-4ecc-8975-262f3786b20c" />
+      <Column Name="REAL_DEPOSIT" Member="REALDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="e1480a6e-df44-4a30-a59e-b1592020a475" />
+      <Column Name="DISPUTE_DEPOSIT" Member="DISPUTEDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="d4d59402-f32c-412e-9dde-8e8c7b1b1d61" />
+      <Column Name="DEVICE_NAME" Member="DEVICENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c2cfbbd5-0821-428d-b826-935e96e901a1" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="7b2f9d85-c3c5-4913-94d9-e817b2c02a57" />
+      <Column Name="STATUS_CLOSE" Member="STATUSCLOSE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="5a8b5e15-216b-48f5-bff7-554a569163bd" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fb1b82c1-66cc-4bdd-8878-7a93cf4d760e" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8feeab63-ca34-4c23-bae3-c2568cae47f1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.closing_store" Member="ClosingStores">
+    <Type Name="ClosingStore" ed:Guid="c6fa0321-b289-4eba-ac23-64229d658e03">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="be49c360-49bf-4704-a872-c58bf2c46238" />
+      <Column Name="ID_C_STORE" Member="IDCSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9fb88d38-fba2-4e19-ac63-5e7d8965f832" />
+      <Column Name="STORE_ID" Member="STOREID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b59a26ae-5ab8-47be-9353-5cbb609b40b7" />
+      <Column Name="OPENING_TIME" Member="OPENINGTIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f88eef8d-ad67-40c4-b5e7-479638ee9852" />
+      <Column Name="CLOSING_TIME" Member="CLOSINGTIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="aac55ba9-5fdd-4b5b-9c80-e1d7f4512726" />
+      <Column Name="OPENING_TRANS_BALANCE" Member="OPENINGTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="dcdaa9c7-901a-4be8-a5e2-5ca0fab75a9c" />
+      <Column Name="CLOSING_TRANS_BALANCE" Member="CLOSINGTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="0031cf1c-cf53-48fe-8963-78d4ecb48eb0" />
+      <Column Name="REAL_TRANS_BALANCE" Member="REALTRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="e67a2866-82c2-476b-9636-9c254d2bcdd3" />
+      <Column Name="DISPUTE_TRANS_BALANCE" Member="DISPUTETRANSBALANCE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="99ce3540-df0c-4fb3-86d5-89304cb4ca67" />
+      <Column Name="OPENING_PETTY_CASH" Member="OPENINGPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="7f80a2f1-da4e-44c4-a808-e110608fcd75" />
+      <Column Name="CLOSING_PETTY_CASH" Member="CLOSINGPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="1da40944-65dd-4ff4-be81-0fcae1cc1d0e" />
+      <Column Name="REAL_PETTY_CASH" Member="REALPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="9dbb2cd1-1713-480e-b48e-9d3abfbdfb51" />
+      <Column Name="DISPUTE_PETTY_CASH" Member="DISPUTEPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="3ec642df-6fbc-4570-81e2-9b8fdee0faa4" />
+      <Column Name="OPENING_DEPOSIT" Member="OPENINGDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="e4121032-de80-462b-8a7f-b903fc94bf31" />
+      <Column Name="CLOSING_DEPOSIT" Member="CLOSINGDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="70c3a341-84f8-4707-aa8e-c4a933bb1ba3" />
+      <Column Name="REAL_DEPOSIT" Member="REALDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="fbe2eedd-f379-4da9-a4e9-96017bd153dd" />
+      <Column Name="DISPUTE_DEPOSIT" Member="DISPUTEDEPOSIT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="ca59a549-e3d2-4578-bfb8-f060c4a935f7" />
+      <Column Name="DEVICE_NAME" Member="DEVICENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b1a9487c-c811-4253-a243-4d9e0a225749" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="af5d33db-d9f7-4839-b9ad-138b281d8e87" />
+      <Column Name="STATUS_CLOSE" Member="STATUSCLOSE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="99927ed4-78ac-4b80-a2b4-3c90bf430454" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6346936e-83f9-4519-98fc-f9bc2a0e5820" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="04eeee67-f7c1-4799-8a68-e2e6f26674d7" />
+    </Type>
+  </Table>
+  <Table Name="dbo.color" Member="Colors">
+    <Type Name="Color" ed:Guid="58e843c3-6e62-478a-97dd-f1e0f780e7d5">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="b1161d77-7c52-4d12-bd0a-0a4d98ed0d8d" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="89e89459-3d16-4821-b894-8fc3008aff87" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3282e47c-49ea-4d71-bfe4-f217845cdbf9" />
+    </Type>
+  </Table>
+  <Table Name="dbo.costcategory" Member="Costcategories">
+    <Type Name="Costcategory" ed:Guid="4c82318c-4a35-4a54-a2cc-9fd75e59fd81">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="ed19ffbe-8382-4532-abe8-bd2f93c2ec8f" />
+      <Column Name="COST_CATEGORY_ID" Member="COSTCATEGORYID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0d022b8f-862b-4cac-a6a2-e4dece3ae4a6" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="11ffe579-b83d-4854-956d-ee047e1dd1c9" />
+      <Column Name="COA" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="26dfb1d1-e30d-4e7b-8a59-75e9625b31c6" />
+    </Type>
+  </Table>
+  <Table Name="dbo.currency" Member="Currencies">
+    <Type Name="Currency" ed:Guid="bf0d0afd-0ac5-4611-958b-706b3f045ed0">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="1bfc2d03-280c-4d5d-86d2-aa8b4233cabf" />
+      <Column Name="SIGN" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1372b4ca-a7f8-4b09-999d-688a2562aab2" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a851f066-1d44-41e9-a8c5-fee53e70a1ba" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customer" Member="Customers">
+    <Type Name="Customer" ed:Guid="a2e0716b-7f02-4ce2-9ec3-fb21d68fde84">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="accb7ffe-0df0-4117-b5de-b76c4d261a3e" />
+      <Column Name="CustId" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="573d9955-99a8-459e-a192-72b59f134a63" />
+      <Column Name="Name" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="30936dfc-fb9a-4864-aca5-7e20664bb37c" />
+      <Column Name="CustGroupId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="9269d8f2-5dd3-4123-ac73-d325cde0966d" />
+      <Column Name="Address" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="82ce1501-0fc4-470b-b880-6bc63e7f8948" />
+      <Column Name="Address2" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cf07dd0a-1ee0-4759-9c86-45015169f38f" />
+      <Column Name="Address3" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0882a71a-2742-4e54-8aad-5ab6341b0778" />
+      <Column Name="Address4" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b0e35675-0015-4a59-84fb-94326a960849" />
+      <Column Name="Email" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="875a7d1e-9e8e-4121-8bd1-9f02f63460c0" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2e893a74-be27-49dd-b70e-1a157ead35a2" />
+      <Column Name="StoreId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="849b8e3d-7400-48d6-8e4f-6c3779fec64b" />
+      <Column Name="DefaultCurr" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fc321f0b-74ef-4878-8318-d4a91f3ee3fc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customer_group" Member="CustomerGroups">
+    <Type Name="CustomerGroup" ed:Guid="dfee9dc9-4d38-4728-80d9-8e5cc170030c">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="3780349b-f627-4222-a8ef-d5a266a2edf1" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="15e7a52f-6fc3-4268-8e92-d5521145e736" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a6b90384-9024-4e77-afd8-dca157b9f3f6" />
+    </Type>
+  </Table>
+  <Table Name="dbo.deliveryorder" Member="Deliveryorders">
+    <Type Name="Deliveryorder" ed:Guid="ae2b7a8c-47f6-442b-8773-03851171bced">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="23a3adf9-d6ba-4734-a521-b4a9fe2e9fb3" />
+      <Column Name="DELIVERY_ORDER_ID" Member="DELIVERYORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="aa8b7ef6-60a7-4c43-90ec-37a49bbb882f" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="24d7a0f1-fb1c-4a5b-af91-5c247c9d458c" />
+      <Column Name="WAREHOUSE_FROM" Member="WAREHOUSEFROM" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ead4dd12-1979-4308-ac85-ed0250a621c2" />
+      <Column Name="WAREHOUSE_TO" Member="WAREHOUSETO" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3ecd9288-bf87-4316-8106-db8a5d99c781" />
+      <Column Name="DELIVERY_DATE" Member="DELIVERYDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b31d404f-4787-4a0d-b766-77411c79d9d3" />
+      <Column Name="DELIVERY_TIME" Member="DELIVERYTIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="737ed09c-8c7f-43f6-9cd3-92e4ec2b326d" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="38479f97-86e9-4c50-a44e-0a83e4a45fbd" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="b345894d-3a40-45b3-9513-4918869b7ea9" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="75e4d078-8d1d-4ad1-a1b6-69b23b9fb145" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9815fd02-b6ee-4022-ae90-454fdbe3cd72" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="f4f996c7-c88b-4589-bde8-ca3fdd044c04" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="8b323b2f-5abd-47a9-a38c-8d4f45b4b863" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="159f2d3d-6af7-45e4-a469-02d31d8c9a67" />
+      <Column Name="TOTAL_AMOUNT" Member="TOTALAMOUNT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ec0b0fcc-c675-433c-bea3-2af9f8d8cd8f" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f409c96a-693c-4dc5-aef4-074066b364f4" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7d152dbb-a4a5-4482-82ee-2307dd787860" />
+      <Column Name="IS_PBM_PBK" Member="ISPBMPBK" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="0f37c74c-6da3-43a9-9628-496f8956696c" />
+      <Column Name="SJ_FISIK" Member="SJFISIK" Type="System.String" DbType="VARCHAR(10) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="a617df7d-0271-481b-a455-d121e81ae399" />
+    </Type>
+  </Table>
+  <Table Name="dbo.deliveryorder_line" Member="DeliveryorderLines">
+    <Type Name="DeliveryorderLine" ed:Guid="03f6bb1e-d4ab-496b-b1ae-ac5ef87ca789">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="1150da5e-250a-4d47-b878-1f1223560512" />
+      <Column Name="DELIVERY_ORDER_ID" Member="DELIVERYORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="23563561-d7b1-4724-b2f6-a2980fae71da" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="97ac82f0-3fc1-4518-be9f-8780ba580e10" />
+      <Column Name="QTY_DELIVER" Member="QTYDELIVER" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="515c2b7c-5357-4924-a64a-9bd66fe74818" />
+      <Column Name="QTY_RECEIVE" Member="QTYRECEIVE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="818587af-8d6e-442b-9698-46e5a36de082" />
+      <Column Name="QTY_DISPUTE" Member="QTYDISPUTE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="ff0edb5f-0af6-4df9-9997-2ac2eafa1584" />
+      <Column Name="AMOUNT" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="eb4aa029-cc2b-4078-a597-eed527b38168" />
+      <Column Name="PACKING_NUMBER" Member="PACKINGNUMBER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4f6f57f4-fef7-4420-96e2-236c38d03868" />
+    </Type>
+  </Table>
+  <Table Name="dbo.denomination" Member="Denominations">
+    <Type Name="Denomination" ed:Guid="78ff2ffa-7e28-4c2d-b792-fb633e1f993b">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="e7e2b004-1769-43b2-a836-0b2749cc0a33" />
+      <Column Name="CURRENCY_ID_FK" Member="CURRENCYIDFK" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="19757845-e9d6-489a-82d4-ecdf8e46f241" />
+      <Column Name="NOMINAL" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="0199268c-03c5-4bf7-bb4b-d7f2b4543871" />
+    </Type>
+  </Table>
+  <Table Name="dbo.departement" Member="Departements">
+    <Type Name="Departement" ed:Guid="69c59fc6-d268-4fc1-979f-47ae55615b07">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="5f84c588-878e-4b3c-b000-b2317b86f2ac" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c1c185b7-566d-482a-b821-060fee5f8e4d" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="2147483647" ed:ValidateMaxLength="2147483647" ed:ValidateRequired="true" ed:Guid="034582f5-dc7c-4aa5-8fef-36035f129330" />
+    </Type>
+  </Table>
+  <Table Name="dbo.departementtype" Member="Departementtypes">
+    <Type Name="Departementtype" ed:Guid="7bd96b1c-297b-49bf-baef-dacf6cc703a9">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2ee14e3c-a5ba-4168-ad47-6f105210dea0" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="be6ee3e7-c129-40b6-a1b9-eff08557e712" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="366bf64c-2e98-4b9f-8b04-2473da7a95f9" />
+    </Type>
+  </Table>
+  <Table Name="dbo.discount_item" Member="DiscountItems">
+    <Type Name="DiscountItem" ed:Guid="f35812e0-551e-4cc6-af66-eadce9fd3d4e">
+      <Column Name="ID" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="306f2b2f-f014-418d-9861-b864efd6249d" />
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="8d7a7b62-6c2c-488a-b2e6-0057576a1453" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="73d216ee-1cdf-45c2-bffc-a87249a66c71" />
+      <Column Name="ARTICLE_NAME" Member="ARTICLENAME" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="01a2c501-7e41-4c4f-90ca-d5a9e013fd30" />
+      <Column Name="BRAND" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="411e750f-11de-4528-a0fe-64dac16e23b2" />
+      <Column Name="GENDER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b7a2c250-38bd-4ccf-9184-8e2ca9d7cd24" />
+      <Column Name="DEPARTMENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6d128733-664b-4bca-a592-2a67bbe62c5b" />
+      <Column Name="DEPARTMENT_TYPE" Member="DEPARTMENTTYPE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8f965541-84b0-4f39-80f7-60df552c18cd" />
+      <Column Name="SIZE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="424e890f-afb0-47d8-9b90-d44a61bdcdfd" />
+      <Column Name="COLOR" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="078fe579-30bc-459f-8201-9ea5902eab20" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6bd4bdd5-bf8b-4c0d-b4af-53127fa493ff" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="a2822444-529f-4b3a-9d42-5eebecf7d7dc" />
+      <Column Name="DISCOUNT_CODE" Member="DISCOUNTCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b876490d-ee31-465c-88d0-66493bdd8b42" />
+    </Type>
+  </Table>
+  <Table Name="dbo.discountitemselected" Member="Discountitemselecteds">
+    <Type Name="Discountitemselected" ed:Guid="b0880a90-3512-4f72-9be6-b23d23709e3b">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="267316ad-b47d-47af-ba8a-35df2429d35b" />
+      <Column Name="ItemId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="daeeb4e1-a67f-46bc-ac6c-dd6e277834b2" />
+      <Column Name="DiscountId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="21add6d6-6c2e-4c28-8738-fb6280161812" />
+    </Type>
+  </Table>
+  <Table Name="dbo.discountretail" Member="Discountretails">
+    <Type Name="Discountretail" ed:Guid="b1db4fe7-e7eb-4160-bf52-e4e031b52b25">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="9338e872-4172-45bf-9f4c-0342240ceece" />
+      <Column Name="DiscountCategory" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="83641b5c-331d-4470-99c4-3cb90b518811" />
+      <Column Name="DiscountCode" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fdd648a1-d1c1-4907-bdea-1886f9cccf04" />
+      <Column Name="DiscountName" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="317b9bfd-0400-405c-bd0b-028237f3ddd2" />
+      <Column Name="CustomerGroupId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="bb06f55f-5017-4688-8df4-9ce3feeaac1d" />
+      <Column Name="DiscountPartner" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="76c2d2a2-6936-4f1a-a004-ede9522edf4d" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="39721c62-318c-4638-8e7b-73e19b9f294c" />
+      <Column Name="DiscountType" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="6c3b1fe4-87f1-42d0-8b7e-e780faf8af91" />
+      <Column Name="StartDate" Type="System.String" DbType="VARCHAR(50)" CanBeNull="true" UpdateCheck="Always" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2caacff1-92d1-4192-aa53-a08c05863b0e" />
+      <Column Name="EndDate" Type="System.String" DbType="VARCHAR(50)" CanBeNull="true" UpdateCheck="Always" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="db1c3a33-5290-435a-852e-117e4ab15960" />
+      <Column Name="Status" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7835e679-2458-4d94-99a1-19ac80a08c99" />
+      <Column Name="DiscountPercent" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="680a7315-648a-499d-af12-0beb5635d480" />
+      <Column Name="Qty" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="false" ed:Guid="7e0bda78-ff44-4cd8-a82f-ab14b65689ca" />
+      <Column Name="Priority" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="false" ed:Guid="a10c3742-aa13-4a6c-a7b0-5d213c6e9ac1" />
+      <Column Name="Amount" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="false" ed:Guid="4cd4d092-ad31-444a-8497-260571350ec3" />
+    </Type>
+  </Table>
+  <Table Name="dbo.discountretaillines" Member="Discountretaillines">
+    <Type Name="Discountretailline" ed:Guid="a68646a1-a7f4-457d-a788-bc990e1350a6">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f514ff7e-69e0-4040-b941-1c95406e8698" />
+      <Column Name="BrandCode" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="71653640-7108-4529-b351-d72e3b9d2027" />
+      <Column Name="Department" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a8d618ff-1252-45ed-9f7e-5a592c416523" />
+      <Column Name="DepartmentType" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f2ba3d3c-c214-46ac-9cb0-ad943fe2f50c" />
+      <Column Name="Gender" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="5b849849-abc8-401a-bb7c-20fef9358f9c" />
+      <Column Name="ArticleId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a4512316-44de-4031-8851-c37a693d4f36" />
+      <Column Name="Color" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="0b9bc13b-3751-4c4b-94db-6060e6add13b" />
+      <Column Name="Size" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="249895d1-0b53-4110-b177-578ca2c1576d" />
+      <Column Name="DiscountRetailId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="e45fc44c-e2f3-4c10-ada0-673a2b6f4039" />
+      <Column Name="DiscountPrecentage" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a569f06e-7e89-4e5b-8504-f0944f97d531" />
+      <Column Name="CashDiscount" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="461166dd-1ba6-45b5-bdd9-fc191b32f1c8" />
+      <Column Name="DiscountPrice" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="752d5586-8156-4beb-8c29-211ca0f56be6" />
+      <Column Name="Qty" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a8cfa7ea-0be1-4e98-8e26-cb4961fbbe23" />
+      <Column Name="AmountTransaction" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f7a1f8d9-69e0-4152-a728-36510573a947" />
+      <Column Name="ArticleIdDiscount" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="398dc5a6-2599-4f7c-ba8b-ea6720c6d291" />
+    </Type>
+  </Table>
+  <Table Name="dbo.discountstore" Member="Discountstores">
+    <Type Name="Discountstore" ed:Guid="37e818d0-302d-42d1-aa63-059590acbb0f">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="05bf87fe-b17c-42a0-b53e-d19fecac6edc" />
+      <Column Name="StoreId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="cbf4f9bd-3a76-4118-bd6d-b33452a3864d" />
+      <Column Name="DiscountId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="3f55976c-488e-49ab-a7e9-1e6d98a70294" />
+    </Type>
+  </Table>
+  <Table Name="dbo.disctype" Member="Disctypes">
+    <Type Name="Disctype" ed:Guid="e5827267-9872-478f-8c01-e0f04df09b67">
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="517a6dba-58d9-4498-9f83-31556df04a4d" />
+      <Column Name="TransId" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4d1d36b1-008e-4dc9-8c90-686064e9707c" />
+      <Column Name="articleid" Member="Articleid" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c6ed40ee-d96a-4d0f-886e-ae22eb14d5d0" />
+      <Column Name="Price" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="3b04b92f-4633-4fad-866b-eedd25b65d42" />
+      <Column Name="Discount" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="04149a51-a726-4a52-b728-0e28e6938145" />
+      <Column Name="TotHarga" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="8f02db94-d411-4082-9ad1-be98437ddc0a" />
+      <Column Name="DiscountRetailId" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="62891bec-c72c-49fa-a091-63b5565aadab" />
+      <Column Name="DiscPersent" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f83d94c5-69eb-40b6-a180-5fb044513c18" />
+    </Type>
+  </Table>
+  <Table Name="dbo.disctype2" Member="Disctype2s">
+    <Type Name="Disctype2" ed:Guid="de4ad342-4866-4ec4-a138-6fc201214512">
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="87d38309-b56a-4ceb-b262-459341a87f49" />
+      <Column Name="TransId" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ac8f33f0-b4f3-412e-ac2c-3fd9b08f476e" />
+      <Column Name="articleid" Member="Articleid" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="900888ad-6e47-4a3d-9e8f-d07565c05ffa" />
+      <Column Name="Price" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="8a35f235-fde4-45c4-b8e9-07bb95113c04" />
+      <Column Name="Discount" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="419878dc-113f-4d03-8ead-d081058c8bac" />
+      <Column Name="TotHarga" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="213f712e-915a-47a3-9132-99fa1ccae475" />
+      <Column Name="DiscountRetailId" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="38e0efdf-eac0-4d92-a69f-bf23eb0c46fb" />
+      <Column Name="DiscPersent" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b3256cc4-29a9-4100-80f8-aa1b6fd5490c" />
+    </Type>
+  </Table>
+  <Table Name="dbo.diskon" Member="Diskons">
+    <Type Name="Diskon" ed:Guid="b995a800-7170-472d-93d1-094d19639187">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="0a518e6d-df65-4968-a1ed-41501c298e9d" />
+      <Column Name="kd_diskon" Member="KdDiskon" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8dc22d1b-5b22-470f-b924-912866d2cfcb" />
+      <Column Name="net_diskon" Member="NetDiskon" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="6be9b513-b5b6-47ee-b446-bc3af7961691" />
+      <Column Name="status" Member="Status" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="ab9b5e79-4682-41f4-9ff1-54fb27cea1ca" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee" Member="Employees">
+    <Type Name="Employee" ed:Guid="947dbaf0-2e02-4fab-8fc3-0cd5f7c44bcc">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="0a18d357-7c97-47ec-a9e4-0b0e07af80e9" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ed0882de-1a00-4224-8fa8-df736001e27e" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="66615af3-c43b-4927-a584-014ee747f186" />
+      <Column Name="POSITION_ID" Member="POSITIONID" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="1db70421-8222-4dfa-8aca-9c16cc8ebf6f" />
+      <Column Name="Pass" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" MaxLength="2147483647" ed:ValidateMaxLength="2147483647" ed:ValidateRequired="false" ed:Guid="dbd9c15d-6ee1-411d-8356-a87ec551d498" />
+      <Column Name="STORE_ID" Member="STOREID" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="aae26565-a669-47b0-8799-ba3c378f585a" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(10) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="true" ed:Guid="1e6e7108-94ad-4679-b728-43dbf60f9c4a" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee2" Member="Employee2s">
+    <Type Name="Employee2" ed:Guid="2261b3b4-5c69-4395-9640-9ee05bae651a">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="2f5aba5d-b3a5-45ca-a417-a7fb12d91f5f" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1a6a5495-8f95-491e-92a9-ee7e8dc46700" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="12dd0ad8-9d97-4867-8de7-86899a28b855" />
+      <Column Name="POSITION_ID" Member="POSITIONID" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="6c0b1b1e-abc5-4402-b9ce-96d937281aa6" />
+      <Column Name="Pass" Type="System.String" DbType="TEXT" CanBeNull="true" UpdateCheck="Never" MaxLength="2147483647" ed:ValidateMaxLength="2147483647" ed:ValidateRequired="false" ed:Guid="3e8a66e4-3fea-4999-9169-ecc7b03de980" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gender" Member="Genders">
+    <Type Name="Gender" ed:Guid="d00f293a-4927-4f58-9a34-b682ddec47aa">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="c70652a4-7dba-423b-a5a8-5607c19d0121" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9ce5c851-a33a-4348-99b8-aae499ac99a4" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="39acc430-c744-40dc-8568-9f5da4993528" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ho_header" Member="HoHeaders">
+    <Type Name="HoHeader" ed:Guid="2e5177ea-950d-4589-9a85-a83adea93697">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="65825fdd-e602-4c7c-bb1b-6ba1b4e63d5a" />
+      <Column Name="MUTASI_ORDER_ID" Member="MUTASIORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="99b34ca3-2203-4dfc-962d-93ee8b227775" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="dead048f-7b14-4b6a-8908-aba34963ac53" />
+      <Column Name="MUTASI_FROM_WAREHOUSE" Member="MUTASIFROMWAREHOUSE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="105b86e6-2a3d-40ca-a785-eaeb0b1a6328" />
+      <Column Name="MUTASI_TO_WAREHOUSE" Member="MUTASITOWAREHOUSE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c19bfedb-b2f2-4720-aecd-d05512165d8b" />
+      <Column Name="REQUEST_DELIVERY_DATE" Member="REQUESTDELIVERYDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c229a029-5d80-4a06-b5c6-fcc661370d84" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="0b3b2594-542a-4cfa-a9f0-e58aec829eac" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="ddfdfa38-5a1e-4a65-861b-025c7c72a05b" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c196c274-1ade-4f77-a5fe-9e3080a5da4c" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e25f447f-ab2f-4a86-bcf0-1fe8a2d80454" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="16c46de8-1298-4955-8c82-adf0fb2f1e93" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="c3b0fc5b-3539-438c-a46f-ce156dba86e9" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c0eea97f-f0c1-4241-89b3-617c6bc72184" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="beb69e4d-3da3-45d5-b62a-3535133c2bc8" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5fe1e884-8e50-476c-a75d-4fea0057c0a3" />
+      <Column Name="TOTAL_AMOUNT" Member="TOTALAMOUNT" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="57f19c33-b852-47da-82db-c452296b0da6" />
+      <Column Name="NO_SJ" Member="NOSJ" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="88efc758-0e50-45a6-b06f-2dfd9015b0a3" />
+      <Column Name="IS_PBM_PBK" Member="ISPBMPBK" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="63567f2f-635a-41d2-a3a0-e42610781c2d" />
+      <Column Name="TRANS_TYPE_ID" Member="TRANSTYPEID" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="false" ed:Guid="7d971cc5-863b-4de1-8b66-48208c0ea04a" />
+      <Column Name="TRANS_TYPE_CODE" Member="TRANSTYPECODE" Type="System.String" DbType="VARCHAR(20)" CanBeNull="true" UpdateCheck="Always" DefaultValue="'-'" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="false" ed:Guid="e2f22161-1efd-4094-8baa-8e53ba71d650" />
+      <Column Name="RIDN" Type="System.String" DbType="VARCHAR(20) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="ead4c958-8578-4196-992d-01b9464323e6" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ho_line" Member="HoLines">
+    <Type Name="HoLine" ed:Guid="9451f3f4-a149-4e91-8597-7ae98286f9a8">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="a24ff2b5-d100-45dd-b64b-bcfe83ef3be2" />
+      <Column Name="MUTASI_ORDER_ID" Member="MUTASIORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3aa14c5e-6f6d-4f52-be88-0bd51fce7231" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a6d628e9-540b-453d-8583-6973ccb4a0df" />
+      <Column Name="ARTICLE_NAME" Member="ARTICLENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6581e1d4-b7a4-4a3b-8991-e7ed88ab4cd3" />
+      <Column Name="COLOR" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3e966740-1ac3-4b77-97a2-dcecaad31ba3" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="d7bc52be-ca9e-4fed-ac4f-c224bfca2bf1" />
+      <Column Name="QUANTITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8584601b-183d-4fc4-bfbe-d2451f3219f9" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0e08530a-4844-427b-999f-8ec98558723c" />
+      <Column Name="SUBTOTAL" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="0" Precision="10" ed:ValidateRequired="true" ed:Guid="473f4407-fe40-42e3-97aa-3cc5cbb4a995" />
+      <Column Name="DEPARTMENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="55fe6f0a-80ce-490b-9ebd-8ffb83b0fa76" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ho_transaction_type" Member="HoTransactionTypes">
+    <Type Name="HoTransactionType" ed:Guid="e8995666-6a8b-4e6e-a8a0-0e3c4c85fa33">
+      <Column Name="ID" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="5030a1d3-0768-4711-a396-d46570c30c8f" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(20) NOT NULL" CanBeNull="false" UpdateCheck="Always" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="0accd1ea-324a-4a9f-a20d-bb7a6a1e5545" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="f36ad8d0-52ef-4227-9863-e8f7a016d72f" />
+      <Column Name="WAREHOUSE_FROM" Member="WAREHOUSEFROM" Type="System.String" DbType="VARCHAR(20) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="2d28becc-45cf-4f7c-9c79-f0632e968c5d" />
+      <Column Name="WAREHOUSE_TO" Member="WAREHOUSETO" Type="System.String" DbType="VARCHAR(20) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="20" ed:ValidateMaxLength="20" ed:ValidateRequired="true" ed:Guid="8d272165-d9f3-487d-92b2-192f2824e583" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inventory" Member="Inventories">
+    <Type Name="Inventory" ed:Guid="8abaa127-0113-45e6-b761-0138287e8e04">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="ecf67445-37f3-445e-b553-a154ea0b72ff" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ee2c2e76-e07b-42e0-9582-0e2c8c49770c" />
+      <Column Name="GOOD_QTY" Member="GOODQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a697c58c-b15e-4334-a324-427dbf62666d" />
+      <Column Name="REJECT_QTY" Member="REJECTQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="14a38d77-6648-4fb8-a0ce-e93e0871c334" />
+      <Column Name="WH_GOOD_QTY" Member="WHGOODQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="69a8d807-0ba4-4128-887d-5aba0d148ad4" />
+      <Column Name="WH_REJECT_QTY" Member="WHREJECTQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="6576212b-7074-418d-a0eb-84b2289a6e01" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="0060c483-33fc-4fe7-a8e5-01de615ee2ae" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inventory_line" Member="InventoryLines">
+    <Type Name="InventoryLine" ed:Guid="912b73e3-ad26-4c26-9ccc-0e982beb24e9">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="8c9181c5-1696-4a05-bfec-eeb420142050" />
+      <Column Name="TRANS_TYPE" Member="TRANSTYPE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="98a0e656-a6c1-441d-89e2-4a4fbb6b1fdc" />
+      <Column Name="TRANS_TYPE_NAME" Member="TRANSTYPENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="21c1848b-4309-4cca-95fe-4208025204af" />
+      <Column Name="TRANS_REF_ID" Member="TRANSREFID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1026bafc-9c14-4065-b6e9-115635bf960d" />
+      <Column Name="QTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="8570cada-cb84-4ad8-908d-311a26f65326" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cfc4f19b-b635-416f-a9a1-7466851e1cc8" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensionbrand" Member="Itemdimensionbrands">
+    <Type Name="Itemdimensionbrand" ed:Guid="4492d6df-30c4-43c1-bc4d-ce4a7526c814">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="b9ae63a6-1bce-497c-a7b4-d14c3a9bf321" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e9949c69-8446-4da1-8fad-8aae7dd3501c" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c325568a-e967-44d6-a3ba-ee91996fd5a7" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensioncolor" Member="Itemdimensioncolors">
+    <Type Name="Itemdimensioncolor" ed:Guid="9adfe28a-2194-460b-a5e5-ecf8138c6d46">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="151578c7-8a6d-4af1-8f5b-c3b4de71bc17" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c5e995bc-ce6a-4645-ab88-8a4191264004" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="22713793-a464-4b68-893a-542cddf2ed6d" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensiondepartment" Member="Itemdimensiondepartments">
+    <Type Name="Itemdimensiondepartment" ed:Guid="1c5ab4fc-c102-489f-9e49-c40bcc389eee">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="731c2847-118b-4e32-867c-406d213469a9" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="af2b6fd5-6dc0-4a3a-b8da-2eda92a97056" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="40ea5a60-0e9f-4f40-9b16-4afa76b1930a" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensiondepartmenttype" Member="Itemdimensiondepartmenttypes">
+    <Type Name="Itemdimensiondepartmenttype" ed:Guid="d2356795-be66-46ea-83b8-719c2a5dfe3e">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f6c11861-0864-45ed-83f6-014da0011b9c" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b8e76495-fe9e-4ba4-9400-9bf66d1f25ed" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="de98803c-7e4e-4abe-88f7-3983d9d30304" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensiongender" Member="Itemdimensiongenders">
+    <Type Name="Itemdimensiongender" ed:Guid="4a68bba1-70cb-4b48-8e18-8d648ae7a815">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="b3ae7042-d468-40a4-9c30-ad29f95178b7" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2f498c6b-6816-4ec4-9deb-564ab799463a" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0b81bb00-462d-460f-bd68-41dea810a8ff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemdimensionsize" Member="Itemdimensionsizes">
+    <Type Name="Itemdimensionsize" ed:Guid="bfa16660-7837-4d28-b451-cd003af55ff0">
+      <Column Name="Id" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="bbda956f-94c3-4edc-8e8b-7dffeaf6ef4b" />
+      <Column Name="Code" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1ea0a7f2-dede-45ee-98b9-baf851879929" />
+      <Column Name="Description" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="32a195a1-22e1-4ea9-8af6-7b8fe9da4377" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobTabletoSynchDetail" Member="JobTabletoSynchDetails">
+    <Type Name="JobTabletoSynchDetail" ed:Guid="aadb6c55-013c-4441-8ecd-50c21bdfc827">
+      <Column Name="SynchDetail" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="4641096e-1911-4842-9fc7-6a2f8d7a1d7d" />
+      <Column Name="JobID" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="954a7d1b-03f6-4269-8480-e0c6511178c8" />
+      <Column Name="StoreID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fab29415-7aa8-43c8-8887-069cdba1ed27" />
+      <Column Name="TableName" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5314ce4c-9809-48b2-86a1-717270e6d64c" />
+      <Column Name="DownloadPath" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="2a736884-8fc3-4999-bf7e-c945d69858c2" />
+      <Column Name="Rowfatch" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="58908795-e84d-4c88-9b36-00fc2965606d" />
+      <Column Name="RowApplied" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="0a12ea4e-2fb1-4c95-9bf4-50587f7eed6a" />
+      <Column Name="Status" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="9c19999c-7ab6-4f59-af65-289aca307726" />
+      <Column Name="Synchdate" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="ddabfdc6-301c-48ab-a5cc-819185fcc08e" />
+    </Type>
+  </Table>
+  <Table Name="dbo.log_discount" Member="LogDiscounts">
+    <Type Name="LogDiscount" ed:Guid="06ef831d-c06c-4efa-9cb5-320ae1966a81">
+      <Column Name="ID" Type="System.String" DbType="VARCHAR(50)" CanBeNull="true" UpdateCheck="Always" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="70c65612-a322-4c52-8173-6a0de83b47ae" />
+      <Column Name="DISCOUNT" Type="System.String" DbType="VARCHAR(50)" CanBeNull="true" UpdateCheck="Always" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="d2cf73b4-0bd9-430e-b72b-ebcd33202607" />
+    </Type>
+  </Table>
+  <Table Name="dbo.log_msg" Member="LogMsgs">
+    <Type Name="LogMsg" ed:Guid="468828e9-853c-4baa-96fb-7be22a973947">
+      <Column Name="Data" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="01b1891b-33b0-48c5-87b5-8f583a7c24ae" />
+      <Column Name="Status" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="45a203dd-a570-4e1b-873c-75c58720644e" />
+    </Type>
+  </Table>
+  <Table Name="dbo.modal_store" Member="ModalStores">
+    <Type Name="ModalStore" ed:Guid="20c28a46-4a8b-40ce-8432-58a5bedc1da9">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="36f2ae99-3483-4e2c-8ae8-2f49f6eb674b" />
+      <Column Name="UANG_MODAL" Member="UANGMODAL" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="6877f99a-d32e-4855-a9cf-3d1e25e6441d" />
+      <Column Name="OPENING_BALANCE_TRANS" Member="OPENINGBALANCETRANS" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="643d61db-dacd-4cf6-aeeb-c5c6154d5f82" />
+      <Column Name="CLOSING_BALANCE_TRANS" Member="CLOSINGBALANCETRANS" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="b6dac08d-6768-4048-be37-07685cccb67c" />
+      <Column Name="OPENING_BALANCE_PETTY_CASH" Member="OPENINGBALANCEPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="8d0caf12-2115-4849-a255-f2b214ca72bb" />
+      <Column Name="CLOSING_BALANCE_PETTY_CASH" Member="CLOSINGBALANCEPETTYCASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="086131a3-b2b9-4071-a6ef-674f7f4326e6" />
+      <Column Name="OPENING_TIME" Member="OPENINGTIME" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="c78d9d93-7221-4479-bdb0-8f4e30c25f81" />
+      <Column Name="CLOSING_TIME" Member="CLOSINGTIME" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="683f1b51-8615-4279-9631-42ee6c42eb67" />
+      <Column Name="DEVICE_NAME" Member="DEVICENAME" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="33310493-646d-4ca8-9b7b-4ca098e7d640" />
+      <Column Name="SHIFT_NAME" Member="SHIFTNAME" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="f2ec2883-c143-4a6a-b7cd-fa7a67763671" />
+      <Column Name="SHIFT_CODE" Member="SHIFTCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f8a50df6-2e9a-4843-a45c-591d56f8a0e0" />
+    </Type>
+  </Table>
+  <Table Name="dbo.mutasiorder" Member="Mutasiorders">
+    <Type Name="Mutasiorder" ed:Guid="2e38f424-9496-43fe-9c8a-e790c571be9a">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="ec392e29-f314-4de5-9896-00f119181fe0" />
+      <Column Name="MUTASI_ORDER_ID" Member="MUTASIORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3d36ab8e-70fb-4b11-8c3c-a1611766517f" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="17999c32-e56c-4008-87eb-8e54b65389c9" />
+      <Column Name="MUTASI_FROM_WAREHOUSE" Member="MUTASIFROMWAREHOUSE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7f173a04-6dac-44ec-94e5-33fc6c05e96b" />
+      <Column Name="MUTASI_TO_WAREHOUSE" Member="MUTASITOWAREHOUSE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="914094f7-c0e4-468a-b2b7-95e6e05a0538" />
+      <Column Name="REQUEST_DELIVERY_DATE" Member="REQUESTDELIVERYDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="95b27978-89bc-4e58-adbb-894ecf3b5a6f" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="b96e43e0-e1c7-4ff9-a8e5-b4d037c00be4" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="98c97dab-f1c5-4afd-b712-5486514378b2" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9c7aae42-eb6f-479a-be36-b88eb1b2b2d2" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="55808826-c0b7-44ba-9c9b-907a084d1d7a" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="54c93f8c-d813-4d0a-81f2-953dcb4c7d38" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2c6705f1-f34a-4e95-80ca-ab4dcc3f1cf7" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7c563590-306b-44bb-9d92-99defee51846" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="16e64b10-ae61-4144-b2c5-734a8f199c40" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b54d3a55-6ea2-4c1b-bf8d-c27d32dfef90" />
+      <Column Name="TOTAL_AMOUNT" Member="TOTALAMOUNT" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="d36db41f-b5b0-4b18-80a0-c008ef1812df" />
+      <Column Name="NO_SJ" Member="NOSJ" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1a43358f-086d-493d-bc6a-c8b57616cdf4" />
+      <Column Name="IS_PBM_PBK" Member="ISPBMPBK" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2ec895c5-cdb1-407b-b1d1-eb93d16dbc9d" />
+    </Type>
+  </Table>
+  <Table Name="dbo.mutasiorder_line" Member="MutasiorderLines">
+    <Type Name="MutasiorderLine" ed:Guid="3bf17bc3-9cfe-4d8c-9f03-35e10407e396">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="ce89078a-4e60-47c1-8a4e-58058471ea6d" />
+      <Column Name="MUTASI_ORDER_ID" Member="MUTASIORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="523bfe6c-3225-4815-827e-5eb24d11611b" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cc85c511-56ec-4e71-9f8b-c65427aa90cb" />
+      <Column Name="QUANTITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d89c242c-9da2-4942-9f48-4d883ece5894" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="769b96ac-0602-4bfb-8826-cde9eaf0a889" />
+      <Column Name="SUBTOTAL" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="50dca5c3-d56f-458e-9867-15fd5f116ad3" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pass_service_tbl" Member="PassServiceTbls">
+    <Type Name="PassServiceTbl" ed:Guid="79c49ccc-e688-4ba6-9489-46bc4c33840c">
+      <Column Name="ID" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="456c9f66-7780-49f2-baa4-484167806a0f" />
+      <Column Name="Pass" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="45ee652e-697c-4c05-8420-650b6aa977ea" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pettycash" Member="Pettycashes">
+    <Type Name="Pettycash" ed:Guid="9e6d3a60-0247-4330-9a3d-1c03998acf50">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="a0ccafd1-fa03-4e98-853d-dfeb190752a2" />
+      <Column Name="PETTY_CASH_ID" Member="PETTYCASHID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="20186d8d-dee1-40e3-b33d-a16b0ff9f9f2" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c623e738-1209-4391-a1c6-10f45183f1fe" />
+      <Column Name="EXPENSE_CATEGORY_ID" Member="EXPENSECATEGORYID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="78eb7563-b7a9-481f-8eb9-a89ff17758f8" />
+      <Column Name="EXPENSE_CATEGORY" Member="EXPENSECATEGORY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f16c54be-66b3-4c92-909c-7542007a75c6" />
+      <Column Name="EXPENSE_DATE" Member="EXPENSEDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c23c68c2-2f41-4829-a495-f5291a101bfe" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="e44121e8-84cc-4e24-bdad-2a98487f3158" />
+      <Column Name="TOTAL_EXPENSE" Member="TOTALEXPENSE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="58f60863-1f20-4cc4-886c-e99dcaf8349e" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="437a1b24-6ae0-4636-8c43-7f49cbe7ab05" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2567a9a3-3f6b-49a3-9402-648db17c22da" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f63b456b-3fdf-4347-8fc7-01a261a4e743" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="2963d2e6-4613-49f9-808d-fadb33d9ae39" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a1c49b1c-f0af-4a9f-b24a-9c5a8379b818" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ce2c4956-c999-4516-b10a-ed094e59c2c5" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pettycash_line" Member="PettycashLines">
+    <Type Name="PettycashLine" ed:Guid="244a5167-ec94-45c7-8913-69901215953b">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="a9d26aa0-44a6-4267-87da-90931ce94fde" />
+      <Column Name="PETTY_CASH_ID" Member="PETTYCASHID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d548b9c3-5153-4d1c-9699-8d82b5522877" />
+      <Column Name="EXPENSE_NAME" Member="EXPENSENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0abd6525-8e60-4696-8291-2690df223a9b" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2acbab62-bd41-4824-ace8-284091e2ac34" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="65db0763-284f-400e-bcf0-60c7c7bda034" />
+      <Column Name="TOTAL" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="ce714cbd-3c5d-4387-9062-fde6f7c05e75" />
+    </Type>
+  </Table>
+  <Table Name="dbo.position" Member="Positions">
+    <Type Name="Position" ed:Guid="3c0e7fca-3bad-4239-b8ac-c8bf3018f9b2">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="866f2c00-af5d-4e59-af60-e4335ffc842d" />
+      <Column Name="POSITION_ID" Member="POSITIONID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5fd65a7d-9827-44c8-99ad-752e277f98cf" />
+      <Column Name="POSITION_NAME" Member="POSITIONNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4277ca9a-2a38-4c22-9694-055d20e00cb3" />
+    </Type>
+  </Table>
+  <Table Name="dbo.promotion" Member="Promotions">
+    <Type Name="Promotion" ed:Guid="3c090d57-13a5-47bc-aa4c-601ee09e160a">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="1eafccbd-7c6d-48d1-a46a-3c5fe4796b36" />
+      <Column Name="DISCOUNT_CODE" Member="DISCOUNTCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9d0df90f-2987-4a35-abb2-52e0cce69207" />
+      <Column Name="DISCOUNT_NAME" Member="DISCOUNTNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="26310aaa-a7fa-471b-857c-cc8c41dd76c5" />
+      <Column Name="DISCOUNT_CATEGORY" Member="DISCOUNTCATEGORY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="368b4a31-3158-4063-9ef2-c3e67b6066ce" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="38136ab0-87aa-4e5a-a499-dda554c5e6c6" />
+      <Column Name="START_DATE" Member="STARTDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="19ba996a-6b91-43fb-9815-3b731312f7ec" />
+      <Column Name="END_DATE" Member="ENDDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a72ffc50-5a9d-4f59-aed7-f546792d3bde" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f980ec09-e38f-42b1-8d49-1a670ce1adbc" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b55cffbd-d8b6-4499-bd05-c72ae9cab849" />
+      <Column Name="DISCOUNT_TYPE" Member="DISCOUNTTYPE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="d9233d51-6ee6-4483-a7cc-2aba105bdcfe" />
+      <Column Name="DISCOUNT_DESC" Member="DISCOUNTDESC" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c0d9ad49-5b47-4eb0-94ae-4bbbd1992881" />
+    </Type>
+  </Table>
+  <Table Name="dbo.promotion_line" Member="PromotionLines">
+    <Type Name="PromotionLine" ed:Guid="f07505a8-966d-44c1-8def-5fcf8d5648d9">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="aa22c16b-9962-43c5-b481-b72f5d08ed3c" />
+      <Column Name="PROMOTION_ID_FK" Member="PROMOTIONIDFK" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="e80364c9-5930-4fba-8fa3-5505e942917f" />
+      <Column Name="DISCOUNT_CODE" Member="DISCOUNTCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d81d687b-f907-4dfb-af24-5df4c66f226e" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7b69a1de-2ad4-45df-a4a5-a226df8e0773" />
+      <Column Name="ARTICLE_NAME" Member="ARTICLENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="91607821-558b-4cea-88a2-1593ce64988f" />
+      <Column Name="BRAND" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8bda926c-9058-4be4-aa66-d245ffd149e3" />
+      <Column Name="SIZE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8030b367-3af3-4f5a-b699-ba5deb89ae17" />
+      <Column Name="COLOR" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d3d2f9bb-f7cc-4d2f-8611-5ddadb3974d4" />
+      <Column Name="GENDER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="235c2a2a-5d7c-4773-a9ca-a1970189f36b" />
+      <Column Name="DEPARTMENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="af09d9d8-c80b-48ee-9fa5-13789cf29dcc" />
+      <Column Name="DEPARTMENT_TYPE" Member="DEPARTMENTTYPE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2e1f439e-b97b-4b38-8baf-f387a76690b7" />
+      <Column Name="CUSTOMER_GROUP" Member="CUSTOMERGROUP" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="58f49d65-294a-4f8d-a05a-e868a260c77e" />
+      <Column Name="QTA" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="16fd448b-c149-4cad-ae68-460a0108ecab" />
+      <Column Name="AMOUNT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7f387cab-112f-4ae6-93bd-532d80d6d012" />
+      <Column Name="BANK" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ac5d210a-d1c5-4ffe-896a-5ad5f16bb967" />
+      <Column Name="DISCOUNT_PERCENT" Member="DISCOUNTPERCENT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="56ce98f9-ad48-44e9-bafe-912ab3a76397" />
+      <Column Name="DISCOUNT_PRICE" Member="DISCOUNTPRICE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="af136b84-dcaf-4e6a-98ff-d9d436fd30b6" />
+      <Column Name="SPESIAL_PRICE" Member="SPESIALPRICE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e2179577-95c1-47a3-9ea1-7e293c268e53" />
+      <Column Name="ARTICLE_ID_DISCOUNT" Member="ARTICLEIDDISCOUNT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a02fcb24-b297-45dd-a831-b07fd6aff72a" />
+      <Column Name="ARTICLE_NAME_DISCOUNT" Member="ARTICLENAMEDISCOUNT" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="719db002-43ca-447d-9dcf-256e51833359" />
+    </Type>
+  </Table>
+  <Table Name="dbo.requestorder" Member="Requestorders">
+    <Type Name="Requestorder" ed:Guid="ed1f17ad-a357-48ae-af8f-97dcbe76039c">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="4edb1458-81ca-4abf-a160-4511bac089e5" />
+      <Column Name="REQUEST_ORDER_ID" Member="REQUESTORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4371faab-4cfe-4a3b-8f86-1ceaa78c5828" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5e55964b-1924-443f-9bf6-44dbf32ab838" />
+      <Column Name="REQUEST_DELIVERY_DATE" Member="REQUESTDELIVERYDATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9833d365-0b9f-49e3-a67d-1fd4561ff0bd" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2b56247a-93d6-443d-bd44-6a1f15c0a022" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="fc7e6104-91bb-47d4-984c-cc6718400233" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="65294948-99f8-40d7-a199-7b2d08234194" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="85c69498-f96f-4f0d-a12a-d920801fd9b2" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="e512dade-ec70-4e6d-92c7-dccd657f907a" />
+      <Column Name="WAREHOUSE_ID" Member="WAREHOUSEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1a1c5d35-3535-4c7f-a4b0-3fa7229509e9" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="4ca59bbf-f1ff-439f-9fe8-aa0e039e58ab" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4341120b-584f-4735-b1c0-97a3a87a513d" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="bbbcd3a8-9fd2-4a7f-97e2-ffb98e98bd14" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="171af545-f748-460b-b508-c93548210e3d" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="f5c126ad-0934-4285-b688-5aaf0c6b2507" />
+      <Column Name="TOTAL_AMOUNT" Member="TOTALAMOUNT" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="82500665-e7c5-48e4-aa4a-43cb916337ad" />
+      <Column Name="NO_SJ" Member="NOSJ" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="19d8089c-ddbe-467e-a860-acffd066fa90" />
+    </Type>
+  </Table>
+  <Table Name="dbo.requestorder_line" Member="RequestorderLines">
+    <Type Name="RequestorderLine" ed:Guid="0e710927-9833-48f6-ad36-a8c46738a3c7">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="ff2c96dc-7713-4d87-ad89-23b4800d5c33" />
+      <Column Name="REQUEST_ORDER_ID" Member="REQUESTORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ae9d3ea1-b35c-4173-b44f-70678c1e6a84" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e60f5e56-e3be-4530-ad2b-49f881543f00" />
+      <Column Name="QUANTITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6f55ee32-5a59-4f51-9b06-1db85b3bb82f" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f2c61f0d-8763-452e-9c40-473b782d20bd" />
+      <Column Name="SUBTOTAL" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="97efb71b-509c-4ac6-bcb3-4b1392d76b5a" />
+    </Type>
+  </Table>
+  <Table Name="dbo.returnorder" Member="Returnorders">
+    <Type Name="Returnorder" ed:Guid="c4064d28-614b-4a91-9fa3-3a22477b4164">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="7dcbe834-6294-4ca1-8cbd-856e3820a8d6" />
+      <Column Name="RETURN_ORDER_ID" Member="RETURNORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f222b4b9-17de-4e94-87ee-7ee5032260af" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e239f90c-6af0-4bd3-a571-0640acceeb48" />
+      <Column Name="REMARK" Type="System.String" DbType="VARCHAR(200) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="200" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="dd91a272-ba9f-4127-a8a0-88dc9072b2f0" />
+      <Column Name="TOTAL_QTY" Member="TOTALQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="21b73828-e3c7-4bc8-9009-f5e396023986" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f6dda718-1235-4aa2-9ec9-4bce01a9807a" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="609c29e8-5eca-4758-9a12-d0ecc7154211" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3846c0f4-e45e-4654-99ef-ae132d9f661c" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="ba54b569-bd10-4b48-aeaa-d4ceca1564ca" />
+      <Column Name="WAREHOUSE_ID" Member="WAREHOUSEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="60baabb8-3ae2-44b4-a022-00e6ebd45560" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="25855154-948b-440a-9753-1cb47f32f18a" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="c171705a-e840-45fb-a58b-929a5f4a815e" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d816e1f6-f38f-451e-b69f-1d2b8b55019a" />
+      <Column Name="EMPLOYEE_NAME" Member="EMPLOYEENAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cf0d95e7-a9c1-4a88-aa90-02f4496c70b5" />
+      <Column Name="TOTAL_AMOUNT" Member="TOTALAMOUNT" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="3167b7b1-ef13-4e7e-bf06-2f83075c3420" />
+      <Column Name="NO_SJ" Member="NOSJ" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ec4aa0dd-d83a-4da3-b772-92aa43f51598" />
+    </Type>
+  </Table>
+  <Table Name="dbo.returnorder_line" Member="ReturnorderLines">
+    <Type Name="ReturnorderLine" ed:Guid="5a4e6c2c-f749-4abe-af65-be9c0e736826">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="5f17d9a7-9d6c-4808-ae74-f45051748b68" />
+      <Column Name="RETURN_ORDER_ID" Member="RETURNORDERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="85d062a8-b397-463b-baa5-f9c4d38346e2" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3e3d0092-601c-41d4-862e-8873582f9f4c" />
+      <Column Name="QUANTITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="12c77d41-384e-4578-8889-473170a58dde" />
+      <Column Name="UNIT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cf553932-ffe4-4ec4-ad50-f9ddffea588c" />
+      <Column Name="SUBTOTAL" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="98ca6cbc-6626-451e-9728-1d4a2d0ea2dc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.size" Member="Sizes">
+    <Type Name="Size" ed:Guid="196746fe-62ac-4a4c-965e-8db78e01a2d4">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" DbType="INT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="86e6e1ea-cbb9-4857-9100-71f81d19ecaf" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e21dc19d-9f2c-41e7-8395-8d0138b962c6" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0964cbb9-f8d4-4c1e-9972-c1bc52f30427" />
+    </Type>
+  </Table>
+  <Table Name="dbo.spg" Member="Spgs">
+    <Type Name="Spg" ed:Guid="afa02498-a339-4de0-b657-81e54de6e41b">
+      <Column Name="[_id]" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="dea796fd-d50a-4188-9ac6-36eb4406c4a2" />
+      <Column Name="ID_SPG" Member="IDSPG" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3f1853f9-1e2d-48fd-92ed-dadea5b28ddd" />
+      <Column Name="NAMA" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a939291b-0944-4a8f-9d8d-15cdfbc22794" />
+    </Type>
+  </Table>
+  <Table Name="dbo.stock_take" Member="StockTakes">
+    <Type Name="StockTake" ed:Guid="7d5e1043-3cc2-4b46-aff8-96799ab7cfaf">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="2e8e924b-5fc9-4346-a967-14d8e16cf325" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5431fd65-882e-4d83-9f76-d896fcc42832" />
+      <Column Name="GOOD_QTY" Member="GOODQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="1efb5106-0b33-4b14-b479-84c6ad7054cc" />
+      <Column Name="REJECT_QTY" Member="REJECTQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f4a1c9b9-567b-48cb-8a41-b80d7d05c96f" />
+      <Column Name="WH_GOOD_QTY" Member="WHGOODQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="3131d7bb-90b3-4844-8c6a-997c91cbb2d2" />
+      <Column Name="WH_REJECT_QTY" Member="WHREJECTQTY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="567938e2-40f3-40e4-bb89-c40821e903ec" />
+      <Column Name="DISPUTE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="f3780cfc-adc2-4a7f-85a6-2537f8995a4e" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="fb9bbc27-666e-413a-bd5e-4c4d13b98bec" />
+    </Type>
+  </Table>
+  <Table Name="dbo.store" Member="Stores">
+    <Type Name="Store" ed:Guid="cfb0233c-f1da-4412-9f79-5d1718032ba0">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="920369c3-2268-4182-a721-a552df9c465c" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1ceddf80-66eb-445a-bf21-d3ff2ef7ef31" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e9e9c4a3-db6b-4df6-b004-12f4e3e6aacd" />
+      <Column Name="LOCATION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="dd731fe6-eaaf-4633-8ce9-83c1f54a0b19" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="9da69b05-c083-4efe-91a5-11372e356a9b" />
+      <Column Name="CITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a3e4c2d2-2178-4a28-be5e-e6e3d4ddbcdc" />
+      <Column Name="REGIONAL" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ef277671-2273-4b6a-aa13-ff89990a2ed0" />
+      <Column Name="STORE_TYPE_ID" Member="STORETYPEID" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="cdf867a0-27f0-4f76-ac50-2df9f522af97" />
+      <Column Name="ADDRESS2" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="c518dfcf-01a8-49f1-8bfb-4dd681f1853f" />
+      <Column Name="ADDRESS3" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="71510099-6e0d-4da9-a93c-c00c474b4b17" />
+      <Column Name="ADDRESS4" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="c7ed779d-9ad7-4f19-8c09-70e9aa9d0200" />
+      <Column Name="WAREHOUSE_ID" Member="WAREHOUSEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="34aa6164-a35b-4932-8ba7-b99262aa6a23" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="152ac75b-343d-4f5b-8d36-43e760ab3134" />
+      <Column Name="BUDGET_TO_STORE" Member="BUDGETTOSTORE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="87affed9-606f-4955-9115-4a568efefb70" />
+      <Column Name="BUDGET_TO_CASHIER" Member="BUDGETTOCASHIER" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="614599fe-061e-40e8-b7df-b53602013231" />
+    </Type>
+  </Table>
+  <Table Name="dbo.store_relasi" Member="StoreRelasis">
+    <Type Name="StoreRelasi" ed:Guid="d682ab95-c8a1-4116-a5ea-4856f972b57f">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="3ced6527-e147-4232-a280-a3e4866d5602" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b538d950-f823-446d-8886-a2a428f47540" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9bd21f72-aa4b-47c2-9176-66075440f7e9" />
+      <Column Name="LOCATION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="bcba0559-66e6-4d8d-8979-62cea56798c0" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="5673c3cb-c728-4103-bb87-922b18f0202b" />
+      <Column Name="CITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="34b92963-3b1b-4f78-b485-40644c60bc5e" />
+      <Column Name="REGIONAL" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="7ba2d86d-1242-44c3-861e-ef6fced5c701" />
+      <Column Name="STORE_TYPE_ID" Member="STORETYPEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3b533a31-415c-45dd-9bf3-1bfd73497fde" />
+      <Column Name="ADDRESS2" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="53f08799-a27a-4812-af94-4286f18782c6" />
+      <Column Name="ADDRESS3" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="3aca50df-d8ea-49d0-9127-1142a4c4ec63" />
+      <Column Name="ADDRESS4" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="0e6b0f51-7f6a-4ab2-b528-a5788a28a977" />
+      <Column Name="WAREHOUSE_ID" Member="WAREHOUSEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="54ed224c-b076-4326-a68a-c8e923670e23" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="52a41e5c-ea4c-489e-af1b-61e93fe05b5f" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[transaction]" Member="Transactions">
+    <Type Name="Transaction" ed:Guid="f51cc0fd-977e-4f5f-a288-c3f6879ab76d">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="578592e1-a9c1-4ad2-8c6d-171196e612c1" />
+      <Column Name="TRANSACTION_ID" Member="TRANSACTIONID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6dab41be-826b-4db0-bcc3-1533c4fda19b" />
+      <Column Name="STORE_CODE" Member="STORECODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a87d6da4-a07d-47a9-85cb-f7c1b12132fa" />
+      <Column Name="CUSTOMER_ID" Member="CUSTOMERID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="87e53cf5-3dd0-4db0-b32a-93b42cc47aa8" />
+      <Column Name="EMPLOYEE_ID" Member="EMPLOYEEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="09ec8ede-894b-4689-b7e3-4836e7bacce2" />
+      <Column Name="RECEIPT_ID" Member="RECEIPTID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4f895d87-4595-4c11-9489-804590ff6a11" />
+      <Column Name="SPG_ID" Member="SPGID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="11b99f43-9c03-427b-b0ce-4f33792d42ed" />
+      <Column Name="DISCOUNT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="929bcbe8-253e-4339-8139-61ca0ffb5bfe" />
+      <Column Name="TOTAL" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="39878c02-de9a-4606-87c3-454797dd08a8" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="b490b2cf-0215-49d7-8ce7-dc9ac6ac1f39" />
+      <Column Name="PAYMENT_TYPE" Member="PAYMENTTYPE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="c6906212-5f60-4f98-85b3-c5a14475da97" />
+      <Column Name="CASH" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="04ae945b-f38c-4528-a49d-18f865299511" />
+      <Column Name="EDC" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="7413588d-70f9-4962-9fe9-9f8ecec40820" />
+      <Column Name="EDC2" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="8431a8a8-551a-41a2-98c7-9232d1be4d68" />
+      <Column Name="CHANGEE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="f1eb0e6e-2eb1-4b08-a6b2-0915b6f22e87" />
+      <Column Name="VOUCHER" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="85b8547d-de47-4ee1-9693-7f24c96c7e37" />
+      <Column Name="BANK_NAME" Member="BANKNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="75490539-24e5-4552-9e4f-f8532d6f5332" />
+      <Column Name="BANK_NAME2" Member="BANKNAME2" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="0831c769-61c9-4256-8c77-dc7395d317d1" />
+      <Column Name="NO_REF" Member="NOREF" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="fa58303a-f312-4d49-950f-e53c50c84ad7" />
+      <Column Name="NO_REF2" Member="NOREF2" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ba4564a9-1c27-4827-8916-f3fd75d7f86e" />
+      <Column Name="DATE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="42ace7d9-bc18-49ca-8019-be6e6740eab8" />
+      <Column Name="TIME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="96c6b104-95fb-48d8-9c07-2d13ee5f4405" />
+      <Column Name="TIME_STAMP" Member="TIMESTAMP" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="getdate()" ed:ValidateRequired="true" ed:Guid="f1308c0c-9ee2-4677-96b1-b4ffac8ccc8b" />
+      <Column Name="STATUS_API" Member="STATUSAPI" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="2276227f-aa34-4a58-b33d-b821245ee839" />
+      <Column Name="CUST_ID_STORE" Member="CUSTIDSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5ed0f763-080a-44c7-b1ad-87107a1d0cf1" />
+      <Column Name="CURRENCY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5f766d48-b3a2-427f-bee7-09426d889bb1" />
+      <Column Name="ID_SHIFT" Member="IDSHIFT" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="33061ac6-b50c-4678-909a-3a5215ea9868" />
+      <Column Name="ID_C_STORE" Member="IDCSTORE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4c568e05-825c-4fe9-9de3-68e19ad8b348" />
+      <Column Name="VOUCHER_ID" Member="VOUCHERID" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="95610738-5e5a-4dfa-928c-9ee140f83d88" />
+      <Column Name="VOUCHER_CODE" Member="VOUCHERCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b1afcd0d-0079-427a-96a8-5d63b34081b7" />
+      <Column Name="REFERENCE_DOC" Member="REFERENCEDOC" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="''" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b1886de1-93e5-46fe-922c-fe9366e0d5a9" />
+      <Column Name="COMP_NAME" Member="COMPNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="1ae05edb-5353-40fb-a8d3-cf54c6222ce8" />
+    </Type>
+  </Table>
+  <Table Name="dbo.transaction_line" Member="TransactionLines">
+    <Type Name="TransactionLine" ed:Guid="ce86d16e-ee9b-4ecb-8e85-0d717424d6ea">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" AutoSync="OnInsert" DbType="BIGINT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="19" ed:ValidateRequired="true" ed:Guid="8e60a8a9-bd98-4927-bc70-69b56516c524" />
+      <Column Name="TRANSACTION_ID" Member="TRANSACTIONID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="47a6f017-974c-4851-879a-913ffa5961e0" />
+      <Column Name="ARTICLE_ID" Member="ARTICLEID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d3a2c5ef-1dfa-465a-b540-20396495db9a" />
+      <Column Name="QUANTITY" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="a1a68730-4e0a-49df-8ccc-117265f7b316" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="ba225568-da44-4acc-90d8-16e21dde6770" />
+      <Column Name="DISCOUNT" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="b388e35d-8e2f-4aaf-a887-c1a88fd10722" />
+      <Column Name="SUBTOTAL" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="0b30dc50-846c-4e8c-bd2c-fa9ed7252ccd" />
+      <Column Name="SPG_ID" Member="SPGID" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="77616fae-9b98-4b87-96ad-a8c16d09e0fc" />
+      <Column Name="DISCOUNT_CODE" Member="DISCOUNTCODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6c688c8e-d12f-4f61-affc-5d82e397dd00" />
+      <Column Name="DISCOUNT_TYPE" Member="DISCOUNTTYPE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d01c80f9-63de-4bd9-aa04-8aa910d01332" />
+      <Column Name="DISCOUNT_DESC" Member="DISCOUNTDESC" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a21fa40a-a678-4c40-beff-709396c0babc" />
+      <Column Name="IS_SERVICE" Member="ISSERVICE" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="10" ed:ValidateRequired="true" ed:Guid="e21454de-85d5-41f8-9c58-e7db0bf3c3f5" />
+    </Type>
+  </Table>
+  <Table Name="dbo.version_apk" Member="VersionApks">
+    <Type Name="VersionApk" ed:Guid="dd222d11-9c1a-4ca6-be31-795587f6fd33">
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="4a8a88cc-d80f-4230-b2e1-5252af1b930f" />
+      <Column Name="Type" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6f5672f0-cf00-41e5-b065-1b5344b8c514" />
+      <Column Name="Version" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ffe6c8c9-5a6e-47d3-a9d1-502fdffef3e1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.voucher" Member="Vouchers">
+    <Type Name="Voucher" ed:Guid="d6f57226-a712-4caa-85c8-bf7bebb5a991">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="8231a822-daa8-4ea7-97cb-08d4aac60bb1" />
+      <Column Name="VOUCHER_CODE" Member="VOUCHERCODE" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="010e68a3-7339-44c9-8b2c-f76d65b349bf" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="475ffc58-df72-46cc-8b6b-0a96ce5e3ee8" />
+      <Column Name="QTY" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="da8f514a-6bdc-4c37-acab-c0c9b0a9f641" />
+      <Column Name="VALUE" Type="System.Decimal" DbType="DECIMAL NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="18" Scale="0" ed:ValidateRequired="true" ed:Guid="9fb5554e-937b-4169-8759-df0cedcc1749" />
+    </Type>
+  </Table>
+  <Table Name="dbo.warehouse" Member="Warehouses">
+    <Type Name="Warehouse" ed:Guid="fb3ba608-d919-4ccb-868a-5ddbe8e7a2f4">
+      <Column Name="[_id]" Member="Id" Type="System.Int64" DbType="BIGINT NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" DefaultValue="'0'" Precision="19" ed:ValidateRequired="true" ed:Guid="74d8e89f-f56f-4c64-835a-761bf05394c3" />
+      <Column Name="CODE" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="37507b29-8b8c-4125-a7fc-6deadc580ff1" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="b999db55-b3ba-43d1-963c-b4ca870f32a9" />
+      <Column Name="TYPE" Type="System.String" DbType="VARCHAR(100) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="5e189e32-b190-4e78-a470-b52889645dea" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="48552433-f083-416b-a839-1924bc2e7276" />
+      <Column Name="ADDRESS2" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="2a96b57d-3111-4a09-8cbf-4d5ed72e45a2" />
+      <Column Name="ADDRESS3" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="ce66dfe6-a2e7-4eb3-9953-0fda2f9f2d8e" />
+      <Column Name="ADDRESS4" Type="System.String" DbType="VARCHAR(300) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="300" ed:ValidateMaxLength="300" ed:ValidateRequired="true" ed:Guid="8caf703f-d4fd-487d-8285-b82d68b9fa2c" />
+      <Column Name="CITY" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="ffebd19b-ca28-4d5e-a445-cacbb5a91b21" />
+      <Column Name="REGIONAL" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="88acefef-29b3-46f4-a115-f07abda9e776" />
+      <Column Name="DIVISION" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Always" DefaultValue="'-'" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d172f5a4-e008-4c91-8b75-5fe3524e7c55" />
+    </Type>
+  </Table>
+</Database>
