@@ -62,7 +62,7 @@
             this.b_ok.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("b_ok.BackgroundImage")));
             this.b_ok.ButtonText = "OK";
             this.b_ok.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.b_ok.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_ok.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.b_ok.IdleBorderThickness = 1;
             this.b_ok.IdleCornerRadius = 20;
@@ -80,46 +80,44 @@
             // l_dispute_petty
             // 
             this.l_dispute_petty.AutoSize = true;
-            this.l_dispute_petty.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_dispute_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_petty.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_petty.Location = new System.Drawing.Point(661, 206);
+            this.l_dispute_petty.Location = new System.Drawing.Point(661, 212);
             this.l_dispute_petty.Name = "l_dispute_petty";
-            this.l_dispute_petty.Size = new System.Drawing.Size(38, 22);
+            this.l_dispute_petty.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_petty.TabIndex = 36;
             this.l_dispute_petty.Text = "0,00";
             // 
             // l_dispute_deposite
             // 
             this.l_dispute_deposite.AutoSize = true;
-            this.l_dispute_deposite.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_dispute_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_deposite.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_deposite.Location = new System.Drawing.Point(661, 159);
+            this.l_dispute_deposite.Location = new System.Drawing.Point(661, 167);
             this.l_dispute_deposite.Name = "l_dispute_deposite";
-            this.l_dispute_deposite.Size = new System.Drawing.Size(38, 22);
+            this.l_dispute_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_deposite.TabIndex = 35;
             this.l_dispute_deposite.Text = "0,00";
             // 
             // l_cash_dispute
             // 
             this.l_cash_dispute.AutoSize = true;
-            this.l_cash_dispute.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_cash_dispute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_cash_dispute.ForeColor = System.Drawing.Color.Black;
-            this.l_cash_dispute.Location = new System.Drawing.Point(661, 113);
+            this.l_cash_dispute.Location = new System.Drawing.Point(661, 119);
             this.l_cash_dispute.Name = "l_cash_dispute";
-            this.l_cash_dispute.Size = new System.Drawing.Size(38, 22);
+            this.l_cash_dispute.Size = new System.Drawing.Size(44, 20);
             this.l_cash_dispute.TabIndex = 34;
             this.l_cash_dispute.Text = "0,00";
             // 
             // t_petty
             // 
-            this.t_petty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.t_petty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.t_petty.BackColor = System.Drawing.Color.White;
             this.t_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_petty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_petty.Location = new System.Drawing.Point(426, 201);
-            this.t_petty.Multiline = true;
+            this.t_petty.Location = new System.Drawing.Point(426, 206);
             this.t_petty.Name = "t_petty";
-            this.t_petty.Size = new System.Drawing.Size(181, 39);
+            this.t_petty.Size = new System.Drawing.Size(181, 29);
             this.t_petty.TabIndex = 33;
             this.t_petty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_petty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_petty_KeyUp);
@@ -127,14 +125,12 @@
             // 
             // t_deposite
             // 
-            this.t_deposite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.t_deposite.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.t_deposite.BackColor = System.Drawing.Color.White;
             this.t_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_deposite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_deposite.Location = new System.Drawing.Point(426, 154);
-            this.t_deposite.Multiline = true;
+            this.t_deposite.Location = new System.Drawing.Point(426, 161);
             this.t_deposite.Name = "t_deposite";
-            this.t_deposite.Size = new System.Drawing.Size(181, 39);
+            this.t_deposite.Size = new System.Drawing.Size(181, 29);
             this.t_deposite.TabIndex = 32;
             this.t_deposite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_deposite.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_deposite_KeyUp);
@@ -142,14 +138,12 @@
             // 
             // t_cash
             // 
-            this.t_cash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.t_cash.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.t_cash.BackColor = System.Drawing.Color.White;
             this.t_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_cash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_cash.Location = new System.Drawing.Point(426, 108);
-            this.t_cash.Multiline = true;
+            this.t_cash.Location = new System.Drawing.Point(426, 113);
             this.t_cash.Name = "t_cash";
-            this.t_cash.Size = new System.Drawing.Size(181, 39);
+            this.t_cash.Size = new System.Drawing.Size(181, 29);
             this.t_cash.TabIndex = 31;
             this.t_cash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_cash.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_cash_KeyUp);
@@ -158,130 +152,130 @@
             // l_petty
             // 
             this.l_petty.AutoSize = true;
-            this.l_petty.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_petty.ForeColor = System.Drawing.Color.Black;
             this.l_petty.Location = new System.Drawing.Point(237, 212);
             this.l_petty.Name = "l_petty";
-            this.l_petty.Size = new System.Drawing.Size(102, 22);
+            this.l_petty.Size = new System.Drawing.Size(124, 20);
             this.l_petty.TabIndex = 30;
             this.l_petty.Text = "26.000.000,00";
             // 
             // l_deposite
             // 
             this.l_deposite.AutoSize = true;
-            this.l_deposite.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_deposite.ForeColor = System.Drawing.Color.Black;
             this.l_deposite.Location = new System.Drawing.Point(237, 167);
             this.l_deposite.Name = "l_deposite";
-            this.l_deposite.Size = new System.Drawing.Size(38, 22);
+            this.l_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_deposite.TabIndex = 29;
             this.l_deposite.Text = "0,00";
             // 
             // l_cash
             // 
             this.l_cash.AutoSize = true;
-            this.l_cash.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_cash.ForeColor = System.Drawing.Color.Black;
             this.l_cash.Location = new System.Drawing.Point(237, 119);
             this.l_cash.Name = "l_cash";
-            this.l_cash.Size = new System.Drawing.Size(102, 22);
+            this.l_cash.Size = new System.Drawing.Size(124, 20);
             this.l_cash.TabIndex = 28;
             this.l_cash.Text = "26.000.000,00";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(18, 212);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 22);
+            this.label8.Size = new System.Drawing.Size(149, 20);
             this.label8.TabIndex = 27;
             this.label8.Text = "Total Petty Cash";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(18, 167);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 22);
+            this.label7.Size = new System.Drawing.Size(132, 20);
             this.label7.TabIndex = 26;
             this.label7.Text = "Total Deposite";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(18, 119);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 22);
+            this.label6.Size = new System.Drawing.Size(205, 20);
             this.label6.TabIndex = 25;
             this.label6.Text = "Total Transaction Cash";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
             this.label5.Location = new System.Drawing.Point(661, 77);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 22);
+            this.label5.Size = new System.Drawing.Size(88, 20);
             this.label5.TabIndex = 24;
             this.label5.Text = "DISPUTE";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
             this.label4.Location = new System.Drawing.Point(486, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 22);
+            this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 23;
             this.label4.Text = "REAL";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
             this.label3.Location = new System.Drawing.Point(237, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 22);
+            this.label3.Size = new System.Drawing.Size(137, 20);
             this.label3.TabIndex = 22;
             this.label3.Text = "CALCULATION";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
             this.label2.Location = new System.Drawing.Point(18, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 22);
+            this.label2.Size = new System.Drawing.Size(135, 20);
             this.label2.TabIndex = 21;
             this.label2.Text = "INFORMATION";
             // 
             // l_tgl
             // 
             this.l_tgl.AutoSize = true;
-            this.l_tgl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_tgl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_tgl.Location = new System.Drawing.Point(486, 17);
             this.l_tgl.Name = "l_tgl";
-            this.l_tgl.Size = new System.Drawing.Size(120, 24);
+            this.l_tgl.Size = new System.Drawing.Size(122, 25);
             this.l_tgl.TabIndex = 20;
             this.l_tgl.Text = "2017-12-15";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(244, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 24);
+            this.label1.Size = new System.Drawing.Size(213, 25);
             this.label1.TabIndex = 19;
             this.label1.Text = "Confirm Closing Shift";
             // 
@@ -296,7 +290,7 @@
             this.b_close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("b_close.BackgroundImage")));
             this.b_close.ButtonText = "CANCEL";
             this.b_close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.b_close.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.b_close.IdleBorderThickness = 1;
             this.b_close.IdleCornerRadius = 20;

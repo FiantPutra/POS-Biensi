@@ -33,77 +33,94 @@ namespace try_bi
         }
 
         //=====================METHOD FOR ASYNC TASK API===================
-        public async Task Post_Closing_Store()
+        public async Task<Boolean> Post_Closing_Store()
         {
-            link_api = link.aLink;
+            Boolean isSuccess = false;
 
-            String cmd = "SELECT * FROM closing_store WHERE ID_C_STORE = '" + id_store + "'";
-            ckon.sqlCon().Open();
-            ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
-            
-            while (ckon.sqlDataRd.Read())
+            try
             {
-                _id = Convert.ToString(ckon.sqlDataRd["_id"]);
-                id_store = Convert.ToString(ckon.sqlDataRd["ID_C_STORE"]);
-                seq_number_substring = id_store.Substring(12);
-                store_id = Convert.ToString(ckon.sqlDataRd["STORE_ID"]);
-                //shift = ckon.myReader.GetString("SHIFT");
-                opening_time = Convert.ToString(ckon.sqlDataRd["OPENING_TIME"]);
-                closing_time = Convert.ToString(ckon.sqlDataRd["CLOSING_TIME"]);
-                open_trans_balance = Convert.ToInt32(ckon.sqlDataRd["OPENING_TRANS_BALANCE"]);
-                closing_trans_balance = Convert.ToInt32(ckon.sqlDataRd["CLOSING_TRANS_BALANCE"]);
-                real_trans_balance = Convert.ToInt32(ckon.sqlDataRd["REAL_TRANS_BALANCE"]);
-                dispute_trans_balance = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_TRANS_BALANCE"]);
-                open_pety = Convert.ToInt32(ckon.sqlDataRd["OPENING_PETTY_CASH"]);
-                close_pety = Convert.ToInt32(ckon.sqlDataRd["CLOSING_PETTY_CASH"]);
-                real_pety = Convert.ToInt32(ckon.sqlDataRd["REAL_PETTY_CASH"]);
-                dispute_pety = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_PETTY_CASH"]);
-                open_deposit = Convert.ToInt32(ckon.sqlDataRd["OPENING_DEPOSIT"]);
-                close_deposit = Convert.ToInt32(ckon.sqlDataRd["CLOSING_DEPOSIT"]);
-                real_deposit = Convert.ToInt32(ckon.sqlDataRd["REAL_DEPOSIT"]);
-                dispute_deposit = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_DEPOSIT"]);
-                dev_name = Convert.ToString(ckon.sqlDataRd["DEVICE_NAME"]);
-                status = Convert.ToString(ckon.sqlDataRd["STATUS_CLOSE"]);
-                epy_id = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_ID"]);
-                epy_name = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_NAME"]);
+                link_api = link.aLink;
+
+                String cmd = "SELECT * FROM closing_store WHERE ID_C_STORE = '" + id_store + "'";
+                ckon.sqlCon().Open();
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                while (ckon.sqlDataRd.Read())
+                {
+                    _id = Convert.ToString(ckon.sqlDataRd["_id"]);
+                    id_store = Convert.ToString(ckon.sqlDataRd["ID_C_STORE"]);
+                    seq_number_substring = id_store.Substring(12);
+                    store_id = Convert.ToString(ckon.sqlDataRd["STORE_ID"]);                    
+                    opening_time = Convert.ToString(ckon.sqlDataRd["OPENING_TIME"]);
+                    closing_time = Convert.ToString(ckon.sqlDataRd["CLOSING_TIME"]);
+                    open_trans_balance = Convert.ToInt32(ckon.sqlDataRd["OPENING_TRANS_BALANCE"]);
+                    closing_trans_balance = Convert.ToInt32(ckon.sqlDataRd["CLOSING_TRANS_BALANCE"]);
+                    real_trans_balance = Convert.ToInt32(ckon.sqlDataRd["REAL_TRANS_BALANCE"]);
+                    dispute_trans_balance = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_TRANS_BALANCE"]);
+                    open_pety = Convert.ToInt32(ckon.sqlDataRd["OPENING_PETTY_CASH"]);
+                    close_pety = Convert.ToInt32(ckon.sqlDataRd["CLOSING_PETTY_CASH"]);
+                    real_pety = Convert.ToInt32(ckon.sqlDataRd["REAL_PETTY_CASH"]);
+                    dispute_pety = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_PETTY_CASH"]);
+                    open_deposit = Convert.ToInt32(ckon.sqlDataRd["OPENING_DEPOSIT"]);
+                    close_deposit = Convert.ToInt32(ckon.sqlDataRd["CLOSING_DEPOSIT"]);
+                    real_deposit = Convert.ToInt32(ckon.sqlDataRd["REAL_DEPOSIT"]);
+                    dispute_deposit = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_DEPOSIT"]);
+                    dev_name = Convert.ToString(ckon.sqlDataRd["DEVICE_NAME"]);
+                    status = Convert.ToString(ckon.sqlDataRd["STATUS_CLOSE"]);
+                    epy_id = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_ID"]);
+                    epy_name = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_NAME"]);
+                }                
+                ClosingStore close = new ClosingStore()
+                {
+                    closingStoreId = id_store,
+                    sequenceNumber = seq_number_substring,
+                    storeCode = store_id,                    
+                    openingTimestamp = opening_time,
+                    closingTimestamp = closing_time,
+                    openingTransBal = open_trans_balance,
+                    closingTransBal = closing_trans_balance,
+                    realTransBal = real_trans_balance,
+                    disputeTransBal = dispute_trans_balance,
+                    openingPettyCash = open_pety,
+                    closingPettyCash = close_pety,
+                    realPettyCash = real_pety,
+                    disputePettyCash = dispute_pety,
+                    openingDeposit = open_deposit,
+                    closingDeposit = close_deposit,
+                    realDeposit = real_deposit,
+                    disputeDeposit = dispute_deposit,
+                    deviceName = dev_name,
+                    statusClose = status,
+                    employeeId = epy_id,
+                    employeeName = epy_name
+                };
+                var stringPayload = JsonConvert.SerializeObject(close);
+                String response = "";
+                var credentials = new NetworkCredential("username", "password");
+                var handler = new HttpClientHandler { Credentials = credentials };
+                var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+                using (var client = new HttpClient(handler))
+                {                    
+                    HttpResponseMessage message = client.PostAsync(link_api + "/api/ClosingStore", httpContent).Result;
+
+                    if (message.IsSuccessStatusCode)
+                        isSuccess = true;
+                }
             }
-            ckon.sqlCon().Close();
-            ClosingStore close = new ClosingStore()
+            catch (Exception ex)
             {
-                closingStoreId = id_store,
-                sequenceNumber = seq_number_substring,
-                storeCode = store_id,
-                //shiftCode = shift,
-                openingTimestamp = opening_time,
-                closingTimestamp = closing_time,
-                openingTransBal = open_trans_balance,
-                closingTransBal = closing_trans_balance,
-                realTransBal = real_trans_balance,
-                disputeTransBal = dispute_trans_balance,
-                openingPettyCash = open_pety,
-                closingPettyCash = close_pety,
-                realPettyCash = real_pety,
-                disputePettyCash = dispute_pety,
-                openingDeposit = open_deposit,
-                closingDeposit = close_deposit,
-                realDeposit = real_deposit,
-                disputeDeposit = dispute_deposit,
-                deviceName = dev_name,
-                statusClose = status,
-                employeeId = epy_id,
-                employeeName = epy_name
-            };
-            var stringPayload = JsonConvert.SerializeObject(close);
-            String response = "";
-            var credentials = new NetworkCredential("username", "password");
-            var handler = new HttpClientHandler { Credentials = credentials };
-            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
-            using (var client = new HttpClient(handler))
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            finally
             {
-                //HttpResponseMessage message = client.PostAsync("http://retailbiensi.azurewebsites.net/api/ClosingStore", httpContent).Result;
-                HttpResponseMessage message = client.PostAsync(link_api+"/api/ClosingStore", httpContent).Result;
+                if (ckon.sqlDataRd != null)
+                    ckon.sqlDataRd.Close();
+
+                if (ckon.sqlCon().State == ConnectionState.Open)
+                    ckon.sqlCon().Close();
             }
 
+            return isSuccess;
         }
         //================================================================
     }

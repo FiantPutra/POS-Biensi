@@ -34,12 +34,7 @@ namespace try_bi
         koneksi2 ckon2 = new koneksi2();
         String id_spg, nama_spg, sub_string, sub_string2, store_code, id_shift, id_CStore, article_id_API, id_trans_line, discount_code_get, id_inv, customer, code_store, disc_code, disc_type, bulan2, tipe2, disc_desc1, VarBackDate, DateHeaderTrans, discount_code, discAmount;        
         //Variable untuk running number baru
-        String bulan_now, tahun_now, bulan_trans, number_trans_string, final_running_number, doc_ref, new_doc = "";        
-
-        private void b_promotion_Click_1(object sender, EventArgs e)
-        {
-            data_diskon();
-        }        
+        String bulan_now, tahun_now, bulan_trans, number_trans_string, final_running_number, doc_ref, new_doc = "";                
 
         int number_trans, disc_type_new, PRICE_GLOBAL, amount_voided=0;
         //
@@ -272,6 +267,7 @@ namespace try_bi
             int price, sub_total, disc;
 
             dgv_purchase.Rows.Clear();
+            dgv_diskon.Rows.Clear();
             Transaction transaction = new Transaction();
             transaction.storeCode = store_code;
             transaction.customerId = t_custId.Text;
@@ -366,45 +362,24 @@ namespace try_bi
                         {
                             disc_desc_substring = disc_desc;
                         }
+                        
+                        int dgRows = dgv_purchase.Rows.Add();
+                        dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
+                        dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
+                        dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
+                        dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
+                        dgv_purchase.Rows[dgRows].Cells[4].Value = PRICE_GLOBAL;
+                        dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
+                        dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;
+                        dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total == 0 ? "0,00" : sub_total.ToString();
+                        //wahyu
+                        if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
+                        {
+                            dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
+                        }                        
 
-                        if (sub_total == 0)
-                        {
-                            sub_total2 = "0,00";
-                            int dgRows = dgv_purchase.Rows.Add();
-                            dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
-                            dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
-                            dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
-                            dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
-                            dgv_purchase.Rows[dgRows].Cells[4].Value = PRICE_GLOBAL;
-                            dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
-                            dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;
-                            dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total2;
-                            //wahyu
-                            if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
-                            {
-                                dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
-                            }
-                        }
-                        else
-                        {
-                            int dgRows = dgv_purchase.Rows.Add();
-                            dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
-                            dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
-                            dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
-                            dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
-                            dgv_purchase.Rows[dgRows].Cells[4].Value = PRICE_GLOBAL;
-                            dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
-                            dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;
-                            dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total;
-                            //wahyu
-                            if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
-                            {
-                                dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
-                            }
-                        }
+                        data_diskon(art_id);
                     }
-                    
-                    //retreive_data_to_dgv(cmd);
                 }
 
                 dgv_purchase.Columns[4].DefaultCellStyle.Format = "#,###";
@@ -1167,37 +1142,41 @@ namespace try_bi
             }            
         }
         //============================DATAGRIDVIEW DISKON===========================================
-        public void data_diskon()        
+        public void data_diskon(String articleId)        
         {
             CRUD sql = new CRUD();
             String discountName = "";
             int promotionId = 0;
+            koneksi ckon_disc = new koneksi();
 
             try
             {
                 dgv_diskon.Rows.Clear();
 
-                ckon.sqlCon().Open();
+                ckon_disc.sqlCon().Open();
+                //String cmd_discount = "SELECT a.DiscountCode, a.DiscountName FROM DiscountSetup a INNER JOIN DiscountSetupLines b "
+                //                + "ON b.DiscountSetupId = a.Id INNER JOIN [tmp].[" + store_code + "] c ON c.ARTICLE_ID = b.code "
+                //                + "WHERE(a.DiscountType = 4 or a.DiscountType = 5)";
                 String cmd_discount = "SELECT a.DiscountCode, a.DiscountName FROM DiscountSetup a INNER JOIN DiscountSetupLines b "
-                                + "ON b.DiscountSetupId = a.Id INNER JOIN [tmp].[" + store_code + "] c ON c.ARTICLE_ID = b.code "
-                                + "WHERE(a.DiscountType = 4 or a.DiscountType = 5)";
-                ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_discount, ckon.sqlCon());
+                                + "ON b.DiscountSetupId = a.Id "
+                                + "WHERE(a.DiscountType = 4 or a.DiscountType = 5) AND b.Code = '"+ articleId +"'";
+                ckon_disc.sqlDataRdHeader = sql.ExecuteDataReader(cmd_discount, ckon_disc.sqlCon());
 
-                if (ckon.sqlDataRdHeader.HasRows)
+                if (ckon_disc.sqlDataRdHeader.HasRows)
                 {
-                    while (ckon.sqlDataRdHeader.Read())
+                    while (ckon_disc.sqlDataRdHeader.Read())
                     {
-                        kd_diskon = ckon.sqlDataRdHeader["DiscountCode"].ToString();
-                        discountName = ckon.sqlDataRdHeader["DiscountName"].ToString();
+                        kd_diskon = ckon_disc.sqlDataRdHeader["DiscountCode"].ToString();
+                        discountName = ckon_disc.sqlDataRdHeader["DiscountName"].ToString();
 
                         String cmd_PromotionId = "SELECT TOP 1 _id FROM promotion ORDER BY _id DESC";
-                        ckon.sqlDataRd = sql.ExecuteDataReader(cmd_PromotionId, ckon.sqlCon());
+                        ckon_disc.sqlDataRd = sql.ExecuteDataReader(cmd_PromotionId, ckon_disc.sqlCon());
 
-                        if (ckon.sqlDataRd.HasRows)
+                        if (ckon_disc.sqlDataRd.HasRows)
                         {
-                            while (ckon.sqlDataRd.Read())
+                            while (ckon_disc.sqlDataRd.Read())
                             {
-                                promotionId = Convert.ToInt32(ckon.sqlDataRd["_id"]) + 1;                              
+                                promotionId = Convert.ToInt32(ckon_disc.sqlDataRd["_id"]) + 1;                              
                             }                            
                         }
 
@@ -1212,14 +1191,14 @@ namespace try_bi
                 }
 
                 String cmd_promotion = "SELECT DISCOUNT_CODE FROM promotion";
-                ckon.sqlDataRd = sql.ExecuteDataReader(cmd_promotion, ckon.sqlCon());
+                ckon_disc.sqlDataRd = sql.ExecuteDataReader(cmd_promotion, ckon_disc.sqlCon());
 
-                if (ckon.sqlDataRd.HasRows)
+                if (ckon_disc.sqlDataRd.HasRows)
                 {
-                    while (ckon.sqlDataRd.Read())
+                    while (ckon_disc.sqlDataRd.Read())
                     {
                         int dgRows = dgv_diskon.Rows.Add();
-                        dgv_diskon.Rows[dgRows].Cells[1].Value = ckon.sqlDataRd["DISCOUNT_CODE"].ToString();
+                        dgv_diskon.Rows[dgRows].Cells[1].Value = ckon_disc.sqlDataRd["DISCOUNT_CODE"].ToString();
                     }
                 }
             }
@@ -1229,11 +1208,11 @@ namespace try_bi
             }
             finally
             {
-                if (ckon.sqlDataRd != null)
-                    ckon.sqlDataRd.Close();
+                if (ckon_disc.sqlDataRd != null)
+                    ckon_disc.sqlDataRd.Close();
 
-                if (ckon.sqlCon().State == ConnectionState.Open)
-                    ckon.sqlCon().Close();
+                if (ckon_disc.sqlCon().State == ConnectionState.Open)
+                    ckon_disc.sqlCon().Close();
             }            
         }
         //==========================================================================================
@@ -1767,42 +1746,21 @@ namespace try_bi
                         {
                             disc_desc_substring = disc_desc;
                         }
-
-                        if (sub_total == 0)
+                        
+                        int dgRows = dgv_purchase.Rows.Add();
+                        dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
+                        dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
+                        dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
+                        dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
+                        dgv_purchase.Rows[dgRows].Cells[4].Value = price;
+                        dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
+                        dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;                            
+                        dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total == 0 ? "0,00" : sub_total.ToString();
+                        //wahyu
+                        if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
                         {
-                            sub_total2 = "0,00";
-                            int dgRows = dgv_purchase.Rows.Add();
-                            dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
-                            dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
-                            dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
-                            dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
-                            dgv_purchase.Rows[dgRows].Cells[4].Value = price;
-                            dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
-                            dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;                            
-                            dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total2;
-                            //wahyu
-                            if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
-                            {
-                                dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
-                            }
-                        }
-                        else
-                        {
-                            int dgRows = dgv_purchase.Rows.Add();
-                            dgv_purchase.Rows[dgRows].Cells[0].Value = art_id;
-                            dgv_purchase.Rows[dgRows].Cells[1].Value = art_name;
-                            dgv_purchase.Rows[dgRows].Cells[2].Value = spg_id;
-                            dgv_purchase.Rows[dgRows].Cells[3].Value = qty;
-                            dgv_purchase.Rows[dgRows].Cells[4].Value = price;
-                            dgv_purchase.Rows[dgRows].Cells[5].Value = disc;
-                            dgv_purchase.Rows[dgRows].Cells[6].Value = discAmount;
-                            dgv_purchase.Rows[dgRows].Cells[7].Value = sub_total;
-                            //wahyu
-                            if (Convert.ToInt32(ckon.sqlDataRd["IS_SERVICE"].ToString()) == 1)
-                            {
-                                dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
-                            }
-                        }
+                            dgv_purchase.Rows[dgRows].Cells[1].Style.BackColor = Color.Green;
+                        }                        
                     }
                 }
 

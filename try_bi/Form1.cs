@@ -15,7 +15,7 @@ namespace try_bi
     {
         DateTime mydate = DateTime.Now;
         String date, st_shift, cust_id_store, nm_cur, VarBackDate;
-        public string nama_employee, id_employee, status_buka_menu, position_id, comp_name;
+        public string nama_employee, id_employee, status_buka_menu, store_code, comp_name;
         koneksi ckon = new koneksi();
         public Form1()
         {
@@ -41,7 +41,7 @@ namespace try_bi
 
         public void setHo()
         {
-            if (position_id == "0")
+            if (store_code == "000")
             {
                 menu_inout.Visible = false;
             }
@@ -589,7 +589,7 @@ namespace try_bi
             get_name();
             get_currency(); 
             //=====================================
-            if (position_id == "0")
+            if (store_code == "000")
             {
                 t_nama.Text = "Cashier : " + nama_employee;
             } else
@@ -598,7 +598,7 @@ namespace try_bi
             }
             
             //JIKA STATUS TERAKHIR ADALAH 0, MAKA========================================
-            if (position_id == "0")
+            if (store_code == "000")
             {
                 if (st_shift == "0")
                 {
@@ -687,7 +687,8 @@ namespace try_bi
         //=======MENGECEK STATUS TERAKHIR SHIFT, KALO 0 DIA LANGSUNG KE MENU TRANSAKSI==============
         public void St_last_shift()
         {
-            string command;            
+            string command;
+            string id_shift = "";
 
             //ckon.con.Close();
             //String sql = "SELECT * FROM closing_shift ORDER BY _id DESC LIMIT 1";
@@ -717,11 +718,22 @@ namespace try_bi
                     while (ckon.sqlDataRd.Read())
                     {
                         st_shift = ckon.sqlDataRd["STATUS_CLOSE"].ToString();
+                        id_shift = ckon.sqlDataRd["EMPLOYEE_ID"].ToString();
                     }
                 }
                 else
                 {
                     st_shift = "1";
+                }
+
+                if (id_employee != id_shift && st_shift == "0")
+                {
+                    MessageBox.Show("Please login using ID : " + id_shift + "", "Warning");
+                    //========for logout========                    
+                    this.Hide();
+                    Form_Login login = new Form_Login();
+                    login.ShowDialog();
+                    this.Close();                    
                 }
             }
             catch (Exception e)

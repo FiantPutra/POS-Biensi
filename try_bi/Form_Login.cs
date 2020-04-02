@@ -23,7 +23,7 @@ namespace try_bi
     {
         koneksi ckon = new koneksi();
         DBConn dbConn = new DBConn();
-        String nm_employe, id_employee, position_id;
+        String nm_employe, id_employee, store_code;
         public Form_Login()
         {
             InitializeComponent();
@@ -101,7 +101,7 @@ namespace try_bi
 
                         nm_employe = ckon.sqlDataRd["NAME"].ToString();
                         id_employee = ckon.sqlDataRd["EMPLOYEE_ID"].ToString();
-                        position_id = ckon.sqlDataRd["STORE_CODE"].ToString();
+                        store_code = ckon.sqlDataRd["STORE_CODE"].ToString();
                     }
 
                     if (count0 != 0)
@@ -110,7 +110,7 @@ namespace try_bi
                         Form1 fm1 = new Form1();
                         fm1.nama_employee = nm_employe;
                         fm1.id_employee = id_employee;
-                        fm1.position_id = position_id;
+                        fm1.store_code = store_code;
                         fm1.setHo();
                         fm1.ShowDialog();
                         this.Close();

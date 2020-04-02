@@ -362,7 +362,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                command = "SELECT * FROM inventory a INNER JOIN article b ON b._Id = a.ARTICLE_ID WHERE b.ARTICLE_ID = '" + art_id + "'";
+                command = "SELECT * FROM inventory WHERE ARTICLE_ID = '" + art_id + "'";
                 CRUD sql = new CRUD();
                 ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
 

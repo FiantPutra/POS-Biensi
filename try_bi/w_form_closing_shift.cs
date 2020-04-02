@@ -41,28 +41,23 @@ namespace try_bi
         //==================BUTTON OK=====================================
         private void b_ok_Click(object sender, EventArgs e)
         {
+            Boolean api_response;
             try
             {
-                update();
                 //==========API CLOSING SHIFT=============
-                try
-                {
-                    API_Closing_shift close = new API_Closing_shift();
-                    close.get_code(id_shift2);
-                    close.Post_Closing_Shift().Wait();
-                    status_sukses = "1";
-                }
-                catch
-                {
-                    status_sukses = "0";
-                }
-                if (status_sukses == "1")
-                {
+                update();
+                API_Closing_shift close = new API_Closing_shift();
+                close.get_code(id_shift2);
+                api_response = close.Post_Closing_Shift().Result;
+
+                if (api_response)
+                {                    
                     UC_Closing_Shift.Instance.reset();
                     //DELETE TRANSAKSI YG DI HOLD DENGAN ID CLOSING SHIFT
                     Del_Trans_Hold DEL = new Del_Trans_Hold();
                     DEL.get_data(id_shift2);
                     DEL.del_trans();
+                    DEL.update_runningNumber();
                     //DEL.update_table();
                     //========for logout========
                     f1.Hide();
@@ -77,15 +72,14 @@ namespace try_bi
                     String cmd_update = "UPDATE closing_shift SET STATUS_CLOSE='0' WHERE ID_SHIFT='" + id_shift2 + "'";
                     CRUD update = new CRUD();
                     update.ExecuteNonQuery(cmd_update);
+
                     MessageBox.Show("Make Sure You are Connected To Internet");
                 }
             }
             catch (Exception EX)
             {
                 MessageBox.Show(EX.ToString());
-            }
-           
-
+            }           
         }
         //===============BUTTON CANCEL=======================
         private void b_close_Click(object sender, EventArgs e)
@@ -303,7 +297,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -312,28 +306,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        try
-            //        {
-            //            shift = ckon.myReader.GetString("SHIFT");
-            //            //MessageBox.Show("" + shift);
-            //        }
-            //        catch
-            //        {
-
-            //        }
-
-            //    }
-            //}
-            //ckon.con.Close();
+            }            
         }
         
         //==================================GET BUDGET STORE==================================================
@@ -375,7 +348,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -384,43 +357,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        try
-            //        {
-            //            bg_ToStore = ckon.myReader.GetInt32("BUDGET_TO_STORE");
-            //            bg_ToCasir = ckon.myReader.GetInt32("BUDGET_TO_STORE");
-            //            value_budget = bg_ToCasir;
-            //            if(bg_ToCasir==0)
-            //            {
-            //                l_petty.Text = "0,00";
-            //                t_petty.Text = "0";
-            //            }
-            //            else
-            //            {
-            //                l_petty.Text = String.Format("{0:#,###}" + ",00", bg_ToCasir);
-            //                t_petty.Text = String.Format("{0:#,###}", bg_ToCasir);
-            //            }
-            //        }
-            //        catch
-            //        {
-            //            bg_ToCasir = 0;
-            //            l_petty.Text = "0,00";
-            //            t_petty.Text = "0,00";
-            //        }
-
-            //    }
-            //    l_petty.Text = String.Format("{0:#,###}" + ",00", bg_ToStore);
-
-            //}
-            //ckon.con.Close();
+            }            
         }
         //====================================================================================================
         //=================================MENGHITUNG TOTAL CASH================================================================
@@ -479,7 +416,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -488,51 +425,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql2, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    try
-            //    {
-            //        cash = ckon.myReader.GetInt32("total");
-            //    }
-            //    catch
-            //    { cash = 0; }
-            //}
-            //ckon.con.Close();
-
-            ////String sql2a = "SELECT SUM(transaction.CHANGEE) as total FROM transaction WHERE STATUS='1' AND IS_CLOSE='0' AND SHIFT_CODE='" + shift_code + "' AND CLOSE_SHIFT='0'";
-            //String sql2a = "SELECT SUM(transaction.CHANGEE) as total FROM transaction WHERE ID_SHIFT='" + id_shift2 + "' AND (STATUS='1' or STATUS='2')";
-            //ckon.cmd = new MySqlCommand(sql2a, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    try
-            //    {
-            //        change = ckon.myReader.GetInt32("total");
-            //    }
-            //    catch
-            //    { change = 0; }
-            //}
-            //ckon.con.Close();
-            //cash2 = cash - change;
-            //if (cash2 <= 0)
-            //{
-            //    l_cash.Text = "0,00";
-            //    t_cash.Text = "0,00";
-            //    value1 = cash2;
-            //}
-            //else
-            //{
-            //    l_cash.Text = string.Format("{0:#,###}" + ",00", cash2);
-            //    t_cash.Text = string.Format("{0:#,###}", cash2);
-            //    value1 = cash2;
-            //}
-            ////l_cash.Text = String.Format("{0:#,###.00}", cash2);
+            }            
         }
         
         //==================mengambil NILAI OPENING BALANCE CASH DARI TABEL CLOSE SHIFT=============
@@ -564,7 +457,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -573,33 +466,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        try
-            //        {
-            //            real_trans_balance = ckon.myReader.GetString("REAL_TRANS_BALANCE");
-            //            real_petty_cash = ckon.myReader.GetString("REAL_PETTY_CASH");
-            //            real_deposit = ckon.myReader.GetString("REAL_DEPOSIT");
-            //            //MessageBox.Show("a");
-            //        }
-            //        catch
-            //        {
-            //            real_trans_balance = "0";
-            //            real_petty_cash = "0";
-            //            real_deposit = "0";
-            //            //MessageBox.Show("a");
-            //        }
-
-            //    }
-            //}
-            //ckon.con.Close();
+            }           
         }
         //=========================MENGAMBIL NILAI OPENING DARI TABEL CLOSE STORE=========
         public void get_opening_close()
@@ -630,7 +497,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -639,33 +506,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        try
-            //        {
-            //            real_trans_balance = ckon.myReader.GetString("REAL_TRANS_BALANCE");
-            //            real_petty_cash = ckon.myReader.GetString("REAL_PETTY_CASH");
-            //            real_deposit = ckon.myReader.GetString("REAL_DEPOSIT");
-            //            //MessageBox.Show("b");
-            //        }
-            //        catch
-            //        {
-            //            real_trans_balance = "0";
-            //            real_petty_cash = "0";
-            //            real_deposit = "0";
-            //            //MessageBox.Show("b");
-            //        }
-
-            //    }
-            //}
-            //ckon.con.Close();
+            }            
         }    
         //===================method for update into table closing shift=====================
         public void update()

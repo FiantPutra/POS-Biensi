@@ -72,91 +72,12 @@ namespace try_bi
         //=========METHOD GET DATA FROM AUTO_NUMBER TABLE FOR SALES TRANSACTION
         public void get_running_number()
         {
-            DevCode code = new DevCode();
+            //DevCode code = new DevCode();
 
             String device_code = "";
-            device_code = code.aDevCode;
+            //device_code = code.aDevCode;            
 
-            String command = "";            
-
-            //ckon.con.Open();
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if(ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        //tahun_trans = ckon.myReader.GetString("Year");
-            //        bulan_trans = ckon.myReader.GetString("Month");
-            //        number_trans = ckon.myReader.GetInt32("Number");
-            //    }
-            //    if(bulan_now == bulan_trans)
-            //    {
-            //        number_trans = number_trans + 1;
-            //        if (number_trans < 10)
-            //        { number_trans_string = "0000" + number_trans.ToString(); }
-            //        else if (number_trans < 100)
-            //        { number_trans_string = "000" + number_trans.ToString(); }
-            //        else if (number_trans < 1000)
-            //        { number_trans_string = "00" + number_trans.ToString(); }
-            //        else if (number_trans < 10000)
-            //        { number_trans_string = "0" + number_trans.ToString(); }
-            //        else
-            //        { number_trans_string = number_trans.ToString(); }
-            //        //==MEMBUAT STRING FINAL RUNNING NUMBER
-            //        if (Properties.Settings.Default.DevCode != "null" && type_trans == "7")
-            //        {
-            //            final_running_number = awal_number+"/" + store_code + "-" + tahun_now + "" + bulan_trans + "-" + number_trans_string + "-" + Properties.Settings.Default.DevCode;
-            //        }
-            //        else
-            //        {
-            //            final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-" + number_trans_string;
-            //        }
-            //        //final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-" + number_trans_string;
-            //        //============UPDATE KE TABEL AUTO_NUMBER================
-            //    }
-            //    else
-            //    {
-            //        number_trans = 1;
-            //        bulan_trans = bulan_now;//MENJADIKAN BULAN TRANSAKSI = BULAN SEKARANG
-            //        //==MEMBUAT STRING FINAL RUNNING NUMBER
-            //        //final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001";
-            //        if (Properties.Settings.Default.DevCode != "null" && type_trans == "7")
-            //        {
-            //            final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001-"+ device_code;
-            //        }
-            //        else
-            //        {
-            //            final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001";
-            //        }
-            //    }
-
-
-            //}
-            //else
-            //{
-            //    String query = "";
-            //    number_trans = 1;
-            //    bulan_trans = bulan_now;//BULAN TRANSAKSI = BULAN SEKARANG
-            //    if (Properties.Settings.Default.DevCode != "null" && type_trans == "7")
-            //    {
-            //        final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001-" + device_code;
-            //        query = "INSERT INTO auto_number (Store_Code,Month,Number,Type_Trans,Dev_Code) VALUES ('" + store_code + "','" + bulan_trans + "','0','"+type_trans+"','" + Properties.Settings.Default.DevCode + "')";
-            //    }
-            //    else
-            //    {
-            //        final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001";
-            //        query = "INSERT INTO auto_number (Store_Code,Month,Number,Type_Trans) VALUES ('" + store_code + "','" + bulan_trans + "','0','" + type_trans + "')";
-            //    }
-            //    //final_running_number = awal_number + "/" + store_code + "-" + tahun_now + "" + bulan_trans + "-00001";
-
-            //    //String query = "INSERT INTO auto_number (Store_Code,Month,Number,Type_Trans) VALUES ('" + store_code + "','" + bulan_trans + "','0','" + type_trans + "')";
-            //    CRUD ubah = new CRUD();
-            //    ubah.ExecuteNonQuery(query);
-
-            //    //MessageBox.Show(final_running_number);
-            //}
-            //ckon.con.Close();
+            String command = "";                        
 
             try
             {

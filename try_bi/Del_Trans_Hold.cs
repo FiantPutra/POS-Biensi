@@ -12,7 +12,7 @@ namespace try_bi
 {
     class Del_Trans_Hold
     {
-        String  id, ID_TRANS, id_substring;
+        String  id, ID_TRANS, id_substring, bulan_now, tahun_now;
         int id_substring2;
         koneksi ckon = new koneksi();
         koneksi2 ckon2 = new koneksi2();
@@ -51,14 +51,16 @@ namespace try_bi
         }
 
         //MENDAPATKAN id transaksi terakhir berdasarkan id_shift dan status 1, ubah running number ke int, lalu update ke table auto_number
-        public void update_table()
+        public void update_runningNumber()
         {
             string command;                        
 
             try
             {
+                get_year_month();
+
                 ckon.sqlCon().Open();
-                command = "SELECT TOP 1 SUBSTRING(TRANSACTION_ID, 13) AS inv FROM [transaction] ORDER BY TRANSACTION_ID DESC";
+                command = "SELECT TOP 1 SUBSTRING(TRANSACTION_ID, 13, LEN(TRANSACTION_ID)) AS inv FROM [transaction] ORDER BY TRANSACTION_ID DESC";
                 CRUD sql = new CRUD();
                 ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
 
@@ -70,7 +72,7 @@ namespace try_bi
                         id_substring2 = Convert.ToInt32(id_substring);
                     }
 
-                    command = "UPDATE auto_number SET Number='" + id_substring2 + "' WHERE Type_Trans='1'";
+                    command = "UPDATE auto_number SET Number='" + id_substring2 + "' WHERE Type_Trans = '1' AND Year = '"+ tahun_now +"' AND Month = '"+ bulan_now +"'";
                     CRUD update = new CRUD();
                     update.ExecuteNonQuery(command);
                 }
@@ -87,6 +89,14 @@ namespace try_bi
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
             }
+        }
+
+        public void get_year_month()
+        {
+            DateTime mydate = DateTime.Now;            
+
+            bulan_now = mydate.ToString("MM");
+            tahun_now = mydate.ToString("yy");
         }
 
         //String a = "TR/AAB-1803-10104";

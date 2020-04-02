@@ -138,7 +138,7 @@ namespace try_bi
                 String type_trans = "2";
                 inv.cek_type_trans(type_trans);
                 inv.get_do_line(id2);
-                do_confirm.deliveryOrderConfirm(id2, id_epy2, name_epy2, cust_id_store);                
+                do_confirm.deliveryOrderConfirm(id2, id_epy2, name_epy2, cust_id_store).Wait();                
                 UC_DO.Instance.reset();
                 this.Close();
             }

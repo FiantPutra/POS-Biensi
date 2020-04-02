@@ -837,8 +837,7 @@
             this.b_promotion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.b_promotion.TabIndex = 16;
             this.b_promotion.TabStop = false;
-            this.b_promotion.Zoom = 0;
-            this.b_promotion.Click += new System.EventHandler(this.b_promotion_Click_1);
+            this.b_promotion.Zoom = 0;            
             // 
             // uc_coba
             // 

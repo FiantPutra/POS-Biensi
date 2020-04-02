@@ -73,7 +73,7 @@ namespace try_bi
             try
             {
                 ckon.sqlConMsg().Open();
-                String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate, a.SyncType FROM JobTabletoSynchDetailUpload a " +
+                String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDatese FROM JobTabletoSynchDetailUpload a " +
                                 "INNER JOIN JobSynchDetailUploadStatus b ON b.SynchDetail = a.SynchDetail";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlConMsg());
 

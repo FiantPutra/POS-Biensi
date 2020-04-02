@@ -368,7 +368,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -377,28 +377,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //try
-            //{
-            //    ckon.con.Open();
-            //    ckon.myReader = ckon.cmd.ExecuteReader();
-            //    if (ckon.myReader.HasRows)
-            //    {
-            //        while (ckon.myReader.Read())
-            //        {
-            //            store_id = ckon.myReader.GetString("CODE");
-            //            store_name = ckon.myReader.GetString("NAME");
-            //            cust_id_store = ckon.myReader.GetString("CUST_ID_STORE");
-            //        }
-            //        t_store_name.Text = store_name;
-            //        t_store_name.ReadOnly = true;
-            //    }
-            //    ckon.con.Close();
-            //}
-            //catch
-            //{ }
+            }            
         }
         //=====================================================================================
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -507,7 +486,7 @@ namespace try_bi
                 string name = System.Environment.MachineName;
                 DateTime mydate = DateTime.Now;
                 String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
-                String cmd_insert = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME) VALUES ('" + string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + open_trans + "','" + open_petty + "', '" + open_deposit + "','" + name + "')";                
+                String cmd_insert = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME,EMPLOYEE_ID,EMPLOYEE_NAME) VALUES ('" + string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + open_trans + "','" + open_petty + "', '" + open_deposit + "','" + name + "','"+ id_epy +"','"+ nm_epy +"')";                
                 sql.ExecuteNonQuery(cmd_insert);
 
                 String cmd_update = "UPDATE auto_number SET Month = '" + bulan_shift + "', Number = '" + no_trans_shift + "' WHERE Type_Trans='" + tipe_closing_shift + "'";      
@@ -515,7 +494,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -524,34 +503,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        open_trans = ckon.myReader.GetInt32("REAL_TRANS_BALANCE");
-            //        open_petty = ckon.myReader.GetInt32("REAL_PETTY_CASH");
-            //        open_deposit = ckon.myReader.GetInt32("REAL_DEPOSIT");
-            //    }
-            //}
-            //else
-            //{ open_trans = 0; open_petty = 0; open_deposit = 0; }
-            //ckon.con.Close();
-            //string name = System.Environment.MachineName;
-            //DateTime mydate = DateTime.Now;
-            //String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
-            //String sql2 = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME) VALUES ('"+ string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + open_trans + "','" + open_petty + "', '" + open_deposit + "','" + name + "')";
-            ////String sql2 = "INSERT INTO closing_shift (STORE_ID,SHIFT,OPENING_TIME,DEVICE_NAME) VALUES ('" + store_id + "', '" + shift_name + "', '" + time_now + "','" + name + "')";
-            //CRUD input = new CRUD();
-            //input.ExecuteNonQuery(sql2);
-
-            //String query = "UPDATE auto_number SET Month = '" + bulan_shift + "', Number = '" + no_trans_shift + "' WHERE Type_Trans='" + tipe_closing_shift + "'";
-            //CRUD ubah = new CRUD();
-            //ubah.ExecuteNonQuery(query);
+            }            
         }
         //==================================================================================================
         //========================METHOD SAVE INTO TABLE CLOSING_STORE WHEN OPENED SHIFT====================
@@ -592,7 +544,7 @@ namespace try_bi
                 cmd_update = "UPDATE auto_number SET Month = '" + bulan_shift + "', Number = '" + no_trans_shift + "' WHERE Type_Trans='" + tipe_closing_shift + "'";                
                 sql.ExecuteNonQuery(cmd_update);
 
-                cmd_insert = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME) VALUES ('" + string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + pantek_open_trans_balance + "','" + open_petty + "', '" + open_deposit + "','" + name + "')";                
+                cmd_insert = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME,EMPLOYEE_ID,EMPLOYEE_NAME) VALUES ('" + string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + pantek_open_trans_balance + "','" + open_petty + "', '" + open_deposit + "','" + name + "','" + id_epy + "','" + nm_epy + "')";                
                 sql.ExecuteNonQuery(cmd_insert);
 
                 cmd_update = "UPDATE auto_number SET Month = '" + bulan_CloseStore + "', Number = '" + no_trans_CloseStore + "' WHERE Type_Trans='" + tipe_closing_CloseStore + "'";                
@@ -600,7 +552,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -609,40 +561,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        open_trans = ckon.myReader.GetInt32("REAL_TRANS_BALANCE");
-            //        open_petty = ckon.myReader.GetInt32("REAL_PETTY_CASH");
-            //        open_deposit = ckon.myReader.GetInt32("REAL_DEPOSIT");
-            //    }
-            //}
-            //else
-            //{ open_trans = 0; open_petty = 0; open_deposit = 0; }
-            //ckon.con.Close();
-            //string name = System.Environment.MachineName;
-            //DateTime mydate = DateTime.Now;
-            //String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
-            //String sql2 = "INSERT INTO closing_store (ID_C_STORE,STORE_ID,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME) VALUES ('"+ string_id_Cstore +"','" + store_id + "', '" + time_now + "','" + open_trans + "','" + open_petty + "', '" + open_deposit + "','" + name + "')";
-            //CRUD input = new CRUD();
-            //input.ExecuteNonQuery(sql2);
-
-            //String query = "UPDATE auto_number SET Month = '" + bulan_shift + "', Number = '" + no_trans_shift + "' WHERE Type_Trans='" + tipe_closing_shift + "'";
-            //CRUD ubah = new CRUD();
-            //ubah.ExecuteNonQuery(query);
-
-            //String sql3 = "INSERT INTO closing_shift (ID_SHIFT,STORE_ID,SHIFT,OPENING_TIME,OPENING_TRANS_BALANCE, OPENING_PETTY_CASH,OPENING_DEPOSIT,DEVICE_NAME) VALUES ('"+ string_id_shift + "','" + store_id + "', '" + shift_name + "', '" + time_now + "','" + pantek_open_trans_balance + "','" + open_petty + "', '" + open_deposit + "','" + name + "')";
-            //CRUD input2 = new CRUD();
-            //input.ExecuteNonQuery(sql3);
-
-            //String query2 = "UPDATE auto_number SET Month = '" + bulan_CloseStore + "', Number = '" + no_trans_CloseStore + "' WHERE Type_Trans='" + tipe_closing_CloseStore + "'";
-            //CRUD ubah2 = new CRUD();
-            //ubah.ExecuteNonQuery(query2);
+            }            
         }
         //=========================NEW INVOICE CLOSING SHIFT=================================
        public void inv_shift()
@@ -699,7 +618,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -708,23 +627,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if(ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        status_store = ckon.myReader.GetString("STATUS_CLOSE");
-            //    }
-            //}
-            //else
-            //{
-            //    status_store = "1";
-            //}
-            //ckon.con.Close();
+            }            
         }
         //BERFUNGSI UNTUK MENGECHECK STATUS TERAKHIR CLOSING SHIFT, BERGUNA UNTUK TOMBOL CLOSING STORE, JIKA 1 MAKA JGN IZINKAN BUKA, 0 IZINKAN BUKA, DATA PERTAMA KALI SAMA DENGAN 0==============
         public void c_Closing_Shift()
@@ -753,7 +656,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -762,28 +665,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //try
-            //{
-            //    if (ckon.myReader.HasRows)
-            //    {
-            //        while (ckon.myReader.Read())
-            //        {
-            //            status_shift = ckon.myReader.GetString("STATUS_CLOSE");
-            //            tipe_shift = ckon.myReader.GetString("SHIFT");
-            //        }
-            //        ckon.con.Close();
-            //    }
-            //}
-            //catch
-            //{
-            //    status_shift = "1";
-            //    tipe_shift = "2";
-            //}
+            }            
         }
        
     }

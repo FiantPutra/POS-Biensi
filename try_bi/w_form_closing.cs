@@ -117,7 +117,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -126,28 +126,8 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql3, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        cek_closing_shift = ckon.myReader.GetString("STATUS_CLOSE");
-            //    }
-            //}
-            //else
-            //{
-
-            //}
-            //ckon.con.Close();
+            }            
         }
-
-
-
-
 
         //=================ambil data terakhir dari table closing store=================
         public void get_last_close_store()
@@ -179,7 +159,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -188,72 +168,57 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql3, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        real_trans_balance = ckon.myReader.GetString("REAL_TRANS_BALANCE");
-            //        real_petty_cash = ckon.myReader.GetString("REAL_PETTY_CASH");
-            //        real_dispute = ckon.myReader.GetString("REAL_DEPOSIT");
-            //    }
-            //}
-            //else
-            //{
-            //    real_trans_balance = "0"; real_petty_cash = "0"; real_dispute = "0";
-            //}
-            //ckon.con.Close();
+            }            
         }
 
 
         //===================================BUTTON oke===================================
         private void b_ok_Click(object sender, EventArgs e)
         {
-            if(cek_closing_shift=="0")
+            Boolean api_response;
+
+            try
             {
-                MessageBox.Show("Please Closing Shift First Before Closing Store");
-            }
-            else
-            {
-                update_close();
-                //this.Close();
-                //===========API CLOSING STORE============
-                try
+                if (cek_closing_shift == "0")
                 {
-                    API_Closing_Store closing_Store = new API_Closing_Store();
-                    closing_Store.get_code(id_cStrore2);
-                    closing_Store.Post_Closing_Store().Wait();
-                    status_sukses = "1";
-                }
-                catch
-                {
-                    status_sukses = "0";
-                }
-                if(status_sukses=="1")
-                {
-                    //========for logout========
-                    UC_Closing_Store.Instance.reset();
-                    f1.Hide();
-                    this.Hide();
-                    Form_Login login = new Form_Login();
-                    login.ShowDialog();
-                    f1.Close();
-                    this.Close();
+                    MessageBox.Show("Please Closing Shift First Before Closing Store");
                 }
                 else
                 {
-                    String cmd_update = "UPDATE closing_store SET STATUS_CLOSE='0' WHERE ID_C_STORE='" + id_cStrore2 + "'";
-                    CRUD update = new CRUD();
-                    update.ExecuteNonQuery(cmd_update);
-                    MessageBox.Show("Make Sure You are Connected To Internet");
+                    update_close();
+
+                    //===========API CLOSING STORE============                    
+                    API_Closing_Store closing_Store = new API_Closing_Store();
+                    closing_Store.get_code(id_cStrore2);
+                    api_response = closing_Store.Post_Closing_Store().Result;                    
+                   
+                    if (api_response)
+                    {
+                        //========for logout========
+                        UC_Closing_Store.Instance.reset();
+                        f1.Hide();
+                        this.Hide();
+                        Form_Login login = new Form_Login();
+                        login.ShowDialog();
+                        f1.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        String cmd_update = "UPDATE closing_store SET STATUS_CLOSE='0' WHERE ID_C_STORE='" + id_cStrore2 + "'";
+                        CRUD update = new CRUD();
+                        update.ExecuteNonQuery(cmd_update);
+
+                        MessageBox.Show("Make Sure You are Connected To Internet");
+                    }
+
                 }
-
             }
+            catch (Exception ex)
+            {
 
+                throw;
+            }            
         }
         //====================button close=========================
         private void b_cancel_Click(object sender, EventArgs e)
@@ -299,7 +264,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -308,24 +273,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if(ckon.myReader.HasRows)
-            //{
-            //    while(ckon.myReader.Read())
-            //    {
-            //        id_modal_store = ckon.myReader.GetString("_id");
-            //    }
-            //}
-            //ckon.con.Close();
-            //String sql2 = "UPDATE modal_store SET CLOSING_BALANCE_TRANS='" + value1 + "', OPENING_BALANCE_PETTY_CASH='" + bg_ToCasir + "', CLOSING_BALANCE_PETTY_CASH='" + value_budget + "', CLOSING_TIME='" + time_now +"' WHERE _id='" + id_modal_store + "'";
-            //CRUD update = new CRUD();
-            //update.ExecuteNonQuery(sql2);
-
+            }            
         }
         //===============================UPDATE TABLE CLOSING STORE=========================================
         public void update_close()
@@ -392,7 +340,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -401,49 +349,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql2, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    try
-            //    {
-            //        cash = ckon.myReader.GetInt32("total");
-            //    }
-            //    catch
-            //    { cash = 0; }
-            //}
-            //ckon.con.Close();
-
-            //String sql2a = "SELECT SUM(transaction.CHANGEE) as total FROM transaction WHERE ID_C_STORE = '" + id_cStrore2 + "' AND (STATUS='1' or STATUS='2')";
-            //ckon.cmd = new MySqlCommand(sql2a, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    try
-            //    {
-            //        change = ckon.myReader.GetInt32("total");
-            //    }
-            //    catch
-            //    { change = 0; }
-            //}
-            //ckon.con.Close();
-            //cash2 = cash - change;
-            //if (cash2 <= 0)
-            //{
-            //    l_cash.Text = "0,00";
-            //    t_cash.Text = "0,00";
-            //}
-            //else
-            //{
-            //    l_cash.Text = string.Format("{0:#,###}" + ",00", cash2);
-            //    t_cash.Text = string.Format("{0:#,###}", cash2);
-            //    value1 = cash2;
-            //}
-            ////l_cash.Text = String.Format("{0:#,###.00}", cash2);
+            }            
         }
         //==================================GET BUDGET STORE==================================================
         public void get_budget()
@@ -485,7 +391,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -494,45 +400,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        try
-            //        {
-            //            //bg_ToStore = ckon.myReader.GetInt32("BUDGET_TO_STORE");
-            //            bg_ToCasir = ckon.myReader.GetInt32("BUDGET_TO_STORE");
-            //            //l_petty.Text = String.Format("{0:#,###}" + ",00", bg_ToCasir);
-            //            //t_petty.Text = String.Format("{0:#,###}", bg_ToCasir);
-            //            value_budget = bg_ToCasir;
-            //            if (bg_ToCasir == 0)
-            //            {
-            //                l_petty.Text = "0,00";
-            //                t_petty.Text = "0";
-            //            }
-            //            else
-            //            {
-            //                l_petty.Text = String.Format("{0:#,###}" + ",00", bg_ToCasir);
-            //                t_petty.Text = String.Format("{0:#,###}", bg_ToCasir);
-            //            }
-            //        }
-            //        catch
-            //        {
-            //            bg_ToCasir = 0;
-            //            l_petty.Text = "0,00";
-            //            t_petty.Text = "0,00";
-            //        }
-
-            //    }
-            //    //l_petty.Text = String.Format("{0:#,###}" + ",00", bg_ToStore);
-
-            //}
-            //ckon.con.Close();
+            }            
         }
         //====================================================================================================
         //==============================SEPARATOR FOR TEXTBOX CASH=============================================

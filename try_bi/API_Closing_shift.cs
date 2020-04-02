@@ -22,6 +22,7 @@ namespace try_bi
     class API_Closing_shift
     {
         LinkApi link = new LinkApi();
+        CRUD sql = new CRUD();
 
         koneksi ckon = new koneksi();
         public static Form1 f1;
@@ -34,77 +35,100 @@ namespace try_bi
         }
 
         //=====================METHOD FOR ASYNC TASK API===================
-        public async Task Post_Closing_Shift()
+        public async Task<Boolean> Post_Closing_Shift()
         {
-            link_api = link.aLink;
+            Boolean isSuccess = false;
 
-            String sql = "SELECT * FROM closing_shift WHERE ID_SHIFT = '" + id_shift + "'";
-            ckon.con.Open();
-            ckon.cmd = new MySqlCommand(sql, ckon.con);
-            ckon.myReader = ckon.cmd.ExecuteReader();
-            while (ckon.myReader.Read())
+            try
             {
-                _id = ckon.myReader.GetString("_id");
-                id_shift = ckon.myReader.GetString("ID_SHIFT");
-                seq_number_substring = id_shift.Substring(12);
-                store_id = ckon.myReader.GetString("STORE_ID");
-                shift = ckon.myReader.GetString("SHIFT");
-                opening_time = ckon.myReader.GetString("OPENING_TIME");
-                closing_time = ckon.myReader.GetString("CLOSING_TIME");
-                open_trans_balance = ckon.myReader.GetInt32("OPENING_TRANS_BALANCE");
-                closing_trans_balance = ckon.myReader.GetInt32("CLOSING_TRANS_BALANCE");
-                real_trans_balance = ckon.myReader.GetInt32("REAL_TRANS_BALANCE");
-                dispute_trans_balance = ckon.myReader.GetInt32("DISPUTE_TRANS_BALANCE");
-                open_pety = ckon.myReader.GetInt32("OPENING_PETTY_CASH");
-                close_pety = ckon.myReader.GetInt32("CLOSING_PETTY_CASH");
-                real_pety = ckon.myReader.GetInt32("REAL_PETTY_CASH");
-                dispute_pety = ckon.myReader.GetInt32("DISPUTE_PETTY_CASH");
-                open_deposit = ckon.myReader.GetInt32("OPENING_DEPOSIT");
-                close_deposit = ckon.myReader.GetInt32("CLOSING_DEPOSIT");
-                real_deposit = ckon.myReader.GetInt32("REAL_DEPOSIT");
-                dispute_deposit = ckon.myReader.GetInt32("DISPUTE_DEPOSIT");
-                dev_name = ckon.myReader.GetString("DEVICE_NAME");
-                status = ckon.myReader.GetString("STATUS_CLOSE");
-                epy_id = ckon.myReader.GetString("EMPLOYEE_ID");
-                epy_name = ckon.myReader.GetString("EMPLOYEE_NAME");
+                link_api = link.aLink;                
+
+                String cmd = "SELECT * FROM closing_shift WHERE ID_SHIFT = '" + id_shift + "'";
+                ckon.sqlCon().Open();
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        _id = Convert.ToString(ckon.sqlDataRd["_id"]);
+                        id_shift = Convert.ToString(ckon.sqlDataRd["ID_SHIFT"]);
+                        seq_number_substring = id_shift.Substring(12);
+                        store_id = Convert.ToString(ckon.sqlDataRd["STORE_ID"]);
+                        shift = Convert.ToString(ckon.sqlDataRd["SHIFT"]);
+                        opening_time = Convert.ToString(ckon.sqlDataRd["OPENING_TIME"]);
+                        closing_time = Convert.ToString(ckon.sqlDataRd["CLOSING_TIME"]);
+                        open_trans_balance = Convert.ToInt32(ckon.sqlDataRd["OPENING_TRANS_BALANCE"]);
+                        closing_trans_balance = Convert.ToInt32(ckon.sqlDataRd["CLOSING_TRANS_BALANCE"]);
+                        real_trans_balance = Convert.ToInt32(ckon.sqlDataRd["REAL_TRANS_BALANCE"]);
+                        dispute_trans_balance = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_TRANS_BALANCE"]);
+                        open_pety = Convert.ToInt32(ckon.sqlDataRd["OPENING_PETTY_CASH"]);
+                        close_pety = Convert.ToInt32(ckon.sqlDataRd["CLOSING_PETTY_CASH"]);
+                        real_pety = Convert.ToInt32(ckon.sqlDataRd["REAL_PETTY_CASH"]);
+                        dispute_pety = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_PETTY_CASH"]);
+                        open_deposit = Convert.ToInt32(ckon.sqlDataRd["OPENING_DEPOSIT"]);
+                        close_deposit = Convert.ToInt32(ckon.sqlDataRd["CLOSING_DEPOSIT"]);
+                        real_deposit = Convert.ToInt32(ckon.sqlDataRd["REAL_DEPOSIT"]);
+                        dispute_deposit = Convert.ToInt32(ckon.sqlDataRd["DISPUTE_DEPOSIT"]);
+                        dev_name = Convert.ToString(ckon.sqlDataRd["DEVICE_NAME"]);
+                        status = Convert.ToString(ckon.sqlDataRd["STATUS_CLOSE"]);
+                        epy_id = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_ID"]);
+                        epy_name = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_NAME"]);
+                    }
+                    
+                    ClosingShift close = new ClosingShift()
+                    {
+                        closingShiftId = id_shift,
+                        sequenceNumber = seq_number_substring,
+                        storeCode = store_id,
+                        shiftCode = shift,
+                        openingTimestamp = opening_time,
+                        closingTimestamp = closing_time,
+                        openingTransBal = open_trans_balance,
+                        closingTransBal = closing_trans_balance,
+                        realTransBal = real_trans_balance,
+                        disputeTransBal = dispute_trans_balance,
+                        openingPettyCash = open_pety,
+                        closingPettyCash = close_pety,
+                        realPettyCash = real_pety,
+                        disputePettyCash = dispute_pety,
+                        openingDeposit = open_deposit,
+                        closingDeposit = close_deposit,
+                        realDeposit = real_deposit,
+                        disputeDeposit = dispute_deposit,
+                        deviceName = dev_name,
+                        statusClose = status,
+                        employeeId = epy_id,
+                        employeeName = epy_name
+                    };
+                    var stringPayload = JsonConvert.SerializeObject(close);
+                    String response = "";
+                    var credentials = new NetworkCredential("username", "password");
+                    var handler = new HttpClientHandler { Credentials = credentials };
+                    var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+                    using (var client = new HttpClient(handler))
+                    {
+                        HttpResponseMessage message = client.PostAsync(link_api + "/api/ClosingShift", httpContent).Result;
+
+                        if (message.IsSuccessStatusCode)
+                            isSuccess = true;
+                    }
+                }                
             }
-            ckon.con.Close();
-            ClosingShift close = new ClosingShift()
+            catch (Exception ex)
             {
-                closingShiftId = id_shift,
-                sequenceNumber = seq_number_substring,
-                storeCode = store_id,
-                shiftCode = shift,
-                openingTimestamp = opening_time,
-                closingTimestamp = closing_time,
-                openingTransBal = open_trans_balance,
-                closingTransBal = closing_trans_balance,
-                realTransBal = real_trans_balance,
-                disputeTransBal = dispute_trans_balance,
-                openingPettyCash = open_pety,
-                closingPettyCash = close_pety,
-                realPettyCash = real_pety,
-                disputePettyCash = dispute_pety,
-                openingDeposit = open_deposit,
-                closingDeposit = close_deposit,
-                realDeposit = real_deposit,
-                disputeDeposit = dispute_deposit,
-                deviceName = dev_name,
-                statusClose = status,
-                employeeId = epy_id,
-                employeeName = epy_name
-            };
-            var stringPayload = JsonConvert.SerializeObject(close);
-            String response = "";
-            var credentials = new NetworkCredential("username", "password");
-            var handler = new HttpClientHandler { Credentials = credentials };
-            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
-            using (var client = new HttpClient(handler))
+                MessageBox.Show(ex.ToString(), "Error");                  
+            }
+            finally
             {
-               //HttpResponseMessage message = client.PostAsync("http://retailbiensi.azurewebsites.net/api/ClosingShift", httpContent).Result;
-                HttpResponseMessage message = client.PostAsync(link_api+"/api/ClosingShift", httpContent).Result;
+                if (ckon.sqlDataRd != null)
+                    ckon.sqlDataRd.Close();
+
+                if (ckon.sqlCon().State == ConnectionState.Open)
+                    ckon.sqlCon().Close();
             }
 
+            return isSuccess;
         }
         //================================================================
     }
