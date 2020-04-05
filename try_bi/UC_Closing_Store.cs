@@ -428,7 +428,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        qty = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        qty = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                         total_qty = total_qty + qty;
                     }
                 }
@@ -448,7 +448,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        amount = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        amount = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                         if (amount <= 0)
                             l_total_amount.Text = "0,00";
                         else
@@ -468,7 +468,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        cash = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        cash = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                     }
                 }
                 else
@@ -483,7 +483,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        change = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        change = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                     }
                 }
                 else
@@ -505,7 +505,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        diskon = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        diskon = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                         if (diskon <= 0)
                             l_discount.Text = "0,00";
                         else
@@ -525,7 +525,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        edc = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        edc = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                     }
                 }
                 else
@@ -540,7 +540,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        edc2 = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        edc2 = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                     }
                 }
                 else
@@ -561,7 +561,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        voucher = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                        voucher = ckon.sqlDataRd["total"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["total"].ToString()) : 0;
                         if (voucher <= 0)
                             l_voucher.Text = "0,00";
                         else
@@ -581,7 +581,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        petty = Convert.ToInt32(ckon.sqlDataRd["BUDGET_TO_STORE"].ToString());
+                        petty = ckon.sqlDataRd["BUDGET_TO_STORE"].ToString() != "" ? Convert.ToInt32(ckon.sqlDataRd["BUDGET_TO_STORE"].ToString()) : 0;
                         if (petty == 0)
                         {
                             l_petty.Text = "0,00";

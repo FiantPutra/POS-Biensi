@@ -146,7 +146,7 @@ namespace try_bi
                     while (ckon.sqlDataRd.Read())
                     {
                         real_trans_balance = ckon.sqlDataRd["REAL_TRANS_BALANCE"].ToString();
-                        real_petty_cash = ckon.sqlDataRd["PETTY_CASH"].ToString();
+                        real_petty_cash = ckon.sqlDataRd["REAL_PETTY_CASH"].ToString();
                         real_dispute = ckon.sqlDataRd["REAL_DEPOSIT"].ToString();
                     }
                 }

@@ -1664,7 +1664,7 @@ namespace try_bi
                     String cmd_insert = "";
                     if (Properties.Settings.Default.DevCode == "null")
                     {
-                        final_running_number = "TR/" + store_code + "-" + tahun_now + "" + bulan_trans + "-" + number_trans_string;
+                        final_running_number = "TR/" + store_code + "-" + tahun_now + "" + bulan_now + "-" + number_trans_string;
                         cmd_insert = "INSERT INTO auto_number (Store_Code,Year,Month,Number,Type_Trans) VALUES ('" + store_code + "','" + tahun_now + "','" + bulan_now + "','" + number_trans + "','1')";
                     }
                     else
