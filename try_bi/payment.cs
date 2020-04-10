@@ -22,7 +22,7 @@ namespace try_bi
         public static Form1 f1;
         public int tot_bl, cash, ubah2, int_subtotal, field_diskon2;
         double value1, total, change, real_diskon;
-        public String new_total, id_trans,value1_string;
+        public String new_total, id_trans,value1_string, cust_Id;
         String method_payment, nilai_quick_cash, a_name, a_date, a_jam, a_total, a_sub, a_id, a_subtotal, type, from_diskon, store_name, store_add, store_code;
         DateTime mydate = DateTime.Now;
         DateTime myhour = DateTime.Now;
@@ -286,7 +286,14 @@ namespace try_bi
         //======================================================================
         public void update_status()
         {
-            String sql= "UPDATE [transaction] SET DISCOUNT='"+ field_diskon2 +"',STATUS = '1', TOTAL='"+ total +"', PAYMENT_TYPE='0', CASH='"+ value1 +"', CHANGEE='"+ change +"' WHERE TRANSACTION_ID ='" + id_trans + "'";
+            int transType;
+
+            if (cust_Id != "")
+                transType = 3;
+            else
+                transType = 1;
+
+            String sql= "UPDATE [transaction] SET DISCOUNT='"+ field_diskon2 +"',STATUS = '1', TOTAL='"+ total +"', PAYMENT_TYPE='0', CASH='"+ value1 +"', CHANGEE='"+ change +"', TRANSACTION_TYPE = '"+ transType +"' WHERE TRANSACTION_ID ='" + id_trans + "'";
             CRUD edit = new CRUD();
             edit.ExecuteNonQuery(sql);
         }

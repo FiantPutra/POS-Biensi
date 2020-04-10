@@ -399,10 +399,11 @@ namespace try_bi
             {
                 ckon.sqlCon().Open();
                 //String cmd = "SELECT * FROM promotion_line WHERE DISCOUNT_CODE='" + id_diskon + "'";
-                String cmd = "SELECT a.ARTICLE_ID, b.ARTICLE_NAME, a.DiscountCode, a.DiscountName, a.DiscountType, a.DiscountPercent, DiscountCash, "
-                                + "a.QtyMin, a.QtyMax, a.AmountMin, a.AmountMax, a.HeaderDiscountPercent, a.HeaderDiscountCash, a.HeaderQtyMin, a.HeaderQtyMax, a.HeaderAmountMin, a.HeaderAmountMax "
-                                + "FROM TransactionDiscount a INNER JOIN article b ON b.ARTICLE_ID = a.ARTICLE_ID "
-                                + "WHERE DiscountCode ='" + id_diskon + "'";
+                String cmd = "select c.ARTICLE_ID, c.ARTICLE_NAME, a.DiscountCode, a.DiscountName, a.DiscountType, a.DiscountPercent as HeaderDiscountPercent, a.DiscountCash as HeaderDiscountCash, "
+                                + "a.QtyMin as HeaderQtyMin, a.QtyMax as HeaderQtyMax, a.AmountMin as HeaderAmountMin, a.AmountMax as HeaderAmountMax, b.DiscountPrecentage, b.DiscountCash, " 
+                                + "b.QtyMin, b.QtyMax, b.AmountMin, b.AmountMax from DiscountSetup a join DiscountSetupLines b "
+                                + "on a.Id = b.DiscountSetupId join article c "
+                                + "on b.Code = c.ARTICLE_ID where a.DiscountCode = '" + id_diskon + "'";
                 ckon.dt = sql.ExecuteDataTable(cmd, ckon.sqlCon());
 
                 foreach (DataRow row in ckon.dt.Rows)

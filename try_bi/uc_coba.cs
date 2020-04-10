@@ -766,30 +766,37 @@ namespace try_bi
         private void t_barcode_KeyPress(object sender, KeyPressEventArgs e)
         {
             CRUD sql = new CRUD();
-            Boolean empDiscValid = false;
+            Boolean empDiscValid = false, isThirdPartyDisc = false;
 
             try
             {
                 if (e.KeyChar == (char)Keys.Enter)
-                { 
+                {
                     if (t_custId.Text != "")
                     {
-                        DialogResult result = MessageBox.Show("Do you want set to employee discount?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (result == DialogResult.Yes)
+                        String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
+                        ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_empl, ckon.sqlCon());
+                        if (ckon.sqlDataRdHeader.HasRows)
                         {
-                            String cmd = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
-                            ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+                            empDiscValid = true;
+                        }
+
+                        if (!empDiscValid)
+                        {
+                            String cmd_disc = "SELECT * FROM customer_group a INNER JOIN DiscountSetup b "
+                                                + "ON a.CODE = b.CustomerGroupId WHERE a.CODE = '" + t_custId.Text + "' and a.DISCOUNTTHIRDPPARTY = 1";
+                            ckon.sqlDataRd = sql.ExecuteDataReader(cmd_disc, ckon.sqlCon());
                             if (ckon.sqlDataRd.HasRows)
                             {
-                                empDiscValid = true;
+                                isThirdPartyDisc = true;
                             }
 
-                            if (!empDiscValid)
-                                MessageBox.Show("Employee ID not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (!isThirdPartyDisc)
+                                MessageBox.Show("Employee ID not found or third party discounts not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
-                    if ((t_custId.Text != "" && empDiscValid) || t_custId.Text == "")
+                    if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) || t_custId.Text == "")
                     {
                         get_data_combo();
                         save_trans_header();
@@ -1301,7 +1308,7 @@ namespace try_bi
             {
                 f1.p_kanan.Controls.Add(charge.Instance);
                 charge.Instance.Dock = DockStyle.Fill;
-                charge.Instance.id_trans(l_transaksi.Text, totall, get_dis_vou, get_voucher, tot_diskon);
+                charge.Instance.id_trans(l_transaksi.Text, totall, get_dis_vou, get_voucher, tot_diskon, t_custId.Text);
                 charge.Instance.get_data_id(l_transaksi.Text);
 
                 charge.Instance.QuickCash();
@@ -1445,28 +1452,35 @@ namespace try_bi
         private void B_FIND2_Click(object sender, EventArgs e)
         {
             CRUD sql = new CRUD();
-            Boolean empDiscValid = false;
+            Boolean empDiscValid = false, isThirdPartyDisc = false;
 
             try
             {
                 if (t_custId.Text != "")
-                {
-                    DialogResult result = MessageBox.Show("Do you want set to employee discount?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (result == DialogResult.Yes)
+                {                                        
+                    String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
+                    ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_empl, ckon.sqlCon());
+                    if (ckon.sqlDataRdHeader.HasRows)
                     {
-                        String cmd = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
-                        ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+                        empDiscValid = true;
+                    }
+
+                    if (!empDiscValid)
+                    {
+                        String cmd_disc = "SELECT * FROM customer_group a INNER JOIN DiscountSetup b "
+                                            + "ON a.CODE = b.CustomerGroupId WHERE a.CODE = '" + t_custId.Text + "' and a.DISCOUNTTHIRDPPARTY = 1";
+                        ckon.sqlDataRd = sql.ExecuteDataReader(cmd_disc, ckon.sqlCon());
                         if (ckon.sqlDataRd.HasRows)
                         {
-                            empDiscValid = true;
+                            isThirdPartyDisc = true;
                         }
 
-                        if (!empDiscValid)
-                            MessageBox.Show("Employee ID not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                                        
+                        if (!isThirdPartyDisc)
+                             MessageBox.Show("Employee ID not found or third party discount not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                                                                              
                 }
                 
-                if ((t_custId.Text != "" && empDiscValid) || t_custId.Text == "")
+                if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) || t_custId.Text == "")
                 {
                     //===FOKUES KE SCAN BARCODE
                     this.ActiveControl = t_barcode;
@@ -1486,6 +1500,9 @@ namespace try_bi
             }
             finally
             {
+                if (ckon.sqlDataRdHeader != null)
+                    ckon.sqlDataRdHeader.Close();
+
                 if (ckon.sqlDataRd != null)
                     ckon.sqlDataRd.Close();
 

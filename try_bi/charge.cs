@@ -41,8 +41,9 @@ namespace try_bi
 
         }
         //======================TERIMA ID DARI FORM SEBELUMNYA===========================
-        public void id_trans(String id, int harga, int diskon, int voucher, int dapat_diskon)
+        public void id_trans(String id, int harga, int diskon, int voucher, int dapat_diskon, string cust_Id)
         {
+            t_cust.Text = cust_Id;
             this.ActiveControl = t_cust;
             t_cust.Focus();
             the_real_diskon = diskon;//dapat dari variabel get_dis_vou dari form sebelumnya
@@ -347,6 +348,7 @@ namespace try_bi
             //py.textBox1.Text = "aaaaa";
             py.id_trans = l_transaksi2.Text;
             py.new_total = l_total2.Text;
+            py.cust_Id = t_cust.Text;
             py.ShowDialog();
         }
         //==================BUTTON BACK BARU WITH UNDERLINE============================

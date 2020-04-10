@@ -79,15 +79,6 @@
             this.B_FIND2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.t_barcode = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.dgv_purchase = new System.Windows.Forms.DataGridView();
-            this.articleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.spgid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
@@ -97,6 +88,15 @@
             this.b_charge2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.plPromotion = new System.Windows.Forms.Panel();
             this.b_promotion = new Bunifu.Framework.UI.BunifuImageButton();
+            this.articleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spgid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.b_voucher2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_diskon)).BeginInit();
@@ -623,102 +623,6 @@
             this.dgv_purchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_purchase_CellClick);
             this.dgv_purchase.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_purchase_CellContentClick);
             // 
-            // articleId
-            // 
-            this.articleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.articleId.DefaultCellStyle = dataGridViewCellStyle10;
-            this.articleId.HeaderText = "ARTICLE ID";
-            this.articleId.Name = "articleId";
-            this.articleId.ReadOnly = true;
-            this.articleId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.articleId.Width = 155;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Column4.HeaderText = "ITEM";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // spgid
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.spgid.DefaultCellStyle = dataGridViewCellStyle12;
-            this.spgid.HeaderText = "SPG ID";
-            this.spgid.Name = "spgid";
-            this.spgid.ReadOnly = true;
-            this.spgid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.spgid.Width = 85;
-            // 
-            // Column5
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Column5.HeaderText = "QTY";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column5.Width = 40;
-            // 
-            // Column6
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Column6.HeaderText = "PRICE";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Column8.HeaderText = "DISC";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 75;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Column1.HeaderText = "DISC AMOUNT";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Width = 85;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column3.HeaderText = "SUB TOTAL";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 80;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "";
-            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.ToolTipText = "Delete Item";
-            this.Delete.Width = 20;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -837,7 +741,108 @@
             this.b_promotion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.b_promotion.TabIndex = 16;
             this.b_promotion.TabStop = false;
-            this.b_promotion.Zoom = 0;            
+            this.b_promotion.Zoom = 0;
+            // 
+            // articleId
+            // 
+            this.articleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.articleId.DefaultCellStyle = dataGridViewCellStyle10;
+            this.articleId.HeaderText = "ARTICLE ID";
+            this.articleId.Name = "articleId";
+            this.articleId.ReadOnly = true;
+            this.articleId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.articleId.Width = 155;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column4.HeaderText = "ITEM";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // spgid
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.spgid.DefaultCellStyle = dataGridViewCellStyle12;
+            this.spgid.HeaderText = "SPG ID";
+            this.spgid.Name = "spgid";
+            this.spgid.ReadOnly = true;
+            this.spgid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.spgid.Width = 85;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle13;
+            this.Column5.HeaderText = "QTY";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0,00";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle14;
+            this.Column6.HeaderText = "PRICE";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Width = 80;
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle15;
+            this.Column8.HeaderText = "DISC";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 75;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = "0,00";
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Column1.HeaderText = "DISC AMOUNT";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 85;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = "0,00";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle17;
+            this.Column3.HeaderText = "SUB TOTAL";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 80;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.ToolTipText = "Delete Item";
+            this.Delete.Width = 20;
             // 
             // uc_coba
             // 
@@ -921,6 +926,8 @@
         public System.Windows.Forms.Label void_ref;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Panel plPromotion;
+        private Bunifu.Framework.UI.BunifuImageButton b_promotion;
         private System.Windows.Forms.DataGridViewTextBoxColumn articleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn spgid;
@@ -930,7 +937,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
-        private System.Windows.Forms.Panel plPromotion;
-        private Bunifu.Framework.UI.BunifuImageButton b_promotion;
     }
 }
