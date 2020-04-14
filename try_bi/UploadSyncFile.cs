@@ -142,9 +142,7 @@ namespace try_bi
 
                 Stream reqStream = request.GetRequestStream();
                 reqStream.Write(buffer, 0, buffer.Length);
-                reqStream.Close();
-
-                MessageBox.Show("Uploaded Successfully");
+                reqStream.Close();               
 
                 uploadSyncDetail.uploadSync(syncDetail);
 

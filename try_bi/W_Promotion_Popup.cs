@@ -18,7 +18,7 @@ namespace try_bi
         koneksi ckon = new koneksi();
         String id_diskon, diskon_kode, diskon_name, diskon_ktg, diskon_desc, jenis, id_transaksi, status, art_id_diskon, art_bonus, disc_type, disc_desc;
         int the_real_totall, net_diskon, net_price, total_kotor, total_bersih, sub_total_TransLine, count=0, count_disc_Tline=0;
-        String field_none = "None", field_kosong="0", spg_id, field_none2 = "NONE", kodetoko2, custid2;
+        String field_none = "None", field_kosong="0,0000", spg_id, field_none2 = "NONE", kodetoko2, custid2;
         //===VARIABEL UNTUK MENDAPATKAN DISKON DARI HARGA ASLI BARANG DIKALI DENGAN QUANTITY
         int qty_kali, price_kali;
         //=============================BUTTON USE========================================
@@ -411,7 +411,7 @@ namespace try_bi
                     int dgRows = dgv_purchase.Rows.Add();
                     dgv_purchase.Rows[dgRows].Cells[0].Value = row["ARTICLE_ID"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[1].Value = row["ARTICLE_NAME"].ToString();
-                    dgv_purchase.Rows[dgRows].Cells[2].Value = row["DiscountPercent"].ToString();
+                    dgv_purchase.Rows[dgRows].Cells[2].Value = row["DiscountPrecentage"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[3].Value = row["DiscountCash"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[4].Value = row["QtyMin"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[5].Value = row["QtyMax"].ToString();
@@ -423,8 +423,19 @@ namespace try_bi
                     dgv_purchase.Rows[dgRows].Cells[11].Value = row["HeaderQtyMax"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[12].Value = row["HeaderAmountMin"].ToString();
                     dgv_purchase.Rows[dgRows].Cells[13].Value = row["HeaderAmountMax"].ToString();
-                    //dgv_purchase.Rows[dgRows].Cells[14].Value = row["SPESIAL_PRICE"];
 
+                    dgv_purchase.Columns[2].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[3].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[4].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[5].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[6].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[7].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[8].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[9].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[10].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[11].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[12].DefaultCellStyle.Format = "#,###";
+                    dgv_purchase.Columns[13].DefaultCellStyle.Format = "#,###";
                 }                
 
                 //==========================FUNCTION FOR HIDE FIELD WHEN FIELD EMPTY===============================================
@@ -443,13 +454,16 @@ namespace try_bi
                             {
                                 if (row.Cells[clm.Index].Value.ToString() != field_none2)
                                 {
-                                    if (row.Cells[clm.Index].Value.ToString() != field_kosong)
+                                    if (row.Cells[clm.Index].Value.ToString() != "0,0000")
                                     {
-                                        if (row.Cells[clm.Index].Value.ToString() != "")
+                                        if (row.Cells[clm.Index].Value.ToString() != "0")
                                         {
-                                            notAvailable = true;
-                                            break;
-                                        }
+                                            if (row.Cells[clm.Index].Value.ToString() != "")
+                                            {
+                                                notAvailable = true;
+                                                break;
+                                            }
+                                        }                                        
                                     }
                                 }
                             }
@@ -529,7 +543,7 @@ namespace try_bi
                             {
                                 if (row.Cells[clm.Index].Value.ToString() != field_none2)
                                 {
-                                    if (row.Cells[clm.Index].Value.ToString() != field_kosong)
+                                    if (row.Cells[clm.Index].Value.ToString() != "0,0000" || row.Cells[clm.Index].Value.ToString() != "0")
                                     {
                                         if (row.Cells[clm.Index].Value.ToString() != "")
                                         {
@@ -614,7 +628,7 @@ namespace try_bi
                             {
                                 if (row.Cells[clm.Index].Value.ToString() != field_none2)
                                 {
-                                    if (row.Cells[clm.Index].Value.ToString() != field_kosong)
+                                    if (row.Cells[clm.Index].Value.ToString() != "0,0000" || row.Cells[clm.Index].Value.ToString() != "0")
                                     {
                                         if (row.Cells[clm.Index].Value.ToString() != "")
                                         {

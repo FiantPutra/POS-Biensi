@@ -400,7 +400,7 @@ namespace try_bi
                     while (ckon.sqlDataRd.Read())
                     {
                         totall = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
-                        totall = totall - get_voucher;
+                        totall = totall - get_dis_vou;
                         l_total.Text = string.Format("{0:#,###}" + ",00", totall);
                     }
                 }

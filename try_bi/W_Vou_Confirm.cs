@@ -30,8 +30,8 @@ namespace try_bi
         private void W_Vou_Confirm_Load(object sender, EventArgs e)
         {
             //get_data_voucher();
-            ambil_discount();
-            count_total_TransLine();
+            ambil_discount_subtotal();
+            //count_total_TransLine();
         }
         private void b_ok2_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,7 @@ namespace try_bi
                 }
                 catch (Exception er)
                 {
-                    MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -106,6 +106,7 @@ namespace try_bi
         {
             this.Close();
         }
+        
         //===ambil data dari form voucher jika valid====
         public void get_voucher_valid(String v_code, String  v_desc, int v_value, int id_diskon )
         {
@@ -119,27 +120,30 @@ namespace try_bi
             l_value.Text = string.Format("{0:#,###}" + ",00", value);
         }
         //======AMBIL TOTAL DISCOUNT DARI TRANSAKSI HEADER SESUAI TERANSAKSI ID===
-        public void ambil_discount()
+        public void ambil_discount_subtotal()
         {
             CRUD sql = new CRUD();
+            LinkApi xmlCon = new LinkApi();
 
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT * FROM [transaction] WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+                //String cmd = "SELECT * FROM [transaction] WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+                String cmd = "SELECT SUM(DISCOUNTAMOUNT) as DISCOUNT, SUM(SUBTOTAL) as SUBTOTAL FROM [Tmp]." + xmlCon.storeId + " WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                 if (ckon.sqlDataRd.HasRows)
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        tot_diskon = Convert.ToInt32(ckon.sqlDataRd["DISCOUNT"].ToString());
+                        tot_diskon = Convert.ToInt32(ckon.sqlDataRd["DISCOUNT"]);
+                        tot_bel = Convert.ToInt32(ckon.sqlDataRd["SUBTOTAL"]);
                     }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -160,47 +164,47 @@ namespace try_bi
             //ckon.con.Close();
         }
         //=============HITUNG TOTAL BELANJA DARI TRANSAKSI LINE===
-        public void count_total_TransLine()
-        {
-            CRUD sql = new CRUD();
+        //public void count_total_TransLine()
+        //{
+        //    CRUD sql = new CRUD();
 
-            //ckon.con.Close();
-            try
-            {
-                ckon.sqlCon().Open();
-                String cmd = "SELECT SUM(transaction_line.SUBTOTAL) as total FROM transaction_line WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
-                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+        //    //ckon.con.Close();
+        //    try
+        //    {
+        //        ckon.sqlCon().Open();
+        //        String cmd = "SELECT SUM(transaction_line.SUBTOTAL) as total FROM transaction_line WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+        //        ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
-                if (ckon.sqlDataRd.HasRows)
-                {
-                    while (ckon.sqlDataRd.Read())
-                    {
-                        tot_bel = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (ckon.sqlDataRd != null)
-                    ckon.sqlDataRd.Close();
+        //        if (ckon.sqlDataRd.HasRows)
+        //        {
+        //            while (ckon.sqlDataRd.Read())
+        //            {
+        //                tot_bel = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        if (ckon.sqlDataRd != null)
+        //            ckon.sqlDataRd.Close();
 
-                if (ckon.sqlCon().State == ConnectionState.Open)
-                    ckon.sqlCon().Close();
-            }
+        //        if (ckon.sqlCon().State == ConnectionState.Open)
+        //            ckon.sqlCon().Close();
+        //    }
 
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    tot_bel = ckon.myReader.GetInt32("total");
-            //}
-            //ckon.con.Close();
-        }
+        //    //ckon.cmd = new MySqlCommand(sql, ckon.con);
+        //    //ckon.con.Open();
+        //    //ckon.myReader = ckon.cmd.ExecuteReader();
+        //    //while (ckon.myReader.Read())
+        //    //{
+        //    //    tot_bel = ckon.myReader.GetInt32("total");
+        //    //}
+        //    //ckon.con.Close();
+        //}
         //=================UPDATE VALUE VOUCHER DI TRANSAKSI LINE YG DITUJU======
         public void update()
         {

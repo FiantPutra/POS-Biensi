@@ -55,20 +55,20 @@
             this.l_d_code = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.l_d_type = new System.Windows.Forms.Label();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineDiscPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineDiscCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineQtyMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineQtyMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineAmountMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LineAmountMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderDiscPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderDiscCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderQtyMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderQtyMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderAmountMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeaderAmountMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_purchase)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,20 +107,20 @@
             this.dgv_purchase.ColumnHeadersHeight = 40;
             this.dgv_purchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_purchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16});
+            this.ArticleId,
+            this.ArticleName,
+            this.LineDiscPercent,
+            this.LineDiscCash,
+            this.LineQtyMin,
+            this.LineQtyMax,
+            this.LineAmountMin,
+            this.LineAmountMax,
+            this.HeaderDiscPercent,
+            this.HeaderDiscCash,
+            this.HeaderQtyMin,
+            this.HeaderQtyMax,
+            this.HeaderAmountMin,
+            this.HeaderAmountMax});
             this.dgv_purchase.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
@@ -250,147 +250,169 @@
             this.l_d_type.TabIndex = 6;
             this.l_d_type.Text = "label7";
             // 
-            // Column2
+            // ArticleId
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column2.HeaderText = "Article ID";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
+            this.ArticleId.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ArticleId.HeaderText = "Article ID";
+            this.ArticleId.Name = "ArticleId";
+            this.ArticleId.ReadOnly = true;
+            this.ArticleId.Visible = false;
             // 
-            // Column3
+            // ArticleName
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column3.HeaderText = "Article Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
+            this.ArticleName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ArticleName.HeaderText = "Article Name";
+            this.ArticleName.Name = "ArticleName";
+            this.ArticleName.ReadOnly = true;
+            this.ArticleName.Visible = false;
             // 
-            // Column4
+            // LineDiscPercent
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineDiscPercent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column4.HeaderText = "Line Disc Percent";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0,00";
+            this.LineDiscPercent.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LineDiscPercent.HeaderText = "Disc Percent";
+            this.LineDiscPercent.Name = "LineDiscPercent";
+            this.LineDiscPercent.ReadOnly = true;
+            this.LineDiscPercent.Visible = false;
             // 
-            // Column5
+            // LineDiscCash
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineDiscCash.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column5.HeaderText = "Line Disc Cash";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0,00";
+            this.LineDiscCash.DefaultCellStyle = dataGridViewCellStyle5;
+            this.LineDiscCash.HeaderText = "Disc Cash";
+            this.LineDiscCash.Name = "LineDiscCash";
+            this.LineDiscCash.ReadOnly = true;
+            this.LineDiscCash.Visible = false;
             // 
-            // Column6
+            // LineQtyMin
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineQtyMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column6.HeaderText = "Line Qty Min ";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0,00";
+            this.LineQtyMin.DefaultCellStyle = dataGridViewCellStyle6;
+            this.LineQtyMin.HeaderText = "Qty Min ";
+            this.LineQtyMin.Name = "LineQtyMin";
+            this.LineQtyMin.ReadOnly = true;
+            this.LineQtyMin.Visible = false;
             // 
-            // Column7
+            // LineQtyMax
             // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineQtyMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column7.HeaderText = "Line Qty Max";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0,00";
+            this.LineQtyMax.DefaultCellStyle = dataGridViewCellStyle7;
+            this.LineQtyMax.HeaderText = "Qty Max";
+            this.LineQtyMax.Name = "LineQtyMax";
+            this.LineQtyMax.ReadOnly = true;
+            this.LineQtyMax.Visible = false;
             // 
-            // Column9
+            // LineAmountMin
             // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineAmountMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column9.HeaderText = "Line Amount Min";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = "0,00";
+            this.LineAmountMin.DefaultCellStyle = dataGridViewCellStyle8;
+            this.LineAmountMin.HeaderText = "Amount Min";
+            this.LineAmountMin.Name = "LineAmountMin";
+            this.LineAmountMin.ReadOnly = true;
+            this.LineAmountMin.Visible = false;
             // 
-            // Column10
+            // LineAmountMax
             // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LineAmountMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column10.HeaderText = "Line Amount Max";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = "0,00";
+            this.LineAmountMax.DefaultCellStyle = dataGridViewCellStyle9;
+            this.LineAmountMax.HeaderText = "Amount Max";
+            this.LineAmountMax.Name = "LineAmountMax";
+            this.LineAmountMax.ReadOnly = true;
+            this.LineAmountMax.Visible = false;
             // 
-            // Column11
+            // HeaderDiscPercent
             // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderDiscPercent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column11.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Column11.HeaderText = "Disc Percent";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Visible = false;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0,00";
+            this.HeaderDiscPercent.DefaultCellStyle = dataGridViewCellStyle10;
+            this.HeaderDiscPercent.HeaderText = "Disc Percent";
+            this.HeaderDiscPercent.Name = "HeaderDiscPercent";
+            this.HeaderDiscPercent.ReadOnly = true;
+            this.HeaderDiscPercent.Visible = false;
             // 
-            // Column12
+            // HeaderDiscCash
             // 
-            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderDiscCash.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Column12.HeaderText = "Disc Cash";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Visible = false;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0,00";
+            this.HeaderDiscCash.DefaultCellStyle = dataGridViewCellStyle11;
+            this.HeaderDiscCash.HeaderText = "Disc Cash";
+            this.HeaderDiscCash.Name = "HeaderDiscCash";
+            this.HeaderDiscCash.ReadOnly = true;
+            this.HeaderDiscCash.Visible = false;
             // 
-            // Column13
+            // HeaderQtyMin
             // 
-            this.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderQtyMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Column13.HeaderText = "Qty Min";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0,00";
+            this.HeaderQtyMin.DefaultCellStyle = dataGridViewCellStyle12;
+            this.HeaderQtyMin.HeaderText = "Qty Min";
+            this.HeaderQtyMin.Name = "HeaderQtyMin";
+            this.HeaderQtyMin.ReadOnly = true;
+            this.HeaderQtyMin.Visible = false;
             // 
-            // Column14
+            // HeaderQtyMax
             // 
-            this.Column14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderQtyMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column14.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Column14.HeaderText = "Qty Max";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Visible = false;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = "0,00";
+            this.HeaderQtyMax.DefaultCellStyle = dataGridViewCellStyle13;
+            this.HeaderQtyMax.HeaderText = "Qty Max";
+            this.HeaderQtyMax.Name = "HeaderQtyMax";
+            this.HeaderQtyMax.ReadOnly = true;
+            this.HeaderQtyMax.Visible = false;
             // 
-            // Column15
+            // HeaderAmountMin
             // 
-            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderAmountMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column15.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Column15.HeaderText = "Amount Min";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Visible = false;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = "0,00";
+            this.HeaderAmountMin.DefaultCellStyle = dataGridViewCellStyle14;
+            this.HeaderAmountMin.HeaderText = "Amount Min";
+            this.HeaderAmountMin.Name = "HeaderAmountMin";
+            this.HeaderAmountMin.ReadOnly = true;
+            this.HeaderAmountMin.Visible = false;
             // 
-            // Column16
+            // HeaderAmountMax
             // 
-            this.Column16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeaderAmountMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Format = "C2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.Column16.DefaultCellStyle = dataGridViewCellStyle15;
-            this.Column16.HeaderText = "Amount Max";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Visible = false;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = "0,00";
+            this.HeaderAmountMax.DefaultCellStyle = dataGridViewCellStyle15;
+            this.HeaderAmountMax.HeaderText = "Amount Max";
+            this.HeaderAmountMax.Name = "HeaderAmountMax";
+            this.HeaderAmountMax.ReadOnly = true;
+            this.HeaderAmountMax.Visible = false;
             // 
             // W_Promotion_Popup
             // 
@@ -428,19 +450,19 @@
         private System.Windows.Forms.Label l_d_code;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label l_d_type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArticleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArticleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineDiscPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineDiscCash;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineQtyMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineQtyMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineAmountMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineAmountMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderDiscPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderDiscCash;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderQtyMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderQtyMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderAmountMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeaderAmountMax;
     }
 }

@@ -550,8 +550,13 @@ namespace try_bi
                             totall_real = 0;
                         }
                         
-                        totall = totall - get_voucher;
-                        l_total.Text = string.Format("{0:#,###}" + ",00", totall);
+                        totall = totall - get_dis_vou;
+
+                        if (totall == 0)
+                            l_total.Text = "0,00";
+                        else
+                            l_total.Text = string.Format("{0:#,###}" + ",00", totall);
+
                         qty_txt.Text = ckon.sqlDataRd["qty"].ToString();
                     }
                 }
@@ -670,6 +675,9 @@ namespace try_bi
                 String cmd_delete = "DELETE FROM [tmp].[" + store_code + "] WHERE TRANSACTION_ID='" + l_transaksi.Text + "' AND ARTICLE_ID='" + id + "'";
                 sql.ExecuteNonQuery(cmd_delete);
 
+                String update_voucher = "UPDATE [transaction] SET VOUCHER = 0, VOUCHER_ID = 0, VOUCHER_CODE = '-' WHERE TRANSACTION_ID='" + l_transaksi.Text + "'";
+                sql.ExecuteNonQuery(update_voucher);
+
                 dgv_purchase.Rows.Clear();
                 dgv_purchase.Refresh();
                 retreive();
@@ -719,7 +727,7 @@ namespace try_bi
                 sql.ExecuteNonQuery(del_inv_line);
 
                 String del_trans_line = "DELETE FROM transaction_line WHERE TRANSACTION_ID = '" + l_transaksi.Text + "' AND ARTICLE_ID = '" + id_article + "'";
-                sql.ExecuteNonQuery(del_trans_line);
+                sql.ExecuteNonQuery(del_trans_line);                
             }
 
             if (dgv_purchase.Columns[e.ColumnIndex].Name == "Column6")
