@@ -18,7 +18,7 @@
       <Value Profile="(Default)">biensi_pos_db</Value>
     </Setting>
     <Setting Name="mPrinter" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">EPSON LX-310</Value>
     </Setting>
     <Setting Name="mVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">V1.3D</Value>

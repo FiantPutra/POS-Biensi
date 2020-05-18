@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using try_bi.Class;
 
 namespace try_bi
 {
@@ -15,7 +16,14 @@ namespace try_bi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form_First_Opened());
+
+            FileTransferScheduler.IntervalInMinutes(13, 00, 5,
+                () => {
+                    UploadSyncFile uploadSyncFile = new UploadSyncFile();
+
+                    uploadSyncFile.SyncUpload();
+                });
+
             Application.Run(new Form_Login());
         }
     }

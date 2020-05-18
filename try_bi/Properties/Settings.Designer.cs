@@ -85,7 +85,7 @@ namespace try_bi.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EPSON LX-310")]
         public string mPrinter {
             get {
                 return ((string)(this["mPrinter"]));
