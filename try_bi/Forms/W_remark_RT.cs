@@ -63,11 +63,27 @@ namespace try_bi
                 }
                 else
                 {
+                    String cmd_update = "UPDATE returnorder SET REMARK= '" + t_remark.Text + "' ,TOTAL_QTY='" + qty2 + "', STATUS='1', EMPLOYEE_ID='" + epy_id2 + "', EMPLOYEE_NAME='" + epy_name2 + "', TOTAL_AMOUNT='" + total_amount + "', NO_SJ='" + no_sj2 + "' WHERE RETURN_ORDER_ID = '" + return_id2 + "'";
+                    CRUD update = new CRUD();
+                    update.ExecuteNonQuery(cmd_update);
+
                     api_response = returnOrder.returnOrder().Result;
 
                     if (api_response)
                     {
-                        update_header();
+                        //===POTONG INVENTORY
+                        Inv_Line inv = new Inv_Line();
+                        String type_trans = "5";
+                        inv.cek_type_trans(type_trans);
+                        inv.cek_type_trans(type_trans);
+                        inv.return_order(return_id2);
+                        MessageBox.Show("Confirmed");
+
+                        UC_Ret_order.Instance.reset();
+                        UC_Ret_order.Instance.new_invoice();
+                        UC_Ret_order.Instance.holding();
+                        UC_Ret_order.Instance.runRetreive();
+                        this.Close();
                     }                    
                     else
                     {
@@ -81,26 +97,7 @@ namespace try_bi
                 MessageBox.Show("data failured added");
                 this.Close();
             }
-        }
-        //=========METHOD UNTUK MELAKUKAN UPDATE DI RETURN ORDER=========
-        public void update_header()
-        {
-            String cmd_update = "UPDATE returnorder SET REMARK= '" + t_remark.Text + "' ,TOTAL_QTY='" + qty2 + "', STATUS='1', EMPLOYEE_ID='" + epy_id2 + "', EMPLOYEE_NAME='" + epy_name2 + "', TOTAL_AMOUNT='" + total_amount + "', NO_SJ='"+no_sj2+"' WHERE RETURN_ORDER_ID = '" + return_id2 + "'";
-            CRUD update = new CRUD();
-            update.ExecuteNonQuery(cmd_update);
-            //===POTONG INVENTORY SAAT MUTASI OUT
-            Inv_Line inv = new Inv_Line();
-            String type_trans = "5";
-            inv.cek_type_trans(type_trans);
-            inv.return_order(return_id2);
-            MessageBox.Show("data successfully added");
-                        
-            UC_Ret_order.Instance.reset();
-            UC_Ret_order.Instance.new_invoice();            
-            UC_Ret_order.Instance.holding();
-            UC_Ret_order.Instance.runRetreive();
-            this.Close();
-        }
+        }        
 
         //METHOD UNTUK MENGECHECK TOTAL QTY DI RET_ORDER_LINE DIBANDINGKAN DENGAN TOTAL INVENTORY
         /* DESC = AKAN DIHITUNG TOTAL BARIS DARI RET_ORDER_LINE, LALU AKAN DIHITUNG BERAPA LINE YANG TIDAK SESUAI, LINE YG TIDAK SESUAI AKAN DIBANDINGKAN JUMLAHNYA DENGAN BERAPA BARIS RET_ORDER_LINE, JIKA TOTAL TIDAK SESUAI, MAKA TIDAK BISA MENJALAN METHOD "UPDATE_HEADER", JIKA JUMLAH SAMA MAKA JALANKAN METHOD UPDATE HEADER*/

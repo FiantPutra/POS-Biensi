@@ -50,6 +50,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.l_amount = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.l_qty = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label3 = new System.Windows.Forms.Label();
             this.no_sj = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label4 = new System.Windows.Forms.Label();
@@ -100,8 +102,6 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.l_qty = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hold)).BeginInit();
@@ -129,7 +129,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.bunifuMaterialTextbox1);
+            this.panel3.Controls.Add(this.l_amount);
             this.panel3.Controls.Add(this.l_qty);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.no_sj);
@@ -142,6 +142,44 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(915, 68);
             this.panel3.TabIndex = 29;
+            // 
+            // l_amount
+            // 
+            this.l_amount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.l_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_amount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.l_amount.HintForeColor = System.Drawing.Color.Empty;
+            this.l_amount.HintText = "";
+            this.l_amount.isPassword = false;
+            this.l_amount.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.l_amount.LineIdleColor = System.Drawing.Color.Gray;
+            this.l_amount.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.l_amount.LineThickness = 3;
+            this.l_amount.Location = new System.Drawing.Point(383, 9);
+            this.l_amount.Margin = new System.Windows.Forms.Padding(4);
+            this.l_amount.Name = "l_amount";
+            this.l_amount.Size = new System.Drawing.Size(162, 25);
+            this.l_amount.TabIndex = 40;
+            this.l_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l_qty
+            // 
+            this.l_qty.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.l_qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_qty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.l_qty.HintForeColor = System.Drawing.Color.Empty;
+            this.l_qty.HintText = "";
+            this.l_qty.isPassword = false;
+            this.l_qty.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.l_qty.LineIdleColor = System.Drawing.Color.Gray;
+            this.l_qty.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.l_qty.LineThickness = 3;
+            this.l_qty.Location = new System.Drawing.Point(220, 9);
+            this.l_qty.Margin = new System.Windows.Forms.Padding(4);
+            this.l_qty.Name = "l_qty";
+            this.l_qty.Size = new System.Drawing.Size(136, 25);
+            this.l_qty.TabIndex = 39;
+            this.l_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -970,44 +1008,6 @@
             this.panel5.Size = new System.Drawing.Size(164, 68);
             this.panel5.TabIndex = 30;
             // 
-            // l_qty
-            // 
-            this.l_qty.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.l_qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_qty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.l_qty.HintForeColor = System.Drawing.Color.Empty;
-            this.l_qty.HintText = "";
-            this.l_qty.isPassword = false;
-            this.l_qty.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.l_qty.LineIdleColor = System.Drawing.Color.Gray;
-            this.l_qty.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.l_qty.LineThickness = 3;
-            this.l_qty.Location = new System.Drawing.Point(220, 9);
-            this.l_qty.Margin = new System.Windows.Forms.Padding(4);
-            this.l_qty.Name = "l_qty";
-            this.l_qty.Size = new System.Drawing.Size(136, 25);
-            this.l_qty.TabIndex = 39;
-            this.l_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // bunifuMaterialTextbox1
-            // 
-            this.bunifuMaterialTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMaterialTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMaterialTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMaterialTextbox1.HintForeColor = System.Drawing.Color.Empty;
-            this.bunifuMaterialTextbox1.HintText = "";
-            this.bunifuMaterialTextbox1.isPassword = false;
-            this.bunifuMaterialTextbox1.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.bunifuMaterialTextbox1.LineIdleColor = System.Drawing.Color.Gray;
-            this.bunifuMaterialTextbox1.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.bunifuMaterialTextbox1.LineThickness = 3;
-            this.bunifuMaterialTextbox1.Location = new System.Drawing.Point(383, 9);
-            this.bunifuMaterialTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMaterialTextbox1.Name = "bunifuMaterialTextbox1";
-            this.bunifuMaterialTextbox1.Size = new System.Drawing.Size(162, 25);
-            this.bunifuMaterialTextbox1.TabIndex = 40;
-            this.bunifuMaterialTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // UC_Ret_order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1094,7 +1094,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox l_amount;
         private Bunifu.Framework.UI.BunifuMaterialTextbox l_qty;
     }
 }

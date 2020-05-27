@@ -306,7 +306,7 @@ namespace try_bi
 
                         if (qty == "0")
                         {
-                            Image image = Image.FromFile(@"C:\Program Files (x86)\Pos Biensi\icons8-search-26.png");                            
+                            Image image = Image.FromFile(@"C:\Program Files\Pos Biensi\icons8-search-26.png");                            
                             
                             dgv_purchase.Rows[dgRows].Cells[0].Style.ForeColor = Color.Red;
                             dgv_purchase.Rows[dgRows].Cells[1].Style.ForeColor = Color.Red;
@@ -314,7 +314,7 @@ namespace try_bi
                         }
                         else
                         {
-                            Image image = Image.FromFile(@"C:\Program Files (x86)\Pos Biensi\icons8-unavailable-26.png");                            
+                            Image image = Image.FromFile(@"C:\Program Files\Pos Biensi\icons8-unavailable-26.png");                            
 
                             dgv_purchase.Rows[dgRows].Cells[3].Value = image;
                         }

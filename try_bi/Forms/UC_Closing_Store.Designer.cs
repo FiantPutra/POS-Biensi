@@ -121,7 +121,7 @@
             this.t_spgId.Location = new System.Drawing.Point(628, 12);
             this.t_spgId.Margin = new System.Windows.Forms.Padding(4);
             this.t_spgId.Name = "t_spgId";
-            this.t_spgId.Size = new System.Drawing.Size(141, 24);
+            this.t_spgId.Size = new System.Drawing.Size(166, 24);
             this.t_spgId.TabIndex = 11;
             this.t_spgId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -175,10 +175,10 @@
             this.l_transaksi.LineIdleColor = System.Drawing.Color.Gray;
             this.l_transaksi.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.l_transaksi.LineThickness = 3;
-            this.l_transaksi.Location = new System.Drawing.Point(47, 12);
+            this.l_transaksi.Location = new System.Drawing.Point(17, 12);
             this.l_transaksi.Margin = new System.Windows.Forms.Padding(4);
             this.l_transaksi.Name = "l_transaksi";
-            this.l_transaksi.Size = new System.Drawing.Size(141, 24);
+            this.l_transaksi.Size = new System.Drawing.Size(198, 24);
             this.l_transaksi.TabIndex = 10;
             this.l_transaksi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -194,10 +194,10 @@
             this.t_custId.LineIdleColor = System.Drawing.Color.Gray;
             this.t_custId.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.t_custId.LineThickness = 3;
-            this.t_custId.Location = new System.Drawing.Point(350, 16);
+            this.t_custId.Location = new System.Drawing.Point(321, 12);
             this.t_custId.Margin = new System.Windows.Forms.Padding(4);
             this.t_custId.Name = "t_custId";
-            this.t_custId.Size = new System.Drawing.Size(141, 24);
+            this.t_custId.Size = new System.Drawing.Size(193, 24);
             this.t_custId.TabIndex = 3;
             this.t_custId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -206,7 +206,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
-            this.label5.Location = new System.Drawing.Point(374, 42);
+            this.label5.Location = new System.Drawing.Point(361, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 20);
             this.label5.TabIndex = 4;
@@ -217,7 +217,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
-            this.label4.Location = new System.Drawing.Point(668, 38);
+            this.label4.Location = new System.Drawing.Point(676, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 3;
@@ -351,7 +351,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(159)))));
-            this.label2.Location = new System.Drawing.Point(77, 38);
+            this.label2.Location = new System.Drawing.Point(56, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 1;

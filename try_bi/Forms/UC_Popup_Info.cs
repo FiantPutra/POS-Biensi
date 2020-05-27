@@ -115,7 +115,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show("No connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -124,72 +124,7 @@ namespace try_bi
 
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
-            }
-
-            //ckon.con.Close();
-
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        SHIFT = ckon.myReader.GetString("SHIFT");
-            //        set_open_trans = ckon.myReader.GetInt32("REAL_TRANS_BALANCE");
-            //        set_open_petty = ckon.myReader.GetInt32("REAL_PETTY_CASH");
-            //        set_open_deposit = ckon.myReader.GetInt32("REAL_DEPOSIT");
-            //    }
-            //    if(SHIFT=="1" && status_store =="0")
-            //    {
-            //        if (set_open_trans == 0)
-            //        { l_cash_amount.Text = "0,00"; }
-            //        else { l_cash_amount.Text = string.Format("{0:#,###}" + ",00", set_open_trans); }
-
-            //        if (set_open_petty == 0)
-            //        { l_petty_amount.Text = "0,00"; }
-            //        else { l_petty_amount.Text = string.Format("{0:#,###}" + ",00", set_open_petty); }
-
-            //        if (set_open_deposit == 0)
-            //        { l_dep_amount.Text = "0,00"; }
-            //        else { l_dep_amount.Text = string.Format("{0:#,###}" + ",00", set_open_deposit); }
-            //        //====================================================================
-
-            //    }
-            //    if(SHIFT=="2" && status_store == "0")
-            //    {
-            //        if (set_open_trans == 0)
-            //        { l_cash_amount.Text = "0,00"; }
-            //        else { l_cash_amount.Text = string.Format("{0:#,###}" + ",00", set_open_trans); }
-
-            //        if (set_open_petty == 0)
-            //        { l_petty_amount.Text = "0,00"; }
-            //        else { l_petty_amount.Text = string.Format("{0:#,###}" + ",00", set_open_petty); }
-
-            //        if (set_open_deposit == 0)
-            //        { l_dep_amount.Text = "0,00"; }
-            //        else { l_dep_amount.Text = string.Format("{0:#,###}" + ",00", set_open_deposit); }
-            //    }
-
-            //    if ((SHIFT == "2" && status_store == "1")|| (SHIFT == "1" && status_store == "1"))
-            //    {
-
-            //         l_cash_amount.Text = "0,00";
-
-            //        if (set_open_petty == 0)
-            //        { l_petty_amount.Text = "0,00"; }
-            //        else { l_petty_amount.Text = string.Format("{0:#,###}" + ",00", set_open_petty); }
-
-            //        if (set_open_deposit == 0)
-            //        { l_dep_amount.Text = "0,00"; }
-            //        else { l_dep_amount.Text = string.Format("{0:#,###}" + ",00", set_open_deposit); }
-            //    }
-
-            //    //l_diskon.Text = string.Format("{0:#,###}" + ",00", get_diskon);
-            //}
-            //else
-            //{ l_cash_amount.Text = "0,00"; l_petty_amount.Text= "0,00"; l_dep_amount.Text = "0,00"; }
-            //ckon.con.Close();
+            }            
         }
         //========================BUTTON OK ==================================================
         private void b_ok_Click(object sender, EventArgs e)
@@ -431,16 +366,7 @@ namespace try_bi
             {
 
                 throw;
-            }
-            
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    nm_cur = ckon.myReader.GetString("NAME");
-            //}
-            //ckon.con.Close();
+            }                      
         }
         //=============================================================================
 

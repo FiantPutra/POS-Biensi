@@ -20,7 +20,7 @@ namespace try_bi
     public partial class Form_Conenctor : Form
     {
         String replace_pass, VarBackDate, StringBackDate, OnOrOff, MasterOrChild, DeviceCode = "", pDefault;
-        String host = "", dbName="", userDB="", msgDbName = "";
+        String link = "", host = "", dbName="", userDB="", msgDbName = "", printerName = "";
         String ftpFilePath, storeId;
         public Form_Conenctor()
         {
@@ -29,35 +29,55 @@ namespace try_bi
 
         private void Form_Conenctor_Load(object sender, EventArgs e)
         {
-            radioOnline.Checked = true;
+            //radioOnline.Checked = true;
 
-            groupOnline.Visible = true;
-            groupOffline.Visible = false;
+            //groupOnline.Visible = true;
+            //groupOffline.Visible = false;
 
             dateTimePicker1.Visible = false;
-            LabelYesNo.Text = Properties.Settings.Default.mBackDate;
-            txtPassDB.Text = Properties.Settings.Default.mPassDB;
-            nm_printer.Text = Properties.Settings.Default.mPrinter;
-            txtOff.Text = Properties.Settings.Default.mServer;
-            textUserDb.Text = Properties.Settings.Default.mUserDB;
-            txtHostDB.Text = Properties.Settings.Default.mServer;
-            txtPOSNameDB.Text = Properties.Settings.Default.mDBName;
-            txtMsgNameDB.Text = Properties.Settings.Default.msgDBName;            
-            txtFilePath.Text = Properties.Settings.Default.FTPFilePath;    
-            txt_storeId.Text = Properties.Settings.Default.StoreId;
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load("C:/Program Files/Pos Biensi/xmlConn.xml");
+
+            string xpath = "Table/Product";
+            var nodes = xmlDoc.SelectNodes(xpath);
+
+            foreach (XmlNode childrenNode in nodes)
+            {
+                txtApiUrl.Text = childrenNode.SelectSingleNode("link_api").InnerText;
+                txtHostDB.Text = childrenNode.SelectSingleNode("host_db").InnerText;
+                textUserDb.Text = childrenNode.SelectSingleNode("user_db").InnerText;
+                txtPassDB.Text = childrenNode.SelectSingleNode("pass_db").InnerText;
+                txtPOSNameDB.Text = childrenNode.SelectSingleNode("name_db").InnerText;
+                txtMsgNameDB.Text = childrenNode.SelectSingleNode("msg_db").InnerText;
+                txtFilePath.Text = childrenNode.SelectSingleNode("FilePath").InnerText;
+                txt_storeId.Text = childrenNode.SelectSingleNode("storeId").InnerText;
+                nm_printer.Text = childrenNode.SelectSingleNode("printer_name").InnerText;
+            }
+
+            //LabelYesNo.Text = Properties.Settings.Default.mBackDate;
+            //txtPassDB.Text = Properties.Settings.Default.mPassDB;
+            //nm_printer.Text = Properties.Settings.Default.mPrinter;
+            ////txtOff.Text = Properties.Settings.Default.mServer;
+            //textUserDb.Text = Properties.Settings.Default.mUserDB;
+            //txtHostDB.Text = Properties.Settings.Default.mServer;
+            //txtPOSNameDB.Text = Properties.Settings.Default.mDBName;
+            //txtMsgNameDB.Text = Properties.Settings.Default.msgDBName;            
+            //txtFilePath.Text = Properties.Settings.Default.FTPFilePath;    
+            //txt_storeId.Text = Properties.Settings.Default.StoreId;
         }
 
         private void b_save_Click(object sender, EventArgs e)
         {
             //String link = "http://mpos.biensicore.co.id";
-            String link = "http://localhost:64994";
+            //String link = "http://localhost:64994";
 
-            if (OnOrOff == "Offline")
-            {
-                host = txtOff.Text;
-                userDB = textUserDb.Text;
-                //MethodGetDevId();
-            }
+            //if (OnOrOff == "Offline")
+            //{
+            //    host = txtOff.Text;
+            //    userDB = textUserDb.Text;
+            //    //MethodGetDevId();
+            //}
             
             if (checkboxBackDate.Checked == true)
             {
@@ -71,12 +91,15 @@ namespace try_bi
             if (defaultPrint.Checked)
             {
                 pDefault = "1";
-            } else
+            } 
+            else
             {
                 pDefault = "0";
             }
+
             try
             {
+                link = txtApiUrl.Text;
                 host = txtHostDB.Text;
                 dbName = txtPOSNameDB.Text;
                 msgDbName = txtMsgNameDB.Text;                
@@ -84,27 +107,28 @@ namespace try_bi
                 replace_pass = txtPassDB.Text.Replace(" ", "");                
                 ftpFilePath = txtFilePath.Text;
                 storeId = txt_storeId.Text;
+                printerName = nm_printer.Text;
 
-                Properties.Settings.Default.mServer = host;
-                Properties.Settings.Default.mDBName = dbName;
-                Properties.Settings.Default.mUserDB = userDB;
-                Properties.Settings.Default.mPassDB = replace_pass;
-                Properties.Settings.Default.mPrinter = nm_printer.Text;
-                Properties.Settings.Default.mBackDate = LabelYesNo.Text;
-                Properties.Settings.Default.ValueBackDate = dateTimePicker1.Text;
-                Properties.Settings.Default.msgDBName = msgDbName;                
-                Properties.Settings.Default.FTPFilePath = ftpFilePath;                               
-                Properties.Settings.Default.OnnOrOff = OnOrOff;
-                Properties.Settings.Default.MstrOrChld = MasterOrChild;
-                Properties.Settings.Default.DevCode = DeviceCode;
-                Properties.Settings.Default.printerDefault = pDefault;
-                Properties.Settings.Default.StoreId = storeId;
+                //Properties.Settings.Default.mServer = host;
+                //Properties.Settings.Default.mDBName = dbName;
+                //Properties.Settings.Default.mUserDB = userDB;
+                //Properties.Settings.Default.mPassDB = replace_pass;
+                //Properties.Settings.Default.mPrinter = nm_printer.Text;
+                //Properties.Settings.Default.mBackDate = LabelYesNo.Text;
+                //Properties.Settings.Default.ValueBackDate = dateTimePicker1.Text;
+                //Properties.Settings.Default.msgDBName = msgDbName;                
+                //Properties.Settings.Default.FTPFilePath = ftpFilePath;                               
+                //Properties.Settings.Default.OnnOrOff = OnOrOff;
+                //Properties.Settings.Default.MstrOrChld = MasterOrChild;
+                //Properties.Settings.Default.DevCode = DeviceCode;
+                //Properties.Settings.Default.printerDefault = pDefault;
+                //Properties.Settings.Default.StoreId = storeId;
 
-                save_app_config();
-                Properties.Settings.Default.Save();
+                //save_app_config();
+                //Properties.Settings.Default.Save();
 
                 XmlDocument doc = new XmlDocument();
-                doc.Load("C:/Program Files (x86)/Pos Biensi/xmlConn.xml");
+                doc.Load("C:/Program Files/Pos Biensi/xmlConn.xml");
 
                 XmlNode node2 = doc.SelectSingleNode("Table/Product/link_api[1]");
                 node2.InnerText = link;
@@ -126,9 +150,9 @@ namespace try_bi
                 store_Id.InnerText = storeId;
                 //XmlNode printer_dfl = doc.SelectSingleNode("Table/Product/printer_default[1]");
                 //printer_dfl.InnerText = pDefault;
-                //XmlNode printer = doc.SelectSingleNode("Table/Product/printer_name[1]");
-                //printer.InnerText = nm_printer.Text;
-                doc.Save("C:/Program Files (x86)/Pos Biensi/xmlConn.xml");
+                XmlNode printer = doc.SelectSingleNode("Table/Product/printer_name[1]");
+                printer.InnerText = printerName;
+                doc.Save("C:/Program Files/Pos Biensi/xmlConn.xml");
 
                 MessageBox.Show("Connection Successfully Saved. Application Will Be Closed, Please Re-Open");
                 Application.Restart();
@@ -223,24 +247,24 @@ namespace try_bi
             //MessageBox.Show(DeviceCode);
         }
 
-        //=======================MEMUNCULKAN GROUP BOX ONLINE TRUE============================
-        private void radioOnline_CheckedChanged(object sender, EventArgs e)
-        {
-            groupOnline.Visible = true;
-            groupOffline.Visible = false;
-            radioMaster.Checked = false;
-            radioChild.Checked = false;
-            OnOrOff = "Online";
-            DeviceCode = "null";
-        }
-        //=====================MEMUNCULKAN GROUP BOX OFFLINE TRUE=============================
-        private void radioOffline_CheckedChanged(object sender, EventArgs e)
-        {
-            groupOnline.Visible = true;
-            groupOffline.Visible = true;
-            radioMaster.Checked = true;
-            OnOrOff = "Offline";
-        }
+        ////=======================MEMUNCULKAN GROUP BOX ONLINE TRUE============================
+        //private void radioOnline_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    groupOnline.Visible = true;
+        //    groupOffline.Visible = false;
+        //    radioMaster.Checked = false;
+        //    radioChild.Checked = false;
+        //    OnOrOff = "Online";
+        //    DeviceCode = "null";
+        //}
+        ////=====================MEMUNCULKAN GROUP BOX OFFLINE TRUE=============================
+        //private void radioOffline_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    groupOnline.Visible = true;
+        //    groupOffline.Visible = true;
+        //    radioMaster.Checked = true;
+        //    OnOrOff = "Offline";
+        //}
         //===============Set to PC Master=================================
         private void radioMaster_CheckedChanged(object sender, EventArgs e)
         {
@@ -269,7 +293,7 @@ namespace try_bi
             //MessageBox.Show(mac);
 
             API_DeviceCode code = new API_DeviceCode();
-            code.LinkGetCode(txtOff.Text);
+            //code.LinkGetCode(txtOff.Text);
             code.cek_storeCode();
             DeviceCode = code.GetDeviceId(mac);
             //MessageBox.Show(DeviceCode);

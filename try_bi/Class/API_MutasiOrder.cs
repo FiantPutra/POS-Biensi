@@ -40,7 +40,8 @@ namespace try_bi.Class
 
             try
             {
-                MutasiOrder mo_new2 = new MutasiOrder();
+                List<MutasiOrderLine> mo_LinesList = new List<MutasiOrderLine>();
+                
                 link_api = link.aLink;
                 ckon.sqlCon().Open();                
 
@@ -48,7 +49,7 @@ namespace try_bi.Class
                                 + "a.REQUEST_DELIVERY_DATE, a.STATUS, a.TIME, a.TIME_STAMP, a.TOTAL_QTY, a.EMPLOYEE_ID, a.EMPLOYEE_NAME, a.NO_SJ, "
                                 + "c._id as ArtId, c.ARTICLE_ID, c.ARTICLE_NAME, c.UNIT, c.PRICE, c.ARTICLE_ID_ALIAS, b._id as MoLineId, b.QUANTITY FROM mutasiorder a INNER JOIN mutasiorder_line b "
                                 + "ON a.MUTASI_ORDER_ID = b.MUTASI_ORDER_ID INNER JOIN article c "
-                                + "ON c.ARTICLE_ID = b.ARTICLE_ID WHERE a.STATUS_API = 0 AND a.STATUS = 1";
+                                + "ON c.ARTICLE_ID = b.ARTICLE_ID WHERE a.STATUS_API = 0";
 
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
                 if (ckon.sqlDataRd.HasRows)
@@ -69,9 +70,7 @@ namespace try_bi.Class
                         totalqty2 = Convert.ToInt32(ckon.sqlDataRd["TOTAL_QTY"]);
                         epy_id = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_ID"]);
                         epy_name = Convert.ToString(ckon.sqlDataRd["EMPLOYEE_NAME"]);
-                        no_sj = Convert.ToString(ckon.sqlDataRd["NO_SJ"]);
-
-                        mo_new2.mutasiOrderLines = new List<MutasiOrderLine>();
+                        no_sj = Convert.ToString(ckon.sqlDataRd["NO_SJ"]);                        
 
                         id_article2 = Convert.ToInt32(ckon.sqlDataRd["ArtId"]);
                         id_from_article2 = Convert.ToString(ckon.sqlDataRd["ARTICLE_ID"]);
@@ -102,7 +101,7 @@ namespace try_bi.Class
                             quantity = qty2,
                             unit = unit2
                         };
-                        mo_new2.mutasiOrderLines.Add(mo_line);
+                        mo_LinesList.Add(mo_line);
                     }
 
                     MutasiOrder mo_new = new MutasiOrder()
@@ -114,7 +113,7 @@ namespace try_bi.Class
                         mutasiFromWarehouse = mut_from_war2,
                         mutasiToWarehouse = mut_to_war2,
                         mutasiOrderId = id_m_o2,
-                        mutasiOrderLines = mo_new2.mutasiOrderLines,
+                        mutasiOrderLines = mo_LinesList,
                         requestDeliveryDate = req_dev_date2,
                         status = status2,
                         time = time2,

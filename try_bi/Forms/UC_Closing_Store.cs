@@ -236,7 +236,7 @@ namespace try_bi
                         {
                             payment1_txt.Text = "Payment Method : EDC";
                             payment1_value.Text = ckon.sqlDataRd["payment"].ToString() + " : " + string.Format("{0:#,###}" + ",00", Convert.ToInt32(ckon.sqlDataRd["EDC"].ToString())) + " - No Ref : " + ckon.sqlDataRd["NO_REF"].ToString();
-                            if (ckon.myReader.GetInt32("EDC2") > 0)
+                            if (Convert.ToInt32(ckon.sqlDataRd["EDC2"].ToString()) > 0)
                             {
                                 payment2_value.Text = ckon.sqlDataRd["payment2"].ToString() + " : " + string.Format("{0:#,###}" + ",00", Convert.ToInt32(ckon.sqlDataRd["EDC2"].ToString())) + " - No Ref : " + ckon.sqlDataRd["NO_REF2"].ToString();
                             }

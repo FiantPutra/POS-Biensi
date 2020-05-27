@@ -133,6 +133,7 @@
             this.t_shorcut2.Size = new System.Drawing.Size(67, 33);
             this.t_shorcut2.TabIndex = 27;
             this.t_shorcut2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.t_shorcut2.Visible = false;
             this.t_shorcut2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.t_shorcut2_KeyDown);
             // 
             // t_detail_center

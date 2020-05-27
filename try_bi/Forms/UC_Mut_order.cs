@@ -200,10 +200,8 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT article.ARTICLE_NAME, mutasiorder_line.ARTICLE_ID, mutasiorder.MUTASI_ORDER_ID FROM mutasiorder INNER JOIN mutasiorder_line "
-                            + "ON mutasiorder_line.MUTASI_ORDER_ID = mutasiorder.MUTASI_ORDER_ID INNER JOIN article "
-                            + "ON article.ARTICLE_ID = mutasiorder_line.ARTICLE_ID "
-                            + "WHERE mutasiorder.STATUS = '0'";
+                String cmd = "SELECT mutasiorder.MUTASI_ORDER_ID FROM mutasiorder "                            
+                            + "WHERE STATUS_API = '0' AND TOTAL_QTY > 0";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                 if (ckon.sqlDataRd.HasRows)
@@ -211,15 +209,15 @@ namespace try_bi
                     while (ckon.sqlDataRd.Read())
                     {
                         id_trans = ckon.sqlDataRd["MUTASI_ORDER_ID"].ToString();
-                        article_id = ckon.sqlDataRd["ARTICLE_NAME"].ToString();
-                        numbersList.Add(ckon.sqlDataRd["ARTICLE_NAME"].ToString());
+                        //article_id = ckon.sqlDataRd["ARTICLE_NAME"].ToString();
+                        //numbersList.Add(ckon.sqlDataRd["ARTICLE_NAME"].ToString());
 
-                        string[] numbersArray = numbersList.ToArray();
-                        numbersList.Clear();
-                        string result = String.Join(", ", numbersArray);
+                        //string[] numbersArray = numbersList.ToArray();
+                        //numbersList.Clear();
+                        //string result = String.Join(", ", numbersArray);
                         int dgRows = dgv_hold.Rows.Add();
                         dgv_hold.Rows[dgRows].Cells[0].Value = id_trans;
-                        dgv_hold.Rows[dgRows].Cells[1].Value = result;
+                        //dgv_hold.Rows[dgRows].Cells[1].Value = result;
                     }
                 }
             }
@@ -481,9 +479,13 @@ namespace try_bi
                 MessageBox.Show("Pick Item First");
             }
             else
-            {               
+            {
+                String cmd_update = "UPDATE mutasiorder SET MUTASI_FROM_WAREHOUSE='" + combo_store2 + "' ,MUTASI_TO_WAREHOUSE = '" + store_code + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', CUST_ID_STORE='" + cust_id_store + "', EMPLOYEE_ID='" + epy_id + "', EMPLOYEE_NAME='" + epy_name + "',TOTAL_AMOUNT='" + total_amount + "', NO_SJ = '" + no_sj.Text + "' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
+                CRUD update = new CRUD();
+                update.ExecuteNonQuery(cmd_update);
+
                 new_invoice();
-                set_running_number();
+                //set_running_number();
                 holding();
                 dgv_request.Rows.Clear();
                 l_qty.Text = "0";
@@ -685,8 +687,8 @@ namespace try_bi
                         color = ckon.sqlDataRd["COLOR_ID"].ToString();
                         new_price = Convert.ToInt32(ckon.sqlDataRd["PRICE"].ToString());
                         unit = ckon.sqlDataRd["UNIT"].ToString();
-                        good_qty = ckon2.myReader2.GetString("GOOD_QTY");
-                        good_qty_int = ckon2.myReader2.GetInt32("GOOD_QTY");
+                        good_qty = ckon.sqlDataRd["GOOD_QTY"].ToString();
+                        good_qty_int = Convert.ToInt32(ckon.sqlDataRd["GOOD_QTY"]);
                     }
                 }
 
@@ -762,7 +764,7 @@ namespace try_bi
 
         public void update_header()
         {            
-            String cmd_update = "UPDATE mutasiorder SET  MUTASI_TO_WAREHOUSE = '" + combo_mutasiTo.Text + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', STATUS='1', CUST_ID_STORE='"+ cust_id_store + "', EMPLOYEE_ID='"+epy_id+"', EMPLOYEE_NAME='"+ epy_name +"' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
+            String cmd_update = "UPDATE mutasiorder SET  MUTASI_TO_WAREHOUSE = '" + combo_mutasiTo.Text + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', CUST_ID_STORE='"+ cust_id_store + "', EMPLOYEE_ID='"+epy_id+"', EMPLOYEE_NAME='"+ epy_name +"' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
             CRUD update = new CRUD();
             update.ExecuteNonQuery(cmd_update);
         }
@@ -842,12 +844,13 @@ namespace try_bi
                     
                     if (combo_InOut.Text == "IN")
                     {
+                        String cmd_update = "UPDATE mutasiorder SET MUTASI_FROM_WAREHOUSE='" + combo_store2 + "' ,MUTASI_TO_WAREHOUSE = '" + store_code + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', STATUS='1', CUST_ID_STORE='" + cust_id_store + "', EMPLOYEE_ID='" + epy_id + "', EMPLOYEE_NAME='" + epy_name + "',TOTAL_AMOUNT='" + total_amount + "', NO_SJ = '" + no_sj.Text + "' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
+                        CRUD update = new CRUD();
+                        update.ExecuteNonQuery(cmd_update);
+
                         api_response = mutasiOrder.mutasiOrder().Result;
                         if (api_response)
-                        {
-                            String cmd_update = "UPDATE mutasiorder SET MUTASI_FROM_WAREHOUSE='" + combo_store2 + "' ,MUTASI_TO_WAREHOUSE = '" + store_code + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', STATUS='1', CUST_ID_STORE='" + cust_id_store + "', EMPLOYEE_ID='" + epy_id + "', EMPLOYEE_NAME='" + epy_name + "',TOTAL_AMOUNT='" + total_amount + "', NO_SJ = '" + no_sj.Text + "' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
-                            CRUD update = new CRUD();
-                            update.ExecuteNonQuery(cmd_update);
+                        {                            
                             MessageBox.Show("data successfully added");
                             reset();
                             holding();
@@ -868,12 +871,13 @@ namespace try_bi
                         }
                         else
                         {
+                            String cmd_update = "UPDATE mutasiorder SET MUTASI_FROM_WAREHOUSE='" + store_code + "' ,MUTASI_TO_WAREHOUSE = '" + combo_store2 + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', STATUS='1', CUST_ID_STORE='" + cust_id_store + "', EMPLOYEE_ID='" + epy_id + "', EMPLOYEE_NAME='" + epy_name + "',TOTAL_AMOUNT='" + total_amount + "', NO_SJ = '" + no_sj.Text + "' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
+                            CRUD update = new CRUD();
+                            update.ExecuteNonQuery(cmd_update);
+
                             api_response = mutasiOrder.mutasiOrder().Result;
                             if (api_response)
-                            {
-                                String cmd_update = "UPDATE mutasiorder SET MUTASI_FROM_WAREHOUSE='" + store_code + "' ,MUTASI_TO_WAREHOUSE = '" + combo_store2 + "',REQUEST_DELIVERY_DATE = '" + tanggal_req.Text + "' ,TOTAL_QTY='" + l_qty.Text + "', STATUS='1', CUST_ID_STORE='" + cust_id_store + "', EMPLOYEE_ID='" + epy_id + "', EMPLOYEE_NAME='" + epy_name + "',TOTAL_AMOUNT='" + total_amount + "', NO_SJ = '" + no_sj.Text + "' WHERE MUTASI_ORDER_ID = '" + l_transaksi.Text + "'";
-                                CRUD update = new CRUD();
-                                update.ExecuteNonQuery(cmd_update);
+                            {                                
                                 //===POTONG INVENTORY SAAT MUTASI OUT
                                 Inv_Line inv = new Inv_Line();
                                 String type_trans = "3";

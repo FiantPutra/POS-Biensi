@@ -82,7 +82,7 @@ namespace try_bi
             this.ActiveControl = t_barcode;
             t_barcode.Focus();
             dgv_request.Rows.Clear();
-            bunifuMaterialTextbox1.Text = "0,00";
+            l_amount.Text = "0,00";
             l_qty.Text = "0";
             no_sj.Text = "";
             //ckon.con.Close();
@@ -126,26 +126,24 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT article.ARTICLE_NAME, returnorder.RETURN_ORDER_ID FROM returnorder INNER JOIN returnorder_line "
-                                + "ON returnorder_line.RETURN_ORDER_ID = returnorder.RETURN_ORDER_ID INNER JOIN article "
-                                + "ON article.ARTICLE_ID = returnorder_line.ARTICLE_ID "
-                                + "WHERE returnorder.STATUS = '0' ";
+                String cmd = "SELECT returnorder.RETURN_ORDER_ID FROM returnorder "
+                                + "WHERE STATUS_API = '0' AND TOTAL_QTY > 0";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                 if (ckon.sqlDataRd.HasRows)
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        article_id = ckon.sqlDataRd["ARTICLE_NAME"].ToString();
+                        //article_id = ckon.sqlDataRd["ARTICLE_NAME"].ToString();
                         id_trans = ckon.sqlDataRd["RETURN_ORDER_ID"].ToString();
-                        numbersList.Add(Convert.ToString(ckon.sqlDataRd["ARTICLE_NAME"]));
+                        //numbersList.Add(Convert.ToString(ckon.sqlDataRd["ARTICLE_NAME"]));
 
-                        string[] numbersArray = numbersList.ToArray();
-                        numbersList.Clear();
-                        string result = String.Join(", ", numbersArray);
+                        //string[] numbersArray = numbersList.ToArray();
+                        //numbersList.Clear();
+                        //string result = String.Join(", ", numbersArray);
                         int dgRows = dgv_hold.Rows.Add();
                         dgv_hold.Rows[dgRows].Cells[0].Value = id_trans;
-                        dgv_hold.Rows[dgRows].Cells[1].Value = result;
+                        //dgv_hold.Rows[dgRows].Cells[1].Value = result;
                     }
                 }
             }
@@ -258,17 +256,17 @@ namespace try_bi
                         if (ckon.sqlDataRd["total_amount"].ToString() != "")
                         {
                             total_amount = Convert.ToInt32(ckon.sqlDataRd["total_amount"].ToString());
-                            bunifuMaterialTextbox1.Text = string.Format("{0:#,###}" + ",00", total_amount);
+                            l_amount.Text = string.Format("{0:#,###}" + ",00", total_amount);
                         }      
                         else
                         {
-                            bunifuMaterialTextbox1.Text = "0,00";
+                            l_amount.Text = "0,00";
                         }
                     }
                 }
                 else
                 {
-                    bunifuMaterialTextbox1.Text = "0,00";
+                    l_amount.Text = "0,00";
                 }
             }
             catch (Exception e)
@@ -355,9 +353,13 @@ namespace try_bi
                 MessageBox.Show("Pick Item First");
             }
             else
-            {               
+            {
+                String cmd_update = "UPDATE returnorder SET TOTAL_QTY='" + l_qty.Text + "', TOTAL_AMOUNT='" + l_amount.Text + "', NO_SJ='" + no_sj.Text + "' WHERE RETURN_ORDER_ID = '" + l_transaksi.Text + "'";
+                CRUD update = new CRUD();
+                update.ExecuteNonQuery(cmd_update);
+
                 new_invoice();
-                set_running_number();
+                //set_running_number();
                 holding();
                 dgv_request.Rows.Clear();
                 l_qty.Text = "0";
@@ -530,7 +532,7 @@ namespace try_bi
         public void reset()
         {
             l_qty.Text = "0";
-            bunifuMaterialTextbox1.Text = "0,00";
+            l_amount.Text = "0,00";
             no_sj.Text = "";
             dgv_request.Rows.Clear();
         }

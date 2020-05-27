@@ -17,8 +17,8 @@ namespace try_bi
         public static Form1 f1;
         
         koneksi ckon = new koneksi();
-        int change, cash, cash2, bg_ToCasir, qty_article;
-        Double value1, value_budget, petty_label, cash_label, value_modal, deposit_label, deposit_label2;
+        int change, cash, cash2, bg_ToCasir, qty_article, edc;
+        Double valueCash, valueEDC, value_budget, petty_label, cash_label, edc_label, value_modal, deposit_label, deposit_label2;
         String id_modal_store, query, shift, real_trans_balance, real_petty_cash, real_deposit, epy_id2, name_id2;
         public String id_shift2;
         int PANTEK_DEPOSIT = 0;
@@ -31,6 +31,7 @@ namespace try_bi
             l_tgl.Text = date_closing_shift3;
             get_code_Shift();
             itung_cash();
+            itung_EDC();
             get_budget();
         }
         //===========================================================================
@@ -143,47 +144,27 @@ namespace try_bi
             //    t_deposite.Text = "";
             //}
         }
-        private void t_deposite_Leave(object sender, EventArgs e)
-        {
-            //deposit_label2 = System.Convert.ToDouble(PANTEK_DEPOSIT);
-            //deposit_label = PANTEK_DEPOSIT - value_modal;
-            //if (deposit_label == 0)
-            //{
-            //    //l_cash_dispute.Text = "0,00";
-            //    //t_cash.Text = "0,00";
-            //    //l_cash_dispute.Text = string.Format("{0:#,###}" + ",00", cash2);
-            //    t_deposite.Text = string.Format("{0:#,###}", deposit_label);
-            //    l_dispute_deposite.Text = "0,00";
-            //}
-            //else
-            //{
-            //    l_dispute_deposite.Text = String.Format("{0:#,###}" + ",00", deposit_label);
-            //}
-        }
+        
         //=======SEPARATOR TEXTBOXT UNTUK MEMBERIKAN KOMA DI KOLOM TEXTBOXT=============================================
         private void t_cash_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
                 if (t_cash.Text == "")
-                {
-                    //t_cash.Text = string.Format("{0:#,###}", cash2);
-                    //t_cash.Select(t_cash.Text.Length, 0);
-                    //l_cash_dispute.Text = "0,00";
-
+                {                   
                     //COBA FUNGSI AGAAR SAAT T_CASH KOSONG, PUNYA KESEMPATAN INPUT NILAI BEBAS, TIDAK LANGSUNG DI SET KE HARGA CASH
-                    value1 = 0; cash_label = System.Convert.ToDouble(cash2);
-                    cash_label = value1 - cash_label;
+                    valueCash = 0; cash_label = System.Convert.ToDouble(cash2);
+                    cash_label = valueCash - cash_label;
                     l_cash_dispute.Text = String.Format("{0:#,###}" + ",00", cash_label);
                 }
                 else
                 {
-                    value1 = double.Parse(t_cash.Text);
-                    t_cash.Text = string.Format("{0:#,###}", value1);
+                    valueCash = double.Parse(t_cash.Text);
+                    t_cash.Text = string.Format("{0:#,###}", valueCash);
                     t_cash.Select(t_cash.Text.Length, 0);
                     //=======COBA FUNGSI WAKTU DI INPUT LANGSUNG KEHITUNG
                     cash_label = System.Convert.ToDouble(cash2);
-                    cash_label = value1 - cash_label;
+                    cash_label = valueCash - cash_label;
                     if (cash_label == 0)
                     {
                         t_cash.Text = string.Format("{0:#,###}", cash2);
@@ -201,25 +182,43 @@ namespace try_bi
                 t_cash.Text = "";
             }
         }
-        //==========================FOCUS MENINGGALKAN TEXTBOX CASH=======================================================
-        private void t_cash_Leave(object sender, EventArgs e)
+
+        private void t_edc_KeyUp(object sender, KeyEventArgs e)
         {
-            //cash_label = System.Convert.ToDouble(cash2);
-            //cash_label = value1 - cash_label;
-            //if (cash_label == 0)
-            //{
-            //    //l_cash_dispute.Text = "0,00";
-            //    //t_cash.Text = "0,00";
-            //    //l_cash_dispute.Text = string.Format("{0:#,###}" + ",00", cash2);
-            //    t_cash.Text = string.Format("{0:#,###}", cash2);
-            //    l_cash_dispute.Text = "0,00";
-            //}
-            //else
-            //{
-            //    l_cash_dispute.Text = String.Format("{0:#,###}" + ",00", cash_label);
-            //}
+            try
+            {
+                if (t_edc.Text == "")
+                {
+                    //COBA FUNGSI AGAAR SAAT T_CASH KOSONG, PUNYA KESEMPATAN INPUT NILAI BEBAS, TIDAK LANGSUNG DI SET KE HARGA CASH
+                    valueEDC = 0; edc_label = System.Convert.ToDouble(edc);
+                    edc_label = valueEDC - edc_label;
+                    l_edc_dispute.Text = String.Format("{0:#,###}" + ",00", edc_label);
+                }
+                else
+                {
+                    valueEDC = double.Parse(t_edc.Text);
+                    t_edc.Text = string.Format("{0:#,###}", valueEDC);
+                    t_edc.Select(t_edc.Text.Length, 0);
+                    //=======COBA FUNGSI WAKTU DI INPUT LANGSUNG KEHITUNG
+                    edc_label = System.Convert.ToDouble(edc);
+                    edc_label = valueEDC - edc_label;
+                    if (edc_label == 0)
+                    {
+                        t_edc.Text = string.Format("{0:#,###}", edc);
+                        l_edc_dispute.Text = "0,00";
+                    }
+                    else
+                    {
+                        l_edc_dispute.Text = String.Format("{0:#,###}" + ",00", edc_label);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please Input Number");
+                t_edc.Text = "";
+            }
         }
-        //=======================================================================================================
 
         //================SEPARATOR FOR TEXTBOXT PETTY CASH=========================================================
         private void t_petty_KeyUp(object sender, KeyEventArgs e)
@@ -258,23 +257,7 @@ namespace try_bi
                 t_petty.Text = "";
             }
         }
-        //===============FOCUSS MENINGGALKAN TEXTBOX PETTY CASH========================================
-        private void t_petty_Leave(object sender, EventArgs e)
-        {
-            //petty_label = System.Convert.ToDouble(bg_ToCasir);
-            //petty_label = value_budget - petty_label;
-            //if (petty_label == 0)
-            //{
-            //    //l_dispute_petty.Text = string.Format("{0:#,###}" + ",00", bg_ToCasir);
-            //    t_petty.Text = string.Format("{0:#,###}", bg_ToCasir);
-            //    l_dispute_petty.Text = "0,00";
-            //}
-            //else
-            //{
-            //    l_dispute_petty.Text = String.Format("{0:#,###}" + ",00", petty_label);
-            //}
-        }
-        //=================================================================================================
+        
         //===================ambil dia shift berapa berdasarkan _id dari form sebelum nya===================
         public void get_code_Shift()
         {
@@ -405,13 +388,13 @@ namespace try_bi
                 {
                     l_cash.Text = "0,00";
                     t_cash.Text = "0,00";
-                    value1 = cash2;
+                    valueCash = cash2;
                 }
                 else
                 {
                     l_cash.Text = string.Format("{0:#,###}" + ",00", cash2);
                     t_cash.Text = string.Format("{0:#,###}", cash2);
-                    value1 = cash2;
+                    valueCash = cash2;
                 }
             }
             catch (Exception e)
@@ -426,6 +409,55 @@ namespace try_bi
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
             }            
+        }
+
+        public void itung_EDC()
+        {
+            CRUD sql = new CRUD();
+
+            try
+            {
+                ckon.sqlCon().Open();
+                String cmd_transEdc = "SELECT SUM(EDC + EDC2) as total FROM [transaction] WHERE ID_SHIFT='" + id_shift2 + "' AND (STATUS='1' or STATUS='2')";
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd_transEdc, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        edc = Convert.ToInt32(ckon.sqlDataRd["total"].ToString());
+                    }
+                }
+                else
+                {
+                    edc = 0;
+                }
+
+                if (edc <= 0)
+                {
+                    l_edc.Text = "0,00";
+                    t_edc.Text = "0,00";
+                    valueEDC = edc;
+                }
+                else
+                {
+                    l_edc.Text = string.Format("{0:#,###}" + ",00", edc);
+                    t_edc.Text = string.Format("{0:#,###}", edc);
+                    valueEDC = edc;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (ckon.sqlDataRd != null)
+                    ckon.sqlDataRd.Close();
+
+                if (ckon.sqlCon().State == ConnectionState.Open)
+                    ckon.sqlCon().Close();
+            }
         }
         
         //==================mengambil NILAI OPENING BALANCE CASH DARI TABEL CLOSE SHIFT=============
@@ -511,25 +543,27 @@ namespace try_bi
         //===================method for update into table closing shift=====================
         public void update()
         {
+            double closingTrans, realTrans, disputeTrans;
+
             if(shift=="1")
             {
-                get_opening_close();
-                DateTime mydate = DateTime.Now;
-                String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
-                String cmd_update = "UPDATE closing_shift SET CLOSING_TIME='" + time_now + "',  CLOSING_TRANS_BALANCE='" + cash2 + "', REAL_TRANS_BALANCE='" + value1 + "', DISPUTE_TRANS_BALANCE='" + cash_label + "',  CLOSING_PETTY_CASH='" + bg_ToCasir + "',REAL_PETTY_CASH='" + value_budget + "', DISPUTE_PETTY_CASH='" + petty_label + "',CLOSING_DEPOSIT='0',REAL_DEPOSIT='"+ value_modal +"',DISPUTE_DEPOSIT='"+ deposit_label +"',TOTAL_QTY='"+ qty_article + "' ,STATUS_CLOSE='1', EMPLOYEE_ID='"+ epy_id2 +"', EMPLOYEE_NAME='"+ name_id2 +"' WHERE ID_SHIFT='" + id_shift2 + "'";
-                CRUD update = new CRUD();
-                update.ExecuteNonQuery(cmd_update);
+                get_opening_close();                
             }
             if(shift=="2")
             {
-                get_opening();
-                DateTime mydate = DateTime.Now;
-                String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
-                String cmd_update = "UPDATE closing_shift SET CLOSING_TIME='" + time_now + "',CLOSING_TRANS_BALANCE='" + cash2 + "', REAL_TRANS_BALANCE='" + value1 + "', DISPUTE_TRANS_BALANCE='" + cash_label + "',CLOSING_PETTY_CASH='" + bg_ToCasir + "',REAL_PETTY_CASH='" + value_budget + "', DISPUTE_PETTY_CASH='" + petty_label + "',CLOSING_DEPOSIT='0',REAL_DEPOSIT='" + value_modal + "',DISPUTE_DEPOSIT='" + deposit_label + "',TOTAL_QTY='" + qty_article + "' , STATUS_CLOSE='1', EMPLOYEE_ID='" + epy_id2 + "', EMPLOYEE_NAME='" + name_id2 + "' WHERE ID_SHIFT='" + id_shift2 + "'";
-                CRUD update = new CRUD();
-                update.ExecuteNonQuery(cmd_update);
+                get_opening();                
             }
 
+            closingTrans = cash2 + edc;
+            realTrans = valueCash + valueEDC;
+            disputeTrans = cash_label + edc_label;
+
+
+            DateTime mydate = DateTime.Now;
+            String time_now = mydate.ToString("yyyy-MM-dd H:mm:ss");
+            String cmd_update = "UPDATE closing_shift SET CLOSING_TIME='" + time_now + "',  CLOSING_TRANS_BALANCE='" + closingTrans + "', REAL_TRANS_BALANCE='" + realTrans + "', DISPUTE_TRANS_BALANCE='" + disputeTrans + "',  CLOSING_PETTY_CASH='" + bg_ToCasir + "',REAL_PETTY_CASH='" + value_budget + "', DISPUTE_PETTY_CASH='" + petty_label + "',CLOSING_DEPOSIT='0',REAL_DEPOSIT='" + value_modal + "',DISPUTE_DEPOSIT='" + deposit_label + "',TOTAL_QTY='" + qty_article + "' ,STATUS_CLOSE='1', EMPLOYEE_ID='" + epy_id2 + "', EMPLOYEE_NAME='" + name_id2 + "' WHERE ID_SHIFT='" + id_shift2 + "'";
+            CRUD update = new CRUD();
+            update.ExecuteNonQuery(cmd_update);
         }
     }
 }

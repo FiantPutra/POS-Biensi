@@ -49,6 +49,10 @@
             this.l_tgl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.b_close = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.label9 = new System.Windows.Forms.Label();
+            this.t_edc = new System.Windows.Forms.TextBox();
+            this.l_edc = new System.Windows.Forms.Label();
+            this.l_edc_dispute = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // b_ok
@@ -69,10 +73,10 @@
             this.b_ok.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.b_ok.IdleForecolor = System.Drawing.Color.White;
             this.b_ok.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_ok.Location = new System.Drawing.Point(468, 269);
+            this.b_ok.Location = new System.Drawing.Point(426, 331);
             this.b_ok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_ok.Name = "b_ok";
-            this.b_ok.Size = new System.Drawing.Size(367, 59);
+            this.b_ok.Size = new System.Drawing.Size(409, 59);
             this.b_ok.TabIndex = 37;
             this.b_ok.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.b_ok.Click += new System.EventHandler(this.b_ok_Click);
@@ -82,7 +86,7 @@
             this.l_dispute_petty.AutoSize = true;
             this.l_dispute_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_petty.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_petty.Location = new System.Drawing.Point(661, 212);
+            this.l_dispute_petty.Location = new System.Drawing.Point(661, 269);
             this.l_dispute_petty.Name = "l_dispute_petty";
             this.l_dispute_petty.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_petty.TabIndex = 36;
@@ -93,7 +97,7 @@
             this.l_dispute_deposite.AutoSize = true;
             this.l_dispute_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_deposite.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_deposite.Location = new System.Drawing.Point(661, 167);
+            this.l_dispute_deposite.Location = new System.Drawing.Point(661, 220);
             this.l_dispute_deposite.Name = "l_dispute_deposite";
             this.l_dispute_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_deposite.TabIndex = 35;
@@ -115,26 +119,24 @@
             this.t_petty.BackColor = System.Drawing.Color.White;
             this.t_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_petty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_petty.Location = new System.Drawing.Point(426, 206);
+            this.t_petty.Location = new System.Drawing.Point(426, 263);
             this.t_petty.Name = "t_petty";
             this.t_petty.Size = new System.Drawing.Size(181, 29);
             this.t_petty.TabIndex = 33;
             this.t_petty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.t_petty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_petty_KeyUp);
-            this.t_petty.Leave += new System.EventHandler(this.t_petty_Leave);
+            this.t_petty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_petty_KeyUp);      
             // 
             // t_deposite
             // 
             this.t_deposite.BackColor = System.Drawing.Color.White;
             this.t_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_deposite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_deposite.Location = new System.Drawing.Point(426, 161);
+            this.t_deposite.Location = new System.Drawing.Point(426, 214);
             this.t_deposite.Name = "t_deposite";
             this.t_deposite.Size = new System.Drawing.Size(181, 29);
             this.t_deposite.TabIndex = 32;
             this.t_deposite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.t_deposite.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_deposite_KeyUp);
-            this.t_deposite.Leave += new System.EventHandler(this.t_deposite_Leave);
+            this.t_deposite.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_deposite_KeyUp);            
             // 
             // t_cash
             // 
@@ -147,14 +149,13 @@
             this.t_cash.TabIndex = 31;
             this.t_cash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_cash.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_cash_KeyUp);
-            this.t_cash.Leave += new System.EventHandler(this.t_cash_Leave);
             // 
             // l_petty
             // 
             this.l_petty.AutoSize = true;
             this.l_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_petty.ForeColor = System.Drawing.Color.Black;
-            this.l_petty.Location = new System.Drawing.Point(237, 212);
+            this.l_petty.Location = new System.Drawing.Point(237, 269);
             this.l_petty.Name = "l_petty";
             this.l_petty.Size = new System.Drawing.Size(124, 20);
             this.l_petty.TabIndex = 30;
@@ -165,7 +166,7 @@
             this.l_deposite.AutoSize = true;
             this.l_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_deposite.ForeColor = System.Drawing.Color.Black;
-            this.l_deposite.Location = new System.Drawing.Point(237, 167);
+            this.l_deposite.Location = new System.Drawing.Point(237, 220);
             this.l_deposite.Name = "l_deposite";
             this.l_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_deposite.TabIndex = 29;
@@ -187,7 +188,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(18, 212);
+            this.label8.Location = new System.Drawing.Point(18, 269);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(149, 20);
             this.label8.TabIndex = 27;
@@ -198,7 +199,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(18, 167);
+            this.label7.Location = new System.Drawing.Point(18, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 20);
             this.label7.TabIndex = 26;
@@ -297,21 +298,70 @@
             this.b_close.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.b_close.IdleForecolor = System.Drawing.Color.White;
             this.b_close.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.b_close.Location = new System.Drawing.Point(22, 269);
+            this.b_close.Location = new System.Drawing.Point(13, 331);
             this.b_close.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_close.Name = "b_close";
-            this.b_close.Size = new System.Drawing.Size(367, 59);
+            this.b_close.Size = new System.Drawing.Size(409, 59);
             this.b_close.TabIndex = 38;
             this.b_close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.b_close.Click += new System.EventHandler(this.b_close_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(18, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(201, 20);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "Total Transaction EDC";
+            // 
+            // t_edc
+            // 
+            this.t_edc.BackColor = System.Drawing.Color.White;
+            this.t_edc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.t_edc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.t_edc.Location = new System.Drawing.Point(426, 164);
+            this.t_edc.Name = "t_edc";
+            this.t_edc.Size = new System.Drawing.Size(181, 29);
+            this.t_edc.TabIndex = 40;
+            this.t_edc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.t_edc.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_edc_KeyUp);
+            // 
+            // l_edc
+            // 
+            this.l_edc.AutoSize = true;
+            this.l_edc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_edc.ForeColor = System.Drawing.Color.Black;
+            this.l_edc.Location = new System.Drawing.Point(237, 170);
+            this.l_edc.Name = "l_edc";
+            this.l_edc.Size = new System.Drawing.Size(124, 20);
+            this.l_edc.TabIndex = 41;
+            this.l_edc.Text = "26.000.000,00";
+            // 
+            // l_edc_dispute
+            // 
+            this.l_edc_dispute.AutoSize = true;
+            this.l_edc_dispute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_edc_dispute.ForeColor = System.Drawing.Color.Black;
+            this.l_edc_dispute.Location = new System.Drawing.Point(661, 170);
+            this.l_edc_dispute.Name = "l_edc_dispute";
+            this.l_edc_dispute.Size = new System.Drawing.Size(44, 20);
+            this.l_edc_dispute.TabIndex = 42;
+            this.l_edc_dispute.Text = "0,00";
             // 
             // w_form_closing_shift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(848, 342);
+            this.ClientSize = new System.Drawing.Size(848, 402);
             this.ControlBox = false;
+            this.Controls.Add(this.l_edc_dispute);
+            this.Controls.Add(this.l_edc);
+            this.Controls.Add(this.t_edc);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.b_close);
             this.Controls.Add(this.b_ok);
             this.Controls.Add(this.l_dispute_petty);
@@ -363,5 +413,9 @@
         private System.Windows.Forms.Label l_tgl;
         private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuThinButton2 b_close;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox t_edc;
+        private System.Windows.Forms.Label l_edc;
+        private System.Windows.Forms.Label l_edc_dispute;
     }
 }

@@ -24,7 +24,7 @@ namespace try_bi
             //aLink = "http://mpos.biensicore.co.id";
 
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("C:/Program Files (x86)/Pos Biensi/xmlConn.xml");
+            xmlDoc.Load("C:/Program Files/Pos Biensi/xmlConn.xml");
 
             string xpath = "Table/Product";
             var nodes = xmlDoc.SelectNodes(xpath);

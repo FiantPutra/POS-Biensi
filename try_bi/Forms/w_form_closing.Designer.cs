@@ -49,6 +49,10 @@
             this.l_dispute_petty = new System.Windows.Forms.Label();
             this.b_ok = new Bunifu.Framework.UI.BunifuThinButton2();
             this.b_cancel = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.label9 = new System.Windows.Forms.Label();
+            this.t_edc = new System.Windows.Forms.TextBox();
+            this.l_edc = new System.Windows.Forms.Label();
+            this.l_edc_dispute = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -131,7 +135,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(12, 182);
+            this.label7.Location = new System.Drawing.Point(12, 248);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 20);
             this.label7.TabIndex = 7;
@@ -142,7 +146,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(12, 227);
+            this.label8.Location = new System.Drawing.Point(12, 303);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(149, 20);
             this.label8.TabIndex = 8;
@@ -164,7 +168,7 @@
             this.l_deposite.AutoSize = true;
             this.l_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_deposite.ForeColor = System.Drawing.Color.Black;
-            this.l_deposite.Location = new System.Drawing.Point(231, 182);
+            this.l_deposite.Location = new System.Drawing.Point(231, 248);
             this.l_deposite.Name = "l_deposite";
             this.l_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_deposite.TabIndex = 10;
@@ -175,7 +179,7 @@
             this.l_petty.AutoSize = true;
             this.l_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_petty.ForeColor = System.Drawing.Color.Black;
-            this.l_petty.Location = new System.Drawing.Point(231, 227);
+            this.l_petty.Location = new System.Drawing.Point(231, 303);
             this.l_petty.Name = "l_petty";
             this.l_petty.Size = new System.Drawing.Size(124, 20);
             this.l_petty.TabIndex = 11;
@@ -186,22 +190,21 @@
             this.t_cash.BackColor = System.Drawing.Color.White;
             this.t_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_cash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_cash.Location = new System.Drawing.Point(420, 131);
+            this.t_cash.Location = new System.Drawing.Point(417, 131);
             this.t_cash.Name = "t_cash";
             this.t_cash.Size = new System.Drawing.Size(181, 29);
             this.t_cash.TabIndex = 12;
             this.t_cash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_cash.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_cash_KeyUp);
-            this.t_cash.Leave += new System.EventHandler(this.t_cash_Leave);
             // 
             // t_deposite
             // 
             this.t_deposite.BackColor = System.Drawing.Color.White;
             this.t_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_deposite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_deposite.Location = new System.Drawing.Point(420, 179);
+            this.t_deposite.Location = new System.Drawing.Point(417, 242);
             this.t_deposite.Name = "t_deposite";
-            this.t_deposite.Size = new System.Drawing.Size(182, 29);
+            this.t_deposite.Size = new System.Drawing.Size(181, 29);
             this.t_deposite.TabIndex = 13;
             this.t_deposite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_deposite.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_deposite_KeyUp);
@@ -212,14 +215,13 @@
             this.t_petty.BackColor = System.Drawing.Color.White;
             this.t_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_petty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.t_petty.Location = new System.Drawing.Point(420, 224);
+            this.t_petty.Location = new System.Drawing.Point(417, 297);
             this.t_petty.Name = "t_petty";
             this.t_petty.Size = new System.Drawing.Size(181, 29);
             this.t_petty.TabIndex = 14;
             this.t_petty.Text = " ";
             this.t_petty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t_petty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_petty_KeyUp);
-            this.t_petty.Leave += new System.EventHandler(this.t_petty_Leave);
             // 
             // l_cash_dispute
             // 
@@ -237,7 +239,7 @@
             this.l_dispute_deposite.AutoSize = true;
             this.l_dispute_deposite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_deposite.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_deposite.Location = new System.Drawing.Point(655, 182);
+            this.l_dispute_deposite.Location = new System.Drawing.Point(655, 248);
             this.l_dispute_deposite.Name = "l_dispute_deposite";
             this.l_dispute_deposite.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_deposite.TabIndex = 16;
@@ -248,7 +250,7 @@
             this.l_dispute_petty.AutoSize = true;
             this.l_dispute_petty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_dispute_petty.ForeColor = System.Drawing.Color.Black;
-            this.l_dispute_petty.Location = new System.Drawing.Point(655, 227);
+            this.l_dispute_petty.Location = new System.Drawing.Point(655, 303);
             this.l_dispute_petty.Name = "l_dispute_petty";
             this.l_dispute_petty.Size = new System.Drawing.Size(44, 20);
             this.l_dispute_petty.TabIndex = 17;
@@ -272,10 +274,10 @@
             this.b_ok.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.b_ok.IdleForecolor = System.Drawing.Color.White;
             this.b_ok.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_ok.Location = new System.Drawing.Point(458, 281);
+            this.b_ok.Location = new System.Drawing.Point(429, 369);
             this.b_ok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_ok.Name = "b_ok";
-            this.b_ok.Size = new System.Drawing.Size(367, 59);
+            this.b_ok.Size = new System.Drawing.Size(406, 59);
             this.b_ok.TabIndex = 18;
             this.b_ok.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.b_ok.Click += new System.EventHandler(this.b_ok_Click);
@@ -298,21 +300,70 @@
             this.b_cancel.IdleFillColor = System.Drawing.Color.Red;
             this.b_cancel.IdleForecolor = System.Drawing.Color.White;
             this.b_cancel.IdleLineColor = System.Drawing.Color.Red;
-            this.b_cancel.Location = new System.Drawing.Point(13, 281);
+            this.b_cancel.Location = new System.Drawing.Point(13, 369);
             this.b_cancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_cancel.Name = "b_cancel";
-            this.b_cancel.Size = new System.Drawing.Size(367, 59);
+            this.b_cancel.Size = new System.Drawing.Size(406, 59);
             this.b_cancel.TabIndex = 19;
             this.b_cancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.b_cancel.Click += new System.EventHandler(this.b_cancel_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(12, 193);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(201, 20);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Total Transaction EDC";
+            // 
+            // t_edc
+            // 
+            this.t_edc.BackColor = System.Drawing.Color.White;
+            this.t_edc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.t_edc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.t_edc.Location = new System.Drawing.Point(417, 187);
+            this.t_edc.Name = "t_edc";
+            this.t_edc.Size = new System.Drawing.Size(181, 29);
+            this.t_edc.TabIndex = 21;
+            this.t_edc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.t_edc.KeyUp += new System.Windows.Forms.KeyEventHandler(this.t_edc_KeyUp);
+            // 
+            // l_edc
+            // 
+            this.l_edc.AutoSize = true;
+            this.l_edc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_edc.ForeColor = System.Drawing.Color.Black;
+            this.l_edc.Location = new System.Drawing.Point(231, 193);
+            this.l_edc.Name = "l_edc";
+            this.l_edc.Size = new System.Drawing.Size(124, 20);
+            this.l_edc.TabIndex = 22;
+            this.l_edc.Text = "26.000.000,00";
+            // 
+            // l_edc_dispute
+            // 
+            this.l_edc_dispute.AutoSize = true;
+            this.l_edc_dispute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_edc_dispute.ForeColor = System.Drawing.Color.Black;
+            this.l_edc_dispute.Location = new System.Drawing.Point(655, 193);
+            this.l_edc_dispute.Name = "l_edc_dispute";
+            this.l_edc_dispute.Size = new System.Drawing.Size(44, 20);
+            this.l_edc_dispute.TabIndex = 23;
+            this.l_edc_dispute.Text = "0,00";
             // 
             // w_form_closing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(848, 342);
+            this.ClientSize = new System.Drawing.Size(848, 443);
             this.ControlBox = false;
+            this.Controls.Add(this.l_edc_dispute);
+            this.Controls.Add(this.l_edc);
+            this.Controls.Add(this.t_edc);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_ok);
             this.Controls.Add(this.l_dispute_petty);
@@ -364,5 +415,9 @@
         private System.Windows.Forms.Label l_dispute_petty;
         private Bunifu.Framework.UI.BunifuThinButton2 b_ok;
         private Bunifu.Framework.UI.BunifuThinButton2 b_cancel;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox t_edc;
+        private System.Windows.Forms.Label l_edc;
+        private System.Windows.Forms.Label l_edc_dispute;
     }
 }
