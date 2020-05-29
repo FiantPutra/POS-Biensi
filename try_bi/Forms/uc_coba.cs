@@ -490,8 +490,8 @@ namespace try_bi
                             totall = 0;
                             totall_real = 0;
                         }
-                        
-                        totall = totall - get_dis_vou;
+
+                        //totall = totall - get_dis_vou;                        
 
                         if (totall == 0)
                             l_total.Text = "0,00";
