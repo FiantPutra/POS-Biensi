@@ -160,8 +160,8 @@ namespace try_bi
             DiscountAfterUsePromNew afteruser = new DiscountAfterUsePromNew();
             afteruser.retreive(trans_id, kodetoko3, custid3);
 
-            uc_coba.Instance.retreive();
-            uc_coba.Instance.itung_total();
+            //uc_coba.Instance.retreive();
+            //uc_coba.Instance.itung_total();
             //====tutup dialog===
             this.Close();
         }

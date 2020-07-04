@@ -57,6 +57,11 @@ namespace try_bi
             }
             catch (Exception e)
             {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Upload background " + e.Message.ToString(), EventLogEntryType.Information, 101, 1);
+                }
                 MessageBox.Show(e.ToString(), "No Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -100,6 +105,11 @@ namespace try_bi
             }
             catch (Exception e)
             {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Upload background " + e.Message.ToString(), EventLogEntryType.Information, 101, 1);
+                }
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -142,19 +152,25 @@ namespace try_bi
 
                 Stream reqStream = request.GetRequestStream();
                 reqStream.Write(buffer, 0, buffer.Length);
-                reqStream.Close();               
+                reqStream.Close();
 
                 uploadSyncDetail.uploadSync(syncDetail);
+                
+                string cmd_insert = "IF NOT EXISTS (SELECT * FROM JobSynchDetailUploadStatus WHERE SynchDetail = '" + syncDetail + "') " +
+                                            "BEGIN " +
+                                            "INSERT INTO JobSynchDetailUploadStatus(SynchDetail, RowFatch, RowApplied, Status) " +
+                                            "VALUES('" + syncDetail + "', '" + rowFatch + "', 0, 1) " +
+                                            "END";
 
-                String cmd_insert = "IF NOT EXISTS (SELECT * FROM JobSynchDetailUploadStatus WHERE SynchDetail = '" + syncDetail + "') " +
-                                           "BEGIN " +
-                                           "INSERT INTO JobSynchDetailUploadStatus(SynchDetail, RowFatch, RowApplied, Status) " +
-                                           "VALUES('" + syncDetail + "', '" + rowFatch + "', 0, 1) " +
-                                           "END";
-                sql.ExecuteNonQueryMsg(cmd_insert);
+                sql.ExecuteNonQueryMsg(cmd_insert);                             
             }
             catch (Exception e)
             {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Upload background " + e.Message.ToString() , EventLogEntryType.Information, 101, 1);
+                }
                 MessageBox.Show(e.ToString());
             }
         }

@@ -243,7 +243,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT deliveryorder_line._id, deliveryorder_line.QTY_DELIVER, deliveryorder_line.QTY_RECEIVE, deliveryorder_line.QTY_DISPUTE, deliveryorder_line.PACKING_NUMBER ,article.ARTICLE_ID,article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID FROM deliveryorder_line, article WHERE deliveryorder_line.ARTICLE_ID = article.ARTICLE_ID AND deliveryorder_line.DELIVERY_ORDER_ID='" + id_do_new + "'";
+                String cmd = "SELECT deliveryorder_line._id, deliveryorder_line.QTY_DELIVER, deliveryorder_line.QTY_RECEIVE, deliveryorder_line.QTY_DISPUTE, deliveryorder_line.PACKING_NUMBER ,article.ARTICLE_ID,article.ARTICLE_NAME, itemdimensionsize.Description as SIZE_ID, itemdimensioncolor.Description as COLOR_ID FROM deliveryorder_line, article, itemdimensioncolor, itemdimensionsize WHERE deliveryorder_line.ARTICLE_ID = article.ARTICLE_ID AND itemdimensioncolor.Id = article.COLOR_ID AND itemdimensionsize.Id = article.SIZE_ID AND deliveryorder_line.DELIVERY_ORDER_ID='" + id_do_new + "'";
                 ckon.dt = sql.ExecuteDataTable(cmd, ckon.sqlCon());
 
                 foreach (DataRow row in ckon.dt.Rows)

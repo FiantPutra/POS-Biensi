@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.b_back2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.b_uploadFTP = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgv_UploadFile = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -44,8 +43,8 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.upload_date = new MetroFramework.Controls.MetroDateTime();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.b_back2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UploadFile)).BeginInit();
             this.SuspendLayout();
@@ -56,27 +55,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.b_back2);
+            this.panel1.Controls.Add(this.upload_date);
             this.panel1.Controls.Add(this.b_uploadFTP);
             this.panel1.Location = new System.Drawing.Point(15, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1184, 66);
             this.panel1.TabIndex = 16;
-            // 
-            // b_back2
-            // 
-            this.b_back2.BackColor = System.Drawing.Color.Transparent;
-            this.b_back2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.b_back2.Image = ((System.Drawing.Image)(resources.GetObject("b_back2.Image")));
-            this.b_back2.ImageActive = null;
-            this.b_back2.Location = new System.Drawing.Point(1046, 10);
-            this.b_back2.Name = "b_back2";
-            this.b_back2.Size = new System.Drawing.Size(124, 46);
-            this.b_back2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.b_back2.TabIndex = 15;
-            this.b_back2.TabStop = false;
-            this.b_back2.Zoom = 0;
-            this.b_back2.Click += new System.EventHandler(this.b_back2_Click);
             // 
             // b_uploadFTP
             // 
@@ -210,6 +194,17 @@
             this.Column4.ReadOnly = true;
             this.Column4.Width = 200;
             // 
+            // upload_date
+            // 
+            this.upload_date.CustomFormat = "yyyy-MM-dd";
+            this.upload_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.upload_date.Location = new System.Drawing.Point(256, 18);
+            this.upload_date.MinimumSize = new System.Drawing.Size(0, 29);
+            this.upload_date.Name = "upload_date";
+            this.upload_date.Size = new System.Drawing.Size(186, 29);
+            this.upload_date.TabIndex = 18;
+            this.upload_date.ValueChanged += new System.EventHandler(this.upload_date_ValueChanged);
+            // 
             // UC_SyncUploadFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,7 +214,6 @@
             this.Name = "UC_SyncUploadFile";
             this.Size = new System.Drawing.Size(1214, 684);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.b_back2)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UploadFile)).EndInit();
             this.ResumeLayout(false);
@@ -237,6 +231,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private Bunifu.Framework.UI.BunifuThinButton2 b_uploadFTP;
-        private Bunifu.Framework.UI.BunifuImageButton b_back2;
+        private MetroFramework.Controls.MetroDateTime upload_date;
     }
 }

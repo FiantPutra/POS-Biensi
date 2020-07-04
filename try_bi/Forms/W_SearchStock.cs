@@ -24,6 +24,8 @@ namespace try_bi
         public static Form1 f1;
         koneksi ckon = new koneksi();        
         public string articleId, articleName, price, transactionId, spgId, store;
+        public bool holdTrans;
+
         public W_SearchStock(Form1 form1)
         {
             f1 = form1;
@@ -115,14 +117,13 @@ namespace try_bi
             }
         }
 
-        public void get_data(string _artId, string _artName, string _artPrice, string _transId, string _spgId, string storeCode)
+        public void get_data(string _artId, string _artName, string _artPrice, string _transId, string _spgId)
         {
             articleId = _artId;
             articleName = _artName;
             price = _artPrice;
             transactionId = _transId;
-            spgId = _spgId;
-            store = storeCode;
+            spgId = _spgId;            
         }
 
         public void retreive()
@@ -140,7 +141,7 @@ namespace try_bi
                 for (int i = 0; i < stockList.Count; i++)
                 {
                     int dgRows = dgv_SearchStock.Rows.Add();
-                    dgv_SearchStock.Rows[dgRows].Cells[0].Value = stockList[i].storeCode + " - " + stockList[i].city;
+                    dgv_SearchStock.Rows[dgRows].Cells[0].Value = stockList[i].storeCode;
                     dgv_SearchStock.Rows[dgRows].Cells[1].Value = stockList[i].qty;
                     dgv_SearchStock.Rows[dgRows].Cells[2].Value = "0";
                     dgv_SearchStock.Rows[dgRows].Cells[3].Value = string.Format(new CultureInfo("id-ID"), "{0:c} ", stockList[i].minOngkir) + " - " + string.Format(new CultureInfo("id-ID"), "{0:c} ", stockList[i].maxOngkir);                    

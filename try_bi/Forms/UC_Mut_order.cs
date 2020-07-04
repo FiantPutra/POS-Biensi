@@ -245,7 +245,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT  mutasiorder_line.ARTICLE_ID ,mutasiorder_line.QUANTITY, mutasiorder_line.UNIT,mutasiorder_line.SUBTOTAL, article._id,article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE FROM mutasiorder_line, article  WHERE article.ARTICLE_ID = mutasiorder_line.ARTICLE_ID AND mutasiorder_line.MUTASI_ORDER_ID='" + l_transaksi.Text + "' ";
+                String cmd = "SELECT  mutasiorder_line.ARTICLE_ID ,mutasiorder_line.QUANTITY, mutasiorder_line.UNIT,mutasiorder_line.SUBTOTAL, article._id,article.ARTICLE_NAME, itemdimensionsize.Description as SIZE_ID, itemdimensioncolor.Description as COLOR_ID, article.PRICE FROM mutasiorder_line, article, itemdimensioncolor, itemdimensionsize  WHERE article.ARTICLE_ID = mutasiorder_line.ARTICLE_ID AND itemdimensioncolor.Id = article.COLOR_ID AND itemdimensionsize.Id = article.SIZE_ID AND mutasiorder_line.MUTASI_ORDER_ID='" + l_transaksi.Text + "' ";
                 if (filter != "")
                 {
                     filter = filter.Replace("ARTICLE_ID", "mutasiorder_line.ARTICLE_ID");
@@ -526,7 +526,7 @@ namespace try_bi
                 try
                 {
                     ckon.sqlCon().Open();
-                    String cmd = "SELECT * FROM inventory WHERE _id = '" + _id2 + "'";
+                    String cmd = "SELECT * FROM inventory WHERE ARTICLE_ID = '" + _id2 + "'";
                     ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                     if (ckon.sqlDataRd.HasRows)
@@ -615,7 +615,9 @@ namespace try_bi
             {
                 if(e.KeyChar == (char)Keys.Enter)
                 {
-                    if(Properties.Settings.Default.OnnOrOff == "Offline")
+                    updateInventArticle();
+
+                    if (Properties.Settings.Default.OnnOrOff == "Offline")
                     {
                         //====HIT INVEN LOCAL==========================
                         API_Inventory InvLocal = new API_Inventory();
@@ -792,6 +794,8 @@ namespace try_bi
         //========================SEARCH ARTICLE ===============================================
         private void b_search_Click(object sender, EventArgs e)
         {
+            updateInventArticle();
+
             this.ActiveControl = t_barcode;
             t_barcode.Focus();
             MO_SearchArticle ro_search = new MO_SearchArticle();
@@ -1089,6 +1093,39 @@ namespace try_bi
                     ckon.sqlCon().Close();
             }
 
+        }
+
+        public void updateInventArticle()
+        {
+            CRUD sql = new CRUD();
+            int inventArtId;
+
+            try
+            {
+                ckon.sqlCon().Open();
+                String cmd = "SELECT ARTICLE_ID FROM inventory GROUP BY ARTICLE_ID HAVING COUNT(*) > 1";
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        inventArtId = Convert.ToInt32(ckon.sqlDataRd["ARTICLE_ID"].ToString());
+
+                        string cmd_update = "UPDATE inventory SET GOOD_QTY = (SELECT SUM(GOOD_QTY) FROM inventory WHERE ARTICLE_ID = '" + inventArtId + "') WHERE ARTICLE_ID = '" + inventArtId + "'";
+                        sql.ExecuteNonQuery(cmd_update);
+
+                        string cmd_delete = "WITH Temp " +
+                                                "AS(SELECT Article_ID, ROW_NUMBER() OVER(PARTITION by Article_ID ORDER BY Article_ID) AS duplicateRecCount FROM inventory where ARTICLE_ID = '" + inventArtId + "') " +
+                                                "DELETE FROM Temp WHERE duplicateRecCount > 1";
+                        sql.ExecuteNonQuery(cmd_delete);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

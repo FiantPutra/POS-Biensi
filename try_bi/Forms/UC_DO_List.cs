@@ -76,7 +76,10 @@ namespace try_bi
                         int dgRows = dgv_hold.Rows.Add();
                         dgv_hold.Rows[dgRows].Cells[0].Value = id_do;
                         dgv_hold.Rows[dgRows].Cells[1].Value = sj_fisik;
-                        dgv_hold.Rows[dgRows].Cells[2].Value = st_api.ToString();
+                        if (st_api == 1)
+                            dgv_hold.Rows[dgRows].Cells[2].Value = "Confirmed";
+                        else
+                            dgv_hold.Rows[dgRows].Cells[2].Value = "Unconfirmed";
                     }
                 }
             }
@@ -124,7 +127,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT deliveryorder_line._id, deliveryorder_line.QTY_DELIVER, deliveryorder_line.QTY_RECEIVE, deliveryorder_line.QTY_DISPUTE,article.ARTICLE_ID,article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID FROM deliveryorder_line, article WHERE deliveryorder_line.ARTICLE_ID = article.ARTICLE_ID AND deliveryorder_line.DELIVERY_ORDER_ID='" + id_do_new + "'";
+                String cmd = "SELECT deliveryorder_line._id, deliveryorder_line.QTY_DELIVER, deliveryorder_line.QTY_RECEIVE, deliveryorder_line.QTY_DISPUTE,article.ARTICLE_ID,article.ARTICLE_NAME, itemdimensionsize.Description as SIZE_ID, itemdimensioncolor.Description as COLOR_ID FROM deliveryorder_line, article, itemdimensioncolor, itemdimensionsize WHERE deliveryorder_line.ARTICLE_ID = article.ARTICLE_ID AND itemdimensioncolor.Id = article.COLOR_ID AND itemdimensionsize.Id = article.SIZE_ID AND deliveryorder_line.DELIVERY_ORDER_ID='" + id_do_new + "'";
                 ckon.dt = sql.ExecuteDataTable(cmd, ckon.sqlCon());
 
                 foreach (DataRow row in ckon.dt.Rows)

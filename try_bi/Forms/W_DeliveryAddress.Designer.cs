@@ -43,6 +43,8 @@
             this.pnShippingHeader = new System.Windows.Forms.Panel();
             this.pnShippingDetails = new System.Windows.Forms.Panel();
             this.t_DeliveryAddress = new System.Windows.Forms.TextBox();
+            this.cbDelivType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnShippingHeader.SuspendLayout();
             this.pnShippingDetails.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             this.b_close.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.b_close.IdleForecolor = System.Drawing.Color.White;
             this.b_close.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.b_close.Location = new System.Drawing.Point(234, 429);
+            this.b_close.Location = new System.Drawing.Point(234, 489);
             this.b_close.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_close.Name = "b_close";
             this.b_close.Size = new System.Drawing.Size(152, 61);
@@ -91,7 +93,7 @@
             this.b_ok.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.b_ok.IdleForecolor = System.Drawing.Color.White;
             this.b_ok.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_ok.Location = new System.Drawing.Point(408, 429);
+            this.b_ok.Location = new System.Drawing.Point(408, 489);
             this.b_ok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.b_ok.Name = "b_ok";
             this.b_ok.Size = new System.Drawing.Size(152, 61);
@@ -205,10 +207,10 @@
             this.t_FromStore.LineIdleColor = System.Drawing.Color.Gray;
             this.t_FromStore.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
             this.t_FromStore.LineThickness = 3;
-            this.t_FromStore.Location = new System.Drawing.Point(248, 20);
+            this.t_FromStore.Location = new System.Drawing.Point(14, 87);
             this.t_FromStore.Margin = new System.Windows.Forms.Padding(4);
             this.t_FromStore.Name = "t_FromStore";
-            this.t_FromStore.Size = new System.Drawing.Size(166, 25);
+            this.t_FromStore.Size = new System.Drawing.Size(289, 25);
             this.t_FromStore.TabIndex = 29;
             this.t_FromStore.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -217,7 +219,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.label3.Location = new System.Drawing.Point(245, 49);
+            this.label3.Location = new System.Drawing.Point(11, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 30;
@@ -228,7 +230,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.label4.Location = new System.Drawing.Point(10, 208);
+            this.label4.Location = new System.Drawing.Point(10, 263);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 20);
             this.label4.TabIndex = 32;
@@ -247,6 +249,8 @@
             // 
             // pnShippingDetails
             // 
+            this.pnShippingDetails.Controls.Add(this.label1);
+            this.pnShippingDetails.Controls.Add(this.cbDelivType);
             this.pnShippingDetails.Controls.Add(this.t_DeliveryAddress);
             this.pnShippingDetails.Controls.Add(this.label3);
             this.pnShippingDetails.Controls.Add(this.t_Qty);
@@ -255,24 +259,47 @@
             this.pnShippingDetails.Controls.Add(this.t_FromStore);
             this.pnShippingDetails.Location = new System.Drawing.Point(12, 182);
             this.pnShippingDetails.Name = "pnShippingDetails";
-            this.pnShippingDetails.Size = new System.Drawing.Size(548, 239);
+            this.pnShippingDetails.Size = new System.Drawing.Size(548, 299);
             this.pnShippingDetails.TabIndex = 39;
             // 
             // t_DeliveryAddress
             // 
             this.t_DeliveryAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.t_DeliveryAddress.Location = new System.Drawing.Point(14, 93);
+            this.t_DeliveryAddress.Location = new System.Drawing.Point(14, 148);
             this.t_DeliveryAddress.Multiline = true;
             this.t_DeliveryAddress.Name = "t_DeliveryAddress";
             this.t_DeliveryAddress.Size = new System.Drawing.Size(512, 112);
             this.t_DeliveryAddress.TabIndex = 37;
+            // 
+            // cbDelivType
+            // 
+            this.cbDelivType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDelivType.FormattingEnabled = true;
+            this.cbDelivType.Items.AddRange(new object[] {
+            "Delivery",
+            "On site"});
+            this.cbDelivType.Location = new System.Drawing.Point(382, 24);
+            this.cbDelivType.Name = "cbDelivType";
+            this.cbDelivType.Size = new System.Drawing.Size(121, 23);
+            this.cbDelivType.TabIndex = 38;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.label1.Location = new System.Drawing.Point(325, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Type";
             // 
             // W_DeliveryAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(573, 501);
+            this.ClientSize = new System.Drawing.Size(573, 564);
             this.ControlBox = false;
             this.Controls.Add(this.pnShippingDetails);
             this.Controls.Add(this.pnShippingHeader);
@@ -306,5 +333,7 @@
         private System.Windows.Forms.Panel pnShippingHeader;
         private System.Windows.Forms.Panel pnShippingDetails;
         private System.Windows.Forms.TextBox t_DeliveryAddress;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbDelivType;
     }
 }

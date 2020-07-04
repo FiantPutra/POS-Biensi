@@ -35,7 +35,7 @@ namespace try_bi
                 List<DeliveryOrderLine> dev_order_lines = new List<DeliveryOrderLine>();
                 String cmd = "SELECT a._id as deliveryOrder, b._id as deliveryOrderLines, b.QTY_RECEIVE FROM deliveryorder a INNER JOIN deliveryorder_line b "
                                 + "ON b.DELIVERY_ORDER_ID = a.DELIVERY_ORDER_ID "
-                                + "WHERE a.DELIVERY_ORDER_ID = '"+ deliveyOrderId + "' AND a.STATUS_API = 0 AND (b.QTY_DISPUTE < 0 OR b.QTY_DISPUTE > 0)";
+                                + "WHERE a.DELIVERY_ORDER_ID = '"+ deliveyOrderId + "' AND a.STATUS_API = 0 AND b.QTY_RECEIVE > 0";
 
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
                 if (ckon.sqlDataRd.HasRows)

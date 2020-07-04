@@ -87,8 +87,8 @@ namespace try_bi
                     //    input.ExecuteNonQuery(sql3);
                     //}
 
-                    uc_coba.Instance.itung_total();
-                    uc_coba.Instance.retreive();
+                    //uc_coba.Instance.itung_total();
+                    //uc_coba.Instance.retreive();
 
                     this.Close();
                 }

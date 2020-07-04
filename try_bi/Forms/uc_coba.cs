@@ -30,7 +30,7 @@ namespace try_bi
     {
         public static Form1 f1;
         public String t_id, S_Articleid, S_article, S_nama, S_price, id_trans, article_id, date, nm_cur2, cust_id_store2, shift_name_trans, id_employe2, comp_name, id_article, transDate, artIdLoc;
-        int noo_inv_new, status_diskon_api, subtotal, qty = 1, disc = 0, new_disc, tot_diskon, no_trans2, is_service, isService;
+        int noo_inv_new, status_diskon_api, subtotal, qty = 1, disc = 0, new_disc, tot_diskon, no_trans2, is_service, isService, qtyEmpl = 0;
         koneksi ckon = new koneksi();
         koneksi2 ckon2 = new koneksi2();
         String id_spg, nama_spg, sub_string, sub_string2, store_code, id_shift, id_CStore, article_id_API, id_trans_line, discount_code_get, id_inv, customer, code_store, disc_code, disc_type, bulan2, tipe2, disc_desc1, VarBackDate, DateHeaderTrans, discount_code, discAmount;        
@@ -40,7 +40,7 @@ namespace try_bi
         private void b_DeliveryAddress_Click(object sender, EventArgs e)
         {
             W_DeliveryAddress deliveryAddress = new W_DeliveryAddress(f1);
-            deliveryAddress.get_data("", "", qty_txt.Text, l_transaksi.Text, id_spg, "", store_code, true);
+            deliveryAddress.get_data("", "", qty_txt.Text, l_transaksi.Text, id_spg, "", store_code, false);
             deliveryAddress.ShowDialog();
         }
 
@@ -242,7 +242,8 @@ namespace try_bi
         {            
             CRUD sql = new CRUD();
             String art_id, art_name, spg_id, size, color, qty, disc_desc, sub_total2, disc_desc_substring, omniStore;
-            int price, sub_total, disc;
+            int price, sub_total, disc, countLine = 0;
+            Boolean empDiscValid = false;
 
             dgv_purchase.Rows.Clear();
             dgv_diskon.Rows.Clear();
@@ -319,6 +320,8 @@ namespace try_bi
                             dgv_purchase.Rows[dgRows].Cells[3].Value = image;
                         }
 
+                        countLine++;
+
                         data_diskon(art_id);
                     }
                 }
@@ -327,6 +330,29 @@ namespace try_bi
                 dgv_purchase.Columns[7].DefaultCellStyle.Format = "#,###";
                 dgv_purchase.Columns[8].DefaultCellStyle.Format = "#,###";
                 dgv_purchase.Columns[9].DefaultCellStyle.Format = "#,###";
+
+                if (t_custId.Text != "")
+                {
+                    String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
+                    ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_empl, ckon.sqlCon());
+                    if (ckon.sqlDataRdHeader.HasRows)
+                    {
+                        empDiscValid = true;
+                    }
+
+                    if (empDiscValid && countLine > 0)
+                    {
+                        t_emplQty.Text = (qtyEmpl + countLine).ToString();
+                    }
+                    else
+                    {
+                        t_emplQty.Text = "";
+                    }
+                }
+                else
+                {
+                    t_emplQty.Text = "";
+                }
             }
             catch (Exception e)
             {
@@ -452,8 +478,9 @@ namespace try_bi
                         get_voucher = Convert.ToInt32(ckon.sqlDataRd["VOUCHER"].ToString());
                     }
 
-                    get_dis_vou = tot_diskon + get_voucher;                    
-                    
+                    //get_dis_vou = tot_diskon + get_voucher; 
+                    get_dis_vou = get_voucher;
+
                     //============PERCABANGAN UNTUK LABEL DISKON===========================
                     if (tot_diskon == 0)
                         l_diskon.Text = "0,00";
@@ -491,7 +518,7 @@ namespace try_bi
                             totall_real = 0;
                         }
 
-                        //totall = totall - get_dis_vou;                        
+                        totall = totall - get_dis_vou;                        
 
                         if (totall == 0)
                             l_total.Text = "0,00";
@@ -533,6 +560,10 @@ namespace try_bi
         //==========KLIK HOLD TRANS MASUK KE KRANGJANG BELANJA===================================
         private void dgv_hold_MouseClick(object sender, MouseEventArgs e)
         {
+            bool isHoldTrans = true;
+            CRUD sql = new CRUD();
+            API_EmployeeTransDisc employeeTransDisc = new API_EmployeeTransDisc();
+
             try
             {
                 if (dgv_hold.Rows.Count > 0)
@@ -556,8 +587,31 @@ namespace try_bi
                     set_status(id_list, "0");
                     //set_to_hold(id_list);
                     holding(date);
-                    retreive();
                     get_data_id();
+
+                    //ckon.sqlCon().Open();
+                    //String cmd = "SELECT sum(QUANTITY) as QTY FROM transaction_line ,[transaction] " +
+                    //            "WHERE[transaction].TRANSACTION_ID = transaction_line.TRANSACTION_ID " +
+                    //            "AND [transaction].DATE BETWEEN DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0) AND DATEADD(DAY,1,EOMONTH(GETDATE(), 0)) " +
+                    //            "AND [transaction].CUSTOMER_ID = '" + t_custId.Text + "'";
+                    //ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                    //if (ckon.sqlDataRd.HasRows)
+                    //{
+                    //    while (ckon.sqlDataRd.Read())
+                    //    {
+                    //        qtyEmpl = Convert.ToInt32(ckon.sqlDataRd["QTY"]);
+                    //    }
+                    //}
+
+                    qtyEmpl = employeeTransDisc.qtyEmployeeTrans(t_custId.Text);
+
+                    if (qtyEmpl > 0)
+                    {
+                        t_emplQty.Text = qtyEmpl.ToString();
+                    }
+
+                    retreive();                    
                     itung_total();
                     new_doc = "";
                 }
@@ -584,7 +638,7 @@ namespace try_bi
                 String id = dgv_purchase.Rows[e.RowIndex].Cells["articleId"].Value.ToString();
                 String idspg = dgv_purchase.Rows[e.RowIndex].Cells["spgid"].Value.ToString();
                 w_edit_SPG_ID spg = new w_edit_SPG_ID(f1);
-                spg.get_data(id, l_transaksi.Text);
+                spg.get_data(id, l_transaksi.Text, store_code);
                 spg.ShowDialog();
             }
             else if (dgv_purchase.Columns[e.ColumnIndex].Name == "StockSearch")
@@ -597,7 +651,7 @@ namespace try_bi
                 if (qty == 0)
                 {
                     W_SearchStock searchStock = new W_SearchStock(f1);
-                    searchStock.get_data(artId, artName, price, l_transaksi.Text, id_spg, store_code);
+                    searchStock.get_data(artId, artName, price, l_transaksi.Text, id_spg);
                     searchStock.ShowDialog();
                 }
             }
@@ -1248,20 +1302,27 @@ namespace try_bi
                     if (result.Equals(DialogResult.OK))
                     {
                         MessageBox.Show("Transaksi baru dikenai charge item service");
-                        
-                        String sqldel = "DELETE FROM transaction_line where ARTICLE_ID='290892' AND TRANSACTION_ID='" + l_transaksi.Text + "'";
-                        CRUD del = new CRUD();
-                        del.ExecuteNonQuery(sqldel);
-                        
+
+                        //String sqldel = "DELETE FROM transaction_line where ARTICLE_ID='290892' AND TRANSACTION_ID='" + l_transaksi.Text + "'";
+                        //CRUD del = new CRUD();
+                        //del.ExecuteNonQuery(sqldel);                        
+
+                        //double gab = amount_voided - totall;
+                        //String sqlins = "INSERT INTO transaction_line(TRANSACTION_ID, ARTICLE_ID, QUANTITY, PRICE, SUBTOTAL,SPG_ID) VALUES ('" + l_transaksi.Text + "', '290892', 1, '" + gab + "','" + gab + "','" + id_employe2 + "')";
+                        //CRUD ins = new CRUD();
+                        //ins.ExecuteNonQuery(sqlins);
+
                         double gab = amount_voided - totall;
-                        String sqlins = "INSERT INTO transaction_line(TRANSACTION_ID, ARTICLE_ID, QUANTITY, PRICE, SUBTOTAL,SPG_ID) VALUES ('" + l_transaksi.Text + "', '290892', 1, '" + gab + "','" + gab + "','" + id_employe2 + "')";
+                        String sqlins = "INSERT INTO [tmp].[" + store_code + "](TRANSACTION_ID,ARTICLE_ID,ARTICLE_NAME,QUANTITY,PRICE,DISCOUNT,DISCOUNTAMOUNT,MAXDISCOUNTQUANTITY,MAXDISCOUNTAMOUNT,SUBTOTAL,SPG_ID,DISCOUNT_CODE,DISCOUNT_TYPE,DISCOUNT_DESC,DiscountSetupLines,IS_SERVICE,IS_OMNITRANS,OMNISTORECODE,DELIVERYCUSTADDRESS,OMNISHIPPINGCOST,OMNICOURIER,DISCOUNT_CODE_PROMOTION) " +
+                                            "values('"+ l_transaksi.Text + "', '290892', 'item service', '1', '"+ gab + "', '0', '0', '0', '0', '"+ gab +"', '"+ id_spg + "', '', '', '', '', '0', '0', '', '0', '0', '0', '')";
                         CRUD ins = new CRUD();
                         ins.ExecuteNonQuery(sqlins);
-
+                        
                         itung_total();
+                        insertIntoTransactionTable();
                         showCharge();
                     }
-                } 
+                }
                 else
                 {
                     insertIntoTransactionTable();
@@ -1402,7 +1463,7 @@ namespace try_bi
                 date = mydate.ToString("yyyy-MM-dd");
                 //new_invoice();
                 //set_running_number();
-                set_status(l_transaksi.Text, "3");
+                set_status(l_transaksi.Text, "3");                
                 runRetreive();
                 dgv_purchase.Rows.Clear();
                 l_total.Text = "0,00";
@@ -1410,6 +1471,7 @@ namespace try_bi
                 l_voucher.Text = "0,00";
                 t_custId.Text = ""; //combo_spg.SelectedIndex = 0;
                 qty_txt.Text = "0";
+                t_emplQty.Text = "";
                 isi_combo_spg();
                 delete_rows();
             }
@@ -1435,6 +1497,8 @@ namespace try_bi
 
             try
             {
+                updateInventArticle();
+
                 if (t_custId.Text != "")
                 {                                        
                     String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
@@ -1459,7 +1523,7 @@ namespace try_bi
                     }                                                                              
                 }
                 
-                if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) || t_custId.Text == "")
+                if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) && Convert.ToInt32(t_emplQty.Text) < 3 || t_custId.Text == "")
                 {
                     //===FOKUES KE SCAN BARCODE
                     this.ActiveControl = t_barcode;
@@ -1472,7 +1536,11 @@ namespace try_bi
                     filter.id_spg = sub_string2;
                     filter.store_code2 = store_code;
                     filter.ShowDialog();
-                }                               
+                }            
+                else
+                {
+                    MessageBox.Show("Transaksi diskon karyawan tidak boleh lebih dari 3 item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -1522,7 +1590,68 @@ namespace try_bi
 
             if (e.KeyCode == Keys.Enter)
             {
+                CRUD sql = new CRUD();
+                Boolean empDiscValid = false, isThirdPartyDisc = false;
+                API_EmployeeTransDisc employeeTransDisc = new API_EmployeeTransDisc();
+
                 e.SuppressKeyPress = true;
+                try
+                {
+                    ckon.sqlCon().Open();
+                    String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
+                    ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_empl, ckon.sqlCon());
+                    if (ckon.sqlDataRdHeader.HasRows)
+                    {
+                        empDiscValid = true;
+                    }
+
+                    if (empDiscValid)
+                    {
+                        //String cmd = "SELECT sum(QUANTITY) as QTY FROM transaction_line ,[transaction] " +
+                        //        "WHERE[transaction].TRANSACTION_ID = transaction_line.TRANSACTION_ID " +
+                        //        "AND [transaction].DATE BETWEEN DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0) AND DATEADD(DAY,1,EOMONTH(GETDATE(), 0)) " +
+                        //        "AND [transaction].CUSTOMER_ID = '" + t_custId.Text + "'";
+                        //ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                        //if (ckon.sqlDataRd.HasRows)
+                        //{
+                        //    while (ckon.sqlDataRd.Read())
+                        //    {
+                        //        if (Convert.ToString(ckon.sqlDataRd["QTY"]) != "")
+                        //            qtyEmpl = Convert.ToInt32(ckon.sqlDataRd["QTY"]);
+                        //        else
+                        //            qtyEmpl = 0;
+                        //    }
+                        //}
+
+                        qtyEmpl = employeeTransDisc.qtyEmployeeTrans(t_custId.Text);
+
+                        if (qtyEmpl > 0)
+                        {
+                            t_emplQty.Text = qtyEmpl.ToString();
+                        }    
+                        else
+                        {
+                            t_emplQty.Text = "0";
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Employee ID not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (ckon.sqlDataRd != null)
+                        ckon.sqlDataRd.Close();
+
+                    if (ckon.sqlCon().State == ConnectionState.Open)
+                        ckon.sqlCon().Close();
+                }
             }
         }
         //============================================================================================
@@ -1563,8 +1692,11 @@ namespace try_bi
                 e.SuppressKeyPress = true;
                 try
                 {
+                    updateInventArticle();
+
                     if (t_custId.Text != "")
                     {
+                        ckon.sqlCon().Open();
                         String cmd_empl = "SELECT * FROM Employee WHERE EMPLOYEE_ID = '" + t_custId.Text + "'";
                         ckon.sqlDataRdHeader = sql.ExecuteDataReader(cmd_empl, ckon.sqlCon());
                         if (ckon.sqlDataRdHeader.HasRows)
@@ -1587,7 +1719,7 @@ namespace try_bi
                         }
                     }
 
-                    if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) || t_custId.Text == "")
+                    if ((t_custId.Text != "" && (empDiscValid || isThirdPartyDisc)) && Convert.ToInt32(t_emplQty.Text) < 3 || t_custId.Text == "")
                     {
                         get_data_combo();
                         save_trans_header();
@@ -1595,6 +1727,10 @@ namespace try_bi
                         retreive();
                         itung_total();
                         t_barcode.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Transaksi diskon karyawan tidak boleh lebih dari 3 item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -1748,6 +1884,39 @@ namespace try_bi
                 if (ckon.sqlCon().State == ConnectionState.Open)
                     ckon.sqlCon().Close();
             }            
-        }        
+        }   
+        
+        public void updateInventArticle()
+        {
+            CRUD sql = new CRUD();
+            int inventArtId;
+
+            try
+            {
+                ckon.sqlCon().Open();
+                String cmd = "SELECT ARTICLE_ID FROM inventory GROUP BY ARTICLE_ID HAVING COUNT(*) > 1";
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        inventArtId = Convert.ToInt32(ckon.sqlDataRd["ARTICLE_ID"].ToString());
+
+                        string cmd_update = "UPDATE inventory SET GOOD_QTY = (SELECT SUM(GOOD_QTY) FROM inventory WHERE ARTICLE_ID = '" + inventArtId + "') WHERE ARTICLE_ID = '" + inventArtId + "'";
+                        sql.ExecuteNonQuery(cmd_update);
+
+                        string cmd_delete = "WITH Temp " +
+                                                "AS(SELECT Article_ID, ROW_NUMBER() OVER(PARTITION by Article_ID ORDER BY Article_ID) AS duplicateRecCount FROM inventory where ARTICLE_ID = '"+ inventArtId +"') " +
+                                                "DELETE FROM Temp WHERE duplicateRecCount > 1";
+                        sql.ExecuteNonQuery(cmd_delete);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

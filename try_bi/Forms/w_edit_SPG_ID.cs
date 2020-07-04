@@ -14,8 +14,8 @@ namespace try_bi
     {
         public static Form1 f1;
         koneksi ckon = new koneksi();
-        String id_spg, nama_spg, sub_string, sub_string2, id_trans_line, id_trans;
-
+        String id_spg, nama_spg, sub_string, sub_string2, id_trans_line, id_trans, store;
+        bool holdTrans;
 
 
 
@@ -25,10 +25,11 @@ namespace try_bi
             sub_string = combo_spg.Text;
             sub_string2 = sub_string.Substring(0, 9);
             //MessageBox.Show(" " + sub_string2);
-            String cmd_update = "UPDATE transaction_line SET SPG_ID = '" + sub_string2 + "' WHERE ARTICLE_ID='" + id_trans_line + "' AND TRANSACTION_ID='"+ id_trans +"'";
+            
+            String cmd_update = "UPDATE [tmp].[" + store + "] SET SPG_ID = '" + sub_string2 + "' WHERE ARTICLE_ID='" + id_trans_line + "' AND TRANSACTION_ID='" + id_trans + "'";
             CRUD update = new CRUD();
-            update.ExecuteNonQuery(cmd_update);
-           
+            update.ExecuteNonQuery(cmd_update);           
+                       
             uc_coba.Instance.retreive();
             
             this.Close();
@@ -56,7 +57,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT * FROM employee where Pass != 'GABOLEHLOGINASDASDASDA'";
+                String cmd = "SELECT * FROM employee where STORE_CODE = '"+ store +"'";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                 if (ckon.sqlDataRd.HasRows)
@@ -102,10 +103,11 @@ namespace try_bi
 
         }
         //====================================================================================
-        public void get_data(String id, String id_trans2)
+        public void get_data(String id, String id_trans2, string storeCode)
         {
             id_trans_line = id;
             id_trans = id_trans2;
+            store = storeCode;
         }
 
         //===================CLOSE FORM BY CTRL + X==========================

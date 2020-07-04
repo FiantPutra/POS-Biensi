@@ -191,8 +191,11 @@ namespace try_bi
                 String cmd_deletePromo = "DELETE FROM promotion";
                 sql.ExecuteNonQuery(cmd_deletePromo);
 
-                String cmd_deleteTmp = "DROP TABLE [tmp].["+ store_code +"]";
-                sql.ExecuteNonQuery(cmd_deleteTmp);
+                //String cmd_deleteTmp = "DROP TABLE [tmp].["+ store_code +"]";
+                //sql.ExecuteNonQuery(cmd_deleteTmp);
+
+                String cmd_TransDisc = "DELETE FROM TransactionDiscount";
+                sql.ExecuteNonQuery(cmd_TransDisc);                
 
                 this.Close();
             }

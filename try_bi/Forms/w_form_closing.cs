@@ -19,7 +19,7 @@ namespace try_bi
         koneksi ckon = new koneksi();
         int change, cash, cash2, bg_ToCasir, edc;
         Double valueCash, valueEDC, value_budget, cash_label, edc_label, petty_label, value_modal, deposit_label;
-        String id_modal_store, query, real_trans_balance, real_petty_cash, real_dispute, cek_closing_shift, epy_id2, epy_name2;
+        String id_modal_store, query, real_trans_balance, real_petty_cash, real_dispute, cek_closing_shift, epy_id2, epy_name2, store_code;
         public string id_cStrore2, date_closing_store3, status_sukses;
         int PANTEK_DEPOSIT = 0, qty_article;
         public w_form_closing(Form1 form1)
@@ -177,7 +177,8 @@ namespace try_bi
         private void b_ok_Click(object sender, EventArgs e)
         {
             Boolean api_response;
-
+            CRUD sql = new CRUD();
+            
             try
             {
                 if (cek_closing_shift == "0")
@@ -186,39 +187,49 @@ namespace try_bi
                 }
                 else
                 {
-                    update_close();
+                    clearUploadSyncHist();
 
-                    //===========API CLOSING STORE============                    
-                    API_Closing_Store closing_Store = new API_Closing_Store();
-                    closing_Store.get_code(id_cStrore2);
-                    api_response = closing_Store.Post_Closing_Store().Result;                    
-                   
-                    if (api_response)
+                    if (cash_label <= 0)
                     {
-                        //========for logout========
-                        UC_Closing_Store.Instance.reset();
-                        f1.Hide();
-                        this.Hide();
-                        Form_Login login = new Form_Login();
-                        login.ShowDialog();
-                        f1.Close();
-                        this.Close();
+                        update_close();
+
+                        String cmd_deleteTmp = "DELETE FROM [tmp].[" + store_code + "]";
+                        sql.ExecuteNonQuery(cmd_deleteTmp);
+
+                        //===========API CLOSING STORE============                    
+                        API_Closing_Store closing_Store = new API_Closing_Store();
+                        closing_Store.get_code(id_cStrore2);
+                        api_response = closing_Store.Post_Closing_Store().Result;
+
+                        if (api_response)
+                        {
+                            //========for logout========
+                            UC_Closing_Store.Instance.reset();
+                            f1.Hide();
+                            this.Hide();
+                            Form_Login login = new Form_Login();
+                            login.ShowDialog();
+                            f1.Close();
+                            this.Close();
+                        }
+                        else
+                        {
+                            String cmd_update = "UPDATE closing_store SET STATUS_CLOSE='0' WHERE ID_C_STORE='" + id_cStrore2 + "'";
+                            CRUD update = new CRUD();
+                            update.ExecuteNonQuery(cmd_update);
+
+                            MessageBox.Show("Make Sure You are Connected To Internet");
+                        }
                     }
                     else
                     {
-                        String cmd_update = "UPDATE closing_store SET STATUS_CLOSE='0' WHERE ID_C_STORE='" + id_cStrore2 + "'";
-                        CRUD update = new CRUD();
-                        update.ExecuteNonQuery(cmd_update);
-
-                        MessageBox.Show("Make Sure You are Connected To Internet");
+                        MessageBox.Show("Tidak bisa closing store karena ada perbedaaan antara jumlah fisik dengan sistem");
                     }
-
                 }
             }
             catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
         //====================button close=========================
@@ -424,7 +435,8 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        bg_ToCasir = Convert.ToInt32(ckon.sqlDataRd["BUDGET_TO_STORE"].ToString());                        
+                        bg_ToCasir = Convert.ToInt32(ckon.sqlDataRd["BUDGET_TO_STORE"].ToString());
+                        store_code = Convert.ToString(ckon.sqlDataRd["CODE"]);
                         value_budget = bg_ToCasir;
 
                         if (bg_ToCasir == 0)
@@ -575,5 +587,23 @@ namespace try_bi
             }
         }
         //==========================================================================================================        
+
+        public void clearUploadSyncHist()
+        {
+            CRUD sql = new CRUD();
+
+            try
+            {                
+                string cmd_uploadStatus = "delete from JobSynchDetailUploadStatus where SynchDetail not in (select top 2 SynchDetail from JobTabletoSynchDetailUpload order by SynchDetail desc)";
+                sql.ExecuteNonQueryMsg(cmd_uploadStatus);
+
+                string cmd_uploadDetail = "delete from JobTabletoSynchDetailUpload where SynchDetail not in (select top 2 SynchDetail from JobTabletoSynchDetailUpload order by SynchDetail desc)";
+                sql.ExecuteNonQueryMsg(cmd_uploadDetail);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

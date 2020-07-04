@@ -47,45 +47,7 @@ namespace try_bi
         public void retreive(String query)
         {
             CRUD sql = new CRUD();
-            dgv_inventory.Rows.Clear();
-
-            //String sql = query;
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //try
-            //{
-            //    ckon.con.Open();
-            //    ckon.myReader = ckon.cmd.ExecuteReader();
-            //    while(ckon.myReader.Read())
-            //    {
-            //        id = ckon.myReader.GetString("ARTICLE_ID");
-            //        name = ckon.myReader.GetString("ARTICLE_NAME");
-            //        brand = ckon.myReader.GetString("BRAND");
-            //        size = ckon.myReader.GetString("SIZE");
-            //        color = ckon.myReader.GetString("COLOR");
-            //        status = ckon.myReader.GetString("STATUS");
-            //        good = ckon.myReader.GetString("GOOD_QTY");
-            //        if(status == "0")
-            //        {
-            //            new_status = "Available";
-            //        }
-            //        else
-            //        {
-            //            new_status = "Not Available";
-            //        }
-            //        int n = dgv_inventory.Rows.Add();
-
-            //        dgv_inventory.Rows[n].Cells[0].Value = id;
-            //        dgv_inventory.Rows[n].Cells[1].Value = name;
-            //        dgv_inventory.Rows[n].Cells[2].Value = brand;
-            //        dgv_inventory.Rows[n].Cells[3].Value = size;
-            //        dgv_inventory.Rows[n].Cells[4].Value = color;
-            //        dgv_inventory.Rows[n].Cells[5].Value = new_status;
-            //        dgv_inventory.Rows[n].Cells[6].Value = good;
-            //    }
-            //    ckon.con.Close();
-            //}
-            //catch
-            //{ }
+            dgv_inventory.Rows.Clear();            
 
             try
             {
@@ -104,7 +66,7 @@ namespace try_bi
                         status = ckon.sqlDataRd["STATUS"].ToString();
                         good = ckon.sqlDataRd["GOOD_QTY"].ToString();
 
-                        if (status == "0")
+                        if (Convert.ToInt32(good) > 0)
                         {
                             new_status = "Available";
                         }
@@ -152,7 +114,14 @@ namespace try_bi
                 }
                 if (t_search_trans.Text == "" && (combo_ktg2.Text == "Brand" || combo_ktg2.Text == "Department" || combo_ktg2.Text == "Department_Type" || combo_ktg2.Text == "Size" || combo_ktg2.Text == "Color" || combo_ktg2.Text == "Gender"))
                 {
-                    String sql4 = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE article." + combo_ktg2.Text + " = '" + combo_value.Text + "'";
+                    String sql4 = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID " +
+                    "JOIN itemdimensionbrand brand ON brand.Id = article.BRAND_ID " +
+                    "JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID " +
+                    "JOIN itemdimensiondepartment dept ON dept.Id = article.DEPARTMENT_ID " +
+                    "JOIN itemdimensiondepartmenttype deptType ON deptType.Id = article.DEPARTMENT_TYPE_ID " +
+                    "JOIN itemdimensiongender gender ON gender.Id = article.GENDER_ID " +
+                    "JOIN itemdimensionsize size ON size.Id = article.SIZE_ID " +
+                    "WHERE brand.Description = '" + combo_value.Text + "' OR color.Description = '" + combo_value.Text + "' OR dept.Description = '" + combo_value.Text + "' OR deptType.Description = '" + combo_value.Text + "' OR gender.Description = '" + combo_value.Text + "' OR size.Description = '" + combo_value.Text + "'";                    
                     retreive(sql4);                    
                 }
             }
@@ -165,7 +134,14 @@ namespace try_bi
                 }
                 if (t_search_trans.Text != "" && (combo_ktg2.Text == "Brand" || combo_ktg2.Text == "Department" || combo_ktg2.Text == "Department_Type" || combo_ktg2.Text == "Size" || combo_ktg2.Text == "Color" || combo_ktg2.Text == "Gender"))
                 {
-                    String sql3 = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE article." + combo_ktg2.Text + " = '" + combo_value.Text + "' AND (article.ARTICLE_ID LIKE '%" + t_search_trans.Text + "%' OR article.ARTICLE_NAME LIKE '%" + t_search_trans.Text + "%' )";
+                    String sql3 = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID " +
+                    "JOIN itemdimensionbrand brand ON brand.Id = article.BRAND_ID " +
+                    "JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID " +
+                    "JOIN itemdimensiondepartment dept ON dept.Id = article.DEPARTMENT_ID " +
+                    "JOIN itemdimensiondepartmenttype deptType ON deptType.Id = article.DEPARTMENT_TYPE_ID " +
+                    "JOIN itemdimensiongender gender ON gender.Id = article.GENDER_ID " +
+                    "JOIN itemdimensionsize size ON size.Id = article.SIZE_ID " +
+                    "WHERE brand.Description = '" + combo_value.Text + "' OR color.Description = '" + combo_value.Text + "' OR dept.Description = '" + combo_value.Text + "' OR deptType.Description = '" + combo_value.Text + "' OR gender.Description = '" + combo_value.Text + "' OR size.Description = '" + combo_value.Text + "' AND (article.ARTICLE_ID LIKE '%" + t_search_trans.Text + "%' OR article.ARTICLE_NAME LIKE '%" + t_search_trans.Text + "%' )";                    
                     retreive(sql3);
                 }
             }
@@ -186,37 +162,37 @@ namespace try_bi
             }
             else if(combo_ktg2.Text =="Brand")
             {
-                String query = "SELECT * FROM brand";
+                String query = "SELECT * FROM itemdimensionbrand";
                 isi_combo_value(query);
                 combo_value.Text = "MOUTLEY";
             }
             else if(combo_ktg2.Text == "Department")
             {
-                String query = "SELECT * FROM departement";
+                String query = "SELECT * FROM itemdimensiondepartment";
                 isi_combo_value(query);
                 combo_value.Text = "Shirt";
             }
             else if(combo_ktg2.Text == "Department_Type")
             {
-                String query = "SELECT * FROM departementtype";
+                String query = "SELECT * FROM itemdimensiondepartmenttype";
                 isi_combo_value(query);
                 combo_value.Text = "Denim";
             }
             else if(combo_ktg2.Text == "Size")
             {
-                String query = "SELECT * FROM Size";
+                String query = "SELECT * FROM itemdimensionsize";
                 isi_combo_value(query);
                 combo_value.Text = "L";
             }
             else if(combo_ktg2.Text == "Color")
             {
-                String query = "SELECT * FROM Color";
+                String query = "SELECT * FROM itemdimensioncolor";
                 isi_combo_value(query);
                 combo_value.Text = "Blue";
             }
             else if (combo_ktg2.Text == "Gender")
             {
-                String query = "SELECT * FROM Gender";
+                String query = "SELECT * FROM itemdimensiongender";
                 isi_combo_value(query);
                 combo_value.Text = "Men";
             }
@@ -230,24 +206,7 @@ namespace try_bi
         {
             CRUD sql = new CRUD();
 
-            combo_value.Items.Clear();                        
-
-            //String sql = query;
-            //ckon.cmd = new MySqlCommand(sql, ckon.con);
-            //try
-            //{
-            //    ckon.con.Open();
-            //    ckon.myReader = ckon.cmd.ExecuteReader();
-            //    while(ckon.myReader.Read())
-            //    {
-            //        String name = ckon.myReader.GetString("DESCRIPTION");
-            //        combo_value.Items.Add(name);
-            //    }
-            //    ckon.con.Close();
-
-            //}
-            //catch
-            //{ }
+            combo_value.Items.Clear();                                    
 
             try
             {
@@ -279,11 +238,25 @@ namespace try_bi
 
         private void combo_value_SelectedIndexChanged(object sender, EventArgs e)
         {
-            scan_fokus();            
-            String sql = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID ,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE article." + combo_ktg2.Text +" = '"+ combo_value.Text + "'";
+            scan_fokus();
+            String sql = "SELECT TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.BRAND_ID,article.SIZE_ID, article.COLOR_ID,inventory.STATUS, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID " +
+                    "JOIN itemdimensionbrand brand ON brand.Id = article.BRAND_ID " +
+                    "JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID " +
+                    "JOIN itemdimensiondepartment dept ON dept.Id = article.DEPARTMENT_ID " +
+                    "JOIN itemdimensiondepartmenttype deptType ON deptType.Id = article.DEPARTMENT_TYPE_ID " +
+                    "JOIN itemdimensiongender gender ON gender.Id = article.GENDER_ID " +
+                    "JOIN itemdimensionsize size ON size.Id = article.SIZE_ID " +
+                    "WHERE brand.Description = '" + combo_value.Text + "' OR color.Description = '" + combo_value.Text + "' OR dept.Description = '" + combo_value.Text + "' OR deptType.Description = '" + combo_value.Text + "' OR gender.Description = '" + combo_value.Text + "' OR size.Description = '" + combo_value.Text + "'";            
             retreive(sql);
             //MENGHITUNG TOTAL, KIRIM KE METHOD HITUNG
-            String sql2 = "SELECT SUM(inventory.GOOD_QTY) as total FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE article." + combo_ktg2.Text + " = '" + combo_value.Text + "' ";
+            String sql2 = "SELECT SUM(inventory.GOOD_QTY) as total FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID " +
+                    "JOIN itemdimensionbrand brand ON brand.Id = article.BRAND_ID " +
+                    "JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID " +
+                    "JOIN itemdimensiondepartment dept ON dept.Id = article.DEPARTMENT_ID " +
+                    "JOIN itemdimensiondepartmenttype deptType ON deptType.Id = article.DEPARTMENT_TYPE_ID " +
+                    "JOIN itemdimensiongender gender ON gender.Id = article.GENDER_ID " +
+                    "JOIN itemdimensionsize size ON size.Id = article.SIZE_ID " +
+                    "WHERE brand.Description = '" + combo_value.Text + "' OR color.Description = '" + combo_value.Text + "' OR dept.Description = '" + combo_value.Text + "' OR deptType.Description = '" + combo_value.Text + "' OR gender.Description = '" + combo_value.Text + "' OR size.Description = '" + combo_value.Text + "'";            
             itung_total(sql2);
         }
 
@@ -295,22 +268,7 @@ namespace try_bi
         public void itung_total(String query)
         {
             CRUD sql = new CRUD();
-            int total;                        
-
-            //ckon.cmd = new MySqlCommand(sql2, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //while (ckon.myReader.Read())
-            //{
-            //    try
-            //    {
-            //        total = ckon.myReader.GetInt32("total");
-            //        l_total.Text = total.ToString();
-            //    }
-            //    catch
-            //    { l_total.Text = "0"; }
-            //}
-            //ckon.con.Close();
+            int total;                                    
 
             try
             {

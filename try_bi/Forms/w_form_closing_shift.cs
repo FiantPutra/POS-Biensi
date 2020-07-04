@@ -45,36 +45,43 @@ namespace try_bi
             Boolean api_response;
             try
             {
-                //==========API CLOSING SHIFT=============
-                update();
-                API_Closing_shift close = new API_Closing_shift();
-                close.get_code(id_shift2);
-                api_response = close.Post_Closing_Shift().Result;
+                if (cash_label <= 0)
+                {
+                    //==========API CLOSING SHIFT=============
+                    update();
+                    API_Closing_shift close = new API_Closing_shift();
+                    close.get_code(id_shift2);
+                    api_response = close.Post_Closing_Shift().Result;
 
-                if (api_response)
-                {                    
-                    UC_Closing_Shift.Instance.reset();
-                    //DELETE TRANSAKSI YG DI HOLD DENGAN ID CLOSING SHIFT
-                    Del_Trans_Hold DEL = new Del_Trans_Hold();
-                    DEL.get_data(id_shift2);
-                    DEL.del_trans();
-                    DEL.update_runningNumber();
-                    //DEL.update_table();
-                    //========for logout========
-                    f1.Hide();
-                    this.Hide();
-                    Form_Login login = new Form_Login();
-                    login.ShowDialog();
-                    f1.Close();
-                    this.Close();
-                }
+                    if (api_response)
+                    {
+                        UC_Closing_Shift.Instance.reset();
+                        //DELETE TRANSAKSI YG DI HOLD DENGAN ID CLOSING SHIFT
+                        Del_Trans_Hold DEL = new Del_Trans_Hold();
+                        DEL.get_data(id_shift2);
+                        DEL.del_trans();
+                        DEL.update_runningNumber();
+                        //DEL.update_table();
+                        //========for logout========
+                        f1.Hide();
+                        this.Hide();
+                        Form_Login login = new Form_Login();
+                        login.ShowDialog();
+                        f1.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        String cmd_update = "UPDATE closing_shift SET STATUS_CLOSE='0' WHERE ID_SHIFT='" + id_shift2 + "'";
+                        CRUD update = new CRUD();
+                        update.ExecuteNonQuery(cmd_update);
+
+                        MessageBox.Show("Make Sure You are Connected To Internet");
+                    }
+                }            
                 else
                 {
-                    String cmd_update = "UPDATE closing_shift SET STATUS_CLOSE='0' WHERE ID_SHIFT='" + id_shift2 + "'";
-                    CRUD update = new CRUD();
-                    update.ExecuteNonQuery(cmd_update);
-
-                    MessageBox.Show("Make Sure You are Connected To Internet");
+                    MessageBox.Show("Tidak bisa closing shift karena ada perbedaaan antara jumlah fisik dengan sistem");
                 }
             }
             catch (Exception EX)
@@ -399,7 +406,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No cash transaction", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -448,7 +455,7 @@ namespace try_bi
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No EDC transaction", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

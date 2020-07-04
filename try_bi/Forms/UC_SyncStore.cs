@@ -40,38 +40,38 @@ namespace try_bi
 
         private void b_DownloadFiles_Click(object sender, EventArgs e)
         {
-            UC_SyncDownloadFile downloadFile = new UC_SyncDownloadFile(f1);
-            
-            f1.p_kanan.Controls.Clear();
-            if (!f1.p_kanan.Controls.Contains(UC_SyncDownloadFile.Instance))
-            {
-                f1.p_kanan.Controls.Add(UC_SyncDownloadFile.Instance);
-                UC_SyncDownloadFile.Instance.Dock = DockStyle.Fill;
-                UC_SyncDownloadFile.Instance.retreive();
-                UC_SyncDownloadFile.Instance.BringToFront();
-            }
-            else
-            {
-                UC_SyncDownloadFile.Instance.BringToFront();
-            }
+            //UC_SyncDownloadFile downloadFile = new UC_SyncDownloadFile(f1);
+
+            //f1.p_kanan.Controls.Clear();
+            //if (!f1.p_kanan.Controls.Contains(UC_SyncDownloadFile.Instance))
+            //{
+            //    f1.p_kanan.Controls.Add(UC_SyncDownloadFile.Instance);
+            //    UC_SyncDownloadFile.Instance.Dock = DockStyle.Fill;
+            //    UC_SyncDownloadFile.Instance.retreive();
+            //    UC_SyncDownloadFile.Instance.BringToFront();
+            //}
+            //else
+            //{
+            //    UC_SyncDownloadFile.Instance.BringToFront();
+            //}
         }
 
         private void b_UploadFile_Click(object sender, EventArgs e)
         {
-            UC_SyncUploadFile uploadFile = new UC_SyncUploadFile(f1);
-            
-            f1.p_kanan.Controls.Clear();
-            if (!f1.p_kanan.Controls.Contains(UC_SyncUploadFile.Instance))
-            {
-                f1.p_kanan.Controls.Add(UC_SyncUploadFile.Instance);
-                UC_SyncUploadFile.Instance.Dock = DockStyle.Fill;
-                UC_SyncUploadFile.Instance.retreive();
-                UC_SyncUploadFile.Instance.BringToFront();
-            }
-            else
-            {
-                UC_SyncUploadFile.Instance.BringToFront();
-            }
+            //UC_SyncUploadFile uploadFile = new UC_SyncUploadFile(f1);
+
+            //f1.p_kanan.Controls.Clear();
+            //if (!f1.p_kanan.Controls.Contains(UC_SyncUploadFile.Instance))
+            //{
+            //    f1.p_kanan.Controls.Add(UC_SyncUploadFile.Instance);
+            //    UC_SyncUploadFile.Instance.Dock = DockStyle.Fill;
+            //    UC_SyncUploadFile.Instance.retreive();
+            //    UC_SyncUploadFile.Instance.BringToFront();
+            //}
+            //else
+            //{
+            //    UC_SyncUploadFile.Instance.BringToFront();
+            //}
         }
     }
 }

@@ -19,7 +19,7 @@ namespace try_bi
     public partial class W_Vou_Confirm : Form
     {
         String voucher_code, desc;
-        int value, tot_diskon, tot_bel, id_disc;
+        int value, valuePct, tot_diskon, tot_bel, id_disc, amountMin, lines = 0;
         public String id_transaksi3, voucher_code2;
         koneksi ckon = new koneksi();
         public W_Vou_Confirm()
@@ -37,8 +37,37 @@ namespace try_bi
         {
             CRUD sql = new CRUD();
             //validasi agar total belanja tidak boleh dibawah Rp.0
-            tot_bel = tot_bel - (value + tot_diskon);
-            if (tot_bel < 0)
+            //tot_bel = tot_bel - (value + tot_diskon);
+
+            try
+            {
+                ckon.sqlCon().Open();
+                String cmd = "SELECT * FROM DiscountSetup WHERE DiscountCode = '" + voucher_code + "'";
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        amountMin = Convert.ToInt32(ckon.sqlDataRd["AmountMin"]);                        
+                    }                    
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (ckon.sqlDataRd != null)
+                    ckon.sqlDataRd.Close();
+
+                if (ckon.sqlCon().State == ConnectionState.Open)
+                    ckon.sqlCon().Close();
+            }
+
+
+            if (tot_bel < amountMin)
             {
                 MessageBox.Show("Voucher Can't Be Apllied");
             }
@@ -108,11 +137,12 @@ namespace try_bi
         }
         
         //===ambil data dari form voucher jika valid====
-        public void get_voucher_valid(String v_code, String  v_desc, int v_value, int id_diskon )
+        public void get_voucher_valid(String v_code, String  v_desc, int v_value, int v_valuePct, int id_diskon )
         {
             voucher_code = v_code;
             desc = v_desc;
             value = v_value;
+            valuePct = v_valuePct;
             id_disc = id_diskon;
             //=====masukan ke dalam text
             l_voucher.Text = voucher_code;
@@ -208,11 +238,50 @@ namespace try_bi
         //=================UPDATE VALUE VOUCHER DI TRANSAKSI LINE YG DITUJU======
         public void update()
         {
-            String cmd_update = "UPDATE [transaction] SET VOUCHER='" + value + "', VOUCHER_ID='"+ id_disc +"', VOUCHER_CODE='"+ voucher_code +"' WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
-            CRUD update = new CRUD();
-            update.ExecuteNonQuery(cmd_update);
-            uc_coba.Instance.itung_total();
-            this.Close();
+            CRUD sql = new CRUD();
+            int id_lines;
+
+            try
+            {
+                if (value > 0)
+                {
+                    String cmd_update = "UPDATE [transaction] SET VOUCHER='" + value + "', VOUCHER_ID='" + id_disc + "', VOUCHER_CODE='" + voucher_code + "' WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+                    sql.ExecuteNonQuery(cmd_update);
+
+                    //ckon.sqlCon().Open();
+                    //String cmd = "SELECT _id FROM transaction_line WHERE TRANSACTION_ID = '" + id_transaksi3 + "'";
+                    //ckon.sqlDataRdLine = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                    //if (ckon.sqlDataRdLine.HasRows)
+                    //{
+                    //    while (ckon.sqlDataRdLine.Read())
+                    //    {
+                    //        id_lines = Convert.ToInt32(ckon.sqlDataRd["_id"]);
+
+                    //        String cmd_updateLines = "UPDATE transaction_line SET VOUCHER='" + value + "', VOUCHER_ID='" + id_disc + "', VOUCHER_CODE='" + voucher_code + "' WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+                    //        sql.ExecuteNonQuery(cmd_update);
+                    //    }
+                    //}
+                }
+                else
+                {
+                    valuePct = (tot_bel * valuePct) / 100;
+                    String cmd_update = "UPDATE [transaction] SET VOUCHER='" + valuePct + "', VOUCHER_ID='" + id_disc + "', VOUCHER_CODE='" + voucher_code + "' WHERE TRANSACTION_ID='" + id_transaksi3 + "'";
+                    sql.ExecuteNonQuery(cmd_update);
+                }
+
+                
+
+
+
+                uc_coba.Instance.itung_total();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
         //shorcut di menu confirm voucher
         private void W_Vou_Confirm_KeyDown(object sender, KeyEventArgs e)

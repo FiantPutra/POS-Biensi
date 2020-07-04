@@ -17,11 +17,19 @@ namespace try_bi
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FileTransferScheduler.IntervalInMinutes(13, 00, 5,
-                () => {
+            FileTransferScheduler.IntervalInMinutes(10, 30, 5,
+                () =>
+                {
                     UploadSyncFile uploadSyncFile = new UploadSyncFile();
 
                     uploadSyncFile.SyncUpload();
+                });
+
+            FileTransferScheduler.IntervalInMinutes(10, 30, 30,
+                () => {
+                    DownloadSyncFile downloadSync = new DownloadSyncFile();
+
+                    downloadSync.SyncDownload();
                 });
 
             Application.Run(new Form_Login());

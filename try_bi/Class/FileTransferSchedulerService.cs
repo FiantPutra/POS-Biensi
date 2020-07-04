@@ -21,11 +21,14 @@ namespace try_bi.Class
             {
                 firstRun = firstRun.AddDays(1);
             }
-            TimeSpan timeToGo = firstRun - now;
-            if (timeToGo <= TimeSpan.Zero)
-            {
-                timeToGo = TimeSpan.Zero;
-            }
+            //TimeSpan timeToGo = firstRun - now;
+            //if (timeToGo <= TimeSpan.Zero)
+            //{
+            //    timeToGo = TimeSpan.Zero;
+            //}
+
+            TimeSpan timeToGo = TimeSpan.Zero;
+
             var timer = new Timer(x =>
             {
                 task.Invoke();

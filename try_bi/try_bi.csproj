@@ -27,7 +27,7 @@
     <PublisherName>PT. Biensi Fesyenindo</PublisherName>
     <SuiteName>Biensi</SuiteName>
     <MinimumRequiredVersion>1.0.0.8</MinimumRequiredVersion>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>37</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -187,6 +187,7 @@
   <ItemGroup>
     <Compile Include="Class\AddTransLine.cs" />
     <Compile Include="Class\API_DeliveryCustomer.cs" />
+    <Compile Include="Class\API_EmployeeTransDisc.cs" />
     <Compile Include="Class\API_MutasiOrder.cs" />
     <Compile Include="Class\API_OmniStock.cs" />
     <Compile Include="Class\API_ReturnOrder.cs" />

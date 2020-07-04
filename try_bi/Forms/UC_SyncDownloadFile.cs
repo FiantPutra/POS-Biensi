@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace try_bi
 {
@@ -22,7 +23,16 @@ namespace try_bi
         koneksi ckon = new koneksi();        
         private static UC_SyncDownloadFile _instance;
         LinkApi xmlCon = new LinkApi();
-        String tableName = "", jobId = "", storeId = "", downloadPath = "", rowFatch = "", rowApplied = "", status = "", syncDate = "", newStatus = "", syncType = "";        
+        String tableName = "", jobId = "", storeId = "", downloadPath = "", rowFatch = "", rowApplied = "", status = "", syncDate = "", newStatus = "", syncType = "";
+
+        private void download_date_ValueChanged_1(object sender, EventArgs e)
+        {
+            dgv_DownloadFile.Rows.Clear();
+            String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate, a.SyncType FROM JobTabletoSynchDetailDownload a " +
+                            "INNER JOIN JobSynchDetailDownloadStatus b ON b.SynchDetail = a.SynchDetail WHERE CONVERT(date, a.SynchDate) = '" + download_date.Text + "'";
+
+            retreive(cmd);
+        }           
 
         public static UC_SyncDownloadFile Instance
         {
@@ -40,23 +50,27 @@ namespace try_bi
             InitializeComponent();
         }
 
-        public void retreive()
+        public void retreive(string cmd)
         {
             CRUD sql = new CRUD();
-            dgv_DownloadFile.Rows.Clear();
+            dgv_DownloadFile.Rows.Clear();            
 
             try
             {
                 ckon.sqlConMsg().Open();
-                String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate, a.SyncType FROM JobTabletoSynchDetailDownload a " +
-                                "INNER JOIN JobSynchDetailDownloadStatus b ON b.SynchDetail = a.SynchDetail";
+
+                if (cmd == "")
+                {
+                    cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate, a.SyncType FROM JobTabletoSynchDetailDownload a " +
+                            "INNER JOIN JobSynchDetailDownloadStatus b ON b.SynchDetail = a.SynchDetail WHERE CONVERT(date, a.SynchDate) = '" + DateTime.Today.ToString("yyyy-MM-dd") + "'";
+                }
+                                              
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlConMsg());
 
                 if (ckon.sqlDataRd.HasRows)
                 {
                     while (ckon.sqlDataRd.Read())
-                    {
-                        tableName = Convert.ToString(ckon.sqlDataRd["TableName"]);
+                    {                       tableName = Convert.ToString(ckon.sqlDataRd["TableName"]);
                         jobId = Convert.ToString(ckon.sqlDataRd["JobID"]);
                         storeId = Convert.ToString(ckon.sqlDataRd["StoreID"]);                        
                         rowFatch = Convert.ToString(ckon.sqlDataRd["RowFatch"]);
@@ -101,7 +115,7 @@ namespace try_bi
             DownloadSyncFile downloadSyncFile = new DownloadSyncFile();
 
             downloadSyncFile.SyncDownload();
-            retreive();            
+            retreive(string.Empty);
         }        
 
         private void b_back2_Click(object sender, EventArgs e)

@@ -207,13 +207,13 @@ namespace try_bi
                 if (t_find_article.text == "")
                 {
 
-                    String sql2a = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >=1";
+                    String sql2a = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >=1";
                     get_load_data(sql2a);
 
                 }
                 if (t_find_article.text == "" && (combo_ktg2.Text == "Brand" || combo_ktg2.Text == "Department" || combo_ktg2.Text == "Department_Type" || combo_ktg2.Text == "Size" || combo_ktg2.Text == "Color" || combo_ktg2.Text == "Gender"))
                 {
-                    String sql4 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >=1  AND article." + combo_ktg2.Text + " = '" + combo_value.Text + "'";
+                    String sql4 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >=1  AND article." + combo_ktg2.Text + " = '" + combo_value.Text + "'";
                     get_load_data(sql4);
                     ckon.con.Close();
                 }
@@ -222,14 +222,14 @@ namespace try_bi
             //{
                 if (t_find_article.text != "")
                 {
-                    String sql2 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND (article.ARTICLE_ID LIKE '%" + t_find_article.text + "%' OR article.ARTICLE_NAME LIKE '%" + t_find_article.text + "%' )";
+                    String sql2 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND (article.ARTICLE_ID LIKE '%" + t_find_article.text + "%' OR article.ARTICLE_NAME LIKE '%" + t_find_article.text + "%' )";
                     get_load_data(sql2);
 
                 }
                 if (t_find_article.text != "" && (combo_ktg2.Text == "Brand" || combo_ktg2.Text == "Department" || combo_ktg2.Text == "Department_Type" || combo_ktg2.Text == "Size" || combo_ktg2.Text == "Color" || combo_ktg2.Text == "Gender"))
                 {
 
-                    String sql3 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND article." + combo_ktg2.Text + " = '" + combo_value.Text + "' AND (article.ARTICLE_ID LIKE '%" + t_find_article.text + "%' OR article.ARTICLE_NAME LIKE '%" + t_find_article.text + "%' )";
+                    String sql3 = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND article." + combo_ktg2.Text + " = '" + combo_value.Text + "' AND (article.ARTICLE_ID LIKE '%" + t_find_article.text + "%' OR article.ARTICLE_NAME LIKE '%" + t_find_article.text + "%' )";
                     get_load_data(sql3);
                 }
             //}
@@ -255,7 +255,7 @@ namespace try_bi
                 //==============================================
                 //dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.Orange;
                 dgv_2.EnableHeadersVisualStyles = false;
-                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
+                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
                 get_load_data(sql);
                 dgv_2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgv_2.MultiSelect = true;
@@ -263,7 +263,7 @@ namespace try_bi
             else
             {
                 dgv_2.EnableHeadersVisualStyles = false;
-                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
+                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
                 get_load_data(sql);
                 dgv_2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgv_2.MultiSelect = true;
@@ -393,7 +393,7 @@ namespace try_bi
             if (combo_ktg2.Text == "ALL")
             {
                 combo_value.Items.Clear();
-                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
+                String sql = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1";
                 //String query = "SELECT * FROM departement UNION ALL SELECT * FROM departementtype";
                 //isi_combo_value(query);
                 combo_value.Text = "ALL";
@@ -472,7 +472,7 @@ namespace try_bi
                     }
                 }
 
-                String load_data = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND article." + combo_ktg2.Text + " = '" + id + "'";
+                String load_data = "select TOP 100 article.ARTICLE_ID, article.ARTICLE_NAME, size.Description as SIZE_ID, color.Description as COLOR_ID, article.PRICE, article._id, inventory.GOOD_QTY FROM article INNER JOIN inventory ON article._id = inventory.ARTICLE_ID INNER JOIN itemdimensioncolor color ON color.Id = article.COLOR_ID INNER JOIN itemdimensionsize size ON size.Id = article.SIZE_ID WHERE inventory.STATUS = '0' AND inventory.GOOD_QTY >= 1 AND article." + combo_ktg2.Text + " = '" + id + "'";
                 get_load_data(load_data);
 
             }

@@ -844,6 +844,7 @@ namespace try_bi
     public class OmniStock
     {
         public string storeCode { get; set; }
+        public string name { get; set; }
         public string city { get; set; }
         public string itemId { get; set; }
         public decimal? qty { get; set; }
@@ -893,5 +894,10 @@ namespace try_bi
         public string courier { get; set; }
         public string deliveryAddress { get; set; }
         public string deliveryType { get; set; }
+    }
+
+    public class employeeTransDisc
+    {
+        public int qty { get; set; }
     }
 }

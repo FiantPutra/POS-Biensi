@@ -24,6 +24,15 @@ namespace try_bi
         LinkApi xmlCon = new LinkApi();
         String tableName = "", jobId = "", storeId = "", downloadPath = "", rowFatch = "", rowApplied = "", status = "", syncDate = "", newStatus = "";
 
+        private void upload_date_ValueChanged(object sender, EventArgs e)
+        {
+            dgv_UploadFile.Rows.Clear();
+            String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate FROM JobTabletoSynchDetailUpload a " +
+                                "INNER JOIN JobSynchDetailUploadStatus b ON b.SynchDetail = a.SynchDetail WHERE CONVERT(date, a.SynchDate) = '" + upload_date.Text + "'";
+
+            retreive(cmd);
+        }
+
         private void b_back2_Click(object sender, EventArgs e)
         {
             UC_SyncStore syncStore = new UC_SyncStore(f1);
@@ -46,7 +55,7 @@ namespace try_bi
             UploadSyncFile uploadSyncFile = new UploadSyncFile();
 
             uploadSyncFile.SyncUpload();
-            retreive();
+            retreive(string.Empty);
         }
 
         public static UC_SyncUploadFile Instance
@@ -65,7 +74,7 @@ namespace try_bi
             InitializeComponent();
         }
 
-        public void retreive()
+        public void retreive(string cmd)
         {
             CRUD sql = new CRUD();
             dgv_UploadFile.Rows.Clear();
@@ -73,8 +82,13 @@ namespace try_bi
             try
             {
                 ckon.sqlConMsg().Open();
-                String cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate FROM JobTabletoSynchDetailUpload a " +
-                                "INNER JOIN JobSynchDetailUploadStatus b ON b.SynchDetail = a.SynchDetail";
+
+                if (cmd == "")
+                {
+                    cmd = "SELECT a.TableName, a.JobID, a.StoreID, a.RowFatch, b.RowApplied, b.Status, a.SynchDate FROM JobTabletoSynchDetailUpload a " +
+                                "INNER JOIN JobSynchDetailUploadStatus b ON b.SynchDetail = a.SynchDetail WHERE CONVERT(date, a.SynchDate) = '" + DateTime.Today.ToString("yyyy-MM-dd") + "'";
+                }
+                
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlConMsg());
 
                 if (ckon.sqlDataRd.HasRows)

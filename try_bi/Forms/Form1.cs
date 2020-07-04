@@ -238,40 +238,40 @@ namespace try_bi
 
         }
         //==============================================================================
-        private void b_stockTake_Click(object sender, EventArgs e)
-        {
-            //Jika POS tersebut bukan PC Master maka menu ini tidak bisa diakses
-            if (Properties.Settings.Default.MstrOrChld == "Child")
-            {
-                MessageBox.Show("This Menu Can Only Be Accessed By A Master PCss", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {                
-                label3.Text = "Stock Take";
-                UC_Stock_Take c = new UC_Stock_Take(this);
-                p_kanan.Controls.Clear();
-                if (!p_kanan.Controls.Contains(UC_Stock_Take.Instance))
-                {
-                    p_kanan.Controls.Add(UC_Stock_Take.Instance);
-                    UC_Stock_Take.Instance.Dock = DockStyle.Fill;
-                    //UC_Stock_Take.Instance.from_form1();
-                    UC_Stock_Take.Instance.id_employee2 = id_employee;
-                    UC_Stock_Take.Instance.nm_employee2 = nama_employee;
+        //private void b_stockTake_Click(object sender, EventArgs e)
+        //{
+        //    //Jika POS tersebut bukan PC Master maka menu ini tidak bisa diakses
+        //    if (Properties.Settings.Default.MstrOrChld == "Child")
+        //    {
+        //        MessageBox.Show("This Menu Can Only Be Accessed By A Master PCss", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //    else
+        //    {                
+        //        label3.Text = "Stock Take";
+        //        UC_Stock_Take c = new UC_Stock_Take(this);
+        //        p_kanan.Controls.Clear();
+        //        if (!p_kanan.Controls.Contains(UC_Stock_Take.Instance))
+        //        {
+        //            p_kanan.Controls.Add(UC_Stock_Take.Instance);
+        //            UC_Stock_Take.Instance.Dock = DockStyle.Fill;
+        //            //UC_Stock_Take.Instance.from_form1();
+        //            UC_Stock_Take.Instance.id_employee2 = id_employee;
+        //            UC_Stock_Take.Instance.nm_employee2 = nama_employee;
 
-                    //UC_Stock_Take.Instance.retreive(sql);
-                    UC_Stock_Take.Instance.BringToFront();
-                }
-                else
-                {
-                    //UC_Stock_Take.Instance.from_form1();
-                    UC_Stock_Take.Instance.id_employee2 = id_employee;
-                    UC_Stock_Take.Instance.nm_employee2 = nama_employee;
-                    //UC_Stock_Take.Instance.retreive(sql);
-                    UC_Stock_Take.Instance.BringToFront();
-                }
-            }
+        //            //UC_Stock_Take.Instance.retreive(sql);
+        //            UC_Stock_Take.Instance.BringToFront();
+        //        }
+        //        else
+        //        {
+        //            //UC_Stock_Take.Instance.from_form1();
+        //            UC_Stock_Take.Instance.id_employee2 = id_employee;
+        //            UC_Stock_Take.Instance.nm_employee2 = nama_employee;
+        //            //UC_Stock_Take.Instance.retreive(sql);
+        //            UC_Stock_Take.Instance.BringToFront();
+        //        }
+        //    }
             
-        }
+        //}
         //==============================================================================
         private void b_deliveryCust_Click(object sender, EventArgs e)
         {
@@ -444,20 +444,39 @@ namespace try_bi
         
         }
 
-        private void b_SyncStore_Click(object sender, EventArgs e)
+        private void b_SyncDownload_Click(object sender, EventArgs e)
         {
-            UC_SyncStore syncStore = new UC_SyncStore(this);
-            
+            UC_SyncDownloadFile downloadFile = new UC_SyncDownloadFile(this);
+
             p_kanan.Controls.Clear();
-            if (!p_kanan.Controls.Contains(UC_SyncStore.Instance))
+            if (!p_kanan.Controls.Contains(UC_SyncDownloadFile.Instance))
             {
-                p_kanan.Controls.Add(UC_SyncStore.Instance);
-                UC_SyncStore.Instance.Dock = DockStyle.Fill;
-                UC_SyncStore.Instance.BringToFront();
+                p_kanan.Controls.Add(UC_SyncDownloadFile.Instance);
+                UC_SyncDownloadFile.Instance.Dock = DockStyle.Fill;
+                UC_SyncDownloadFile.Instance.retreive(string.Empty);
+                UC_SyncDownloadFile.Instance.BringToFront();
             }
             else
             {
-                UC_SyncStore.Instance.BringToFront();
+                UC_SyncDownloadFile.Instance.BringToFront();
+            }
+        }
+
+        private void b_syncUpload_Click(object sender, EventArgs e)
+        {
+            UC_SyncUploadFile uploadFile = new UC_SyncUploadFile(this);
+
+            p_kanan.Controls.Clear();
+            if (!p_kanan.Controls.Contains(UC_SyncUploadFile.Instance))
+            {
+                p_kanan.Controls.Add(UC_SyncUploadFile.Instance);
+                UC_SyncUploadFile.Instance.Dock = DockStyle.Fill;
+                UC_SyncUploadFile.Instance.retreive(string.Empty);
+                UC_SyncUploadFile.Instance.BringToFront();
+            }
+            else
+            {
+                UC_SyncUploadFile.Instance.BringToFront();
             }
         }
 
@@ -577,7 +596,7 @@ namespace try_bi
             get_name();
             get_currency(); 
             //=====================================
-            if (store_code == "000")
+            if (store_code != "000")
             {
                 t_nama.Text = "Cashier : " + nama_employee;
             } else
@@ -586,7 +605,7 @@ namespace try_bi
             }
             
             //JIKA STATUS TERAKHIR ADALAH 0, MAKA========================================
-            if (store_code == "000")
+            if (store_code != "000")
             {
                 if (st_shift == "0")
                 {
@@ -662,7 +681,7 @@ namespace try_bi
                 bunifuFlatButton4.Visible = true;
                 b_petyCash.Visible = true;
                 b_inventory.Visible = true;
-                b_stockTake.Visible = true;
+                b_syncUpload.Visible = true;
                 b_deliveryCust.Visible = true;
                 b_mutasi.Visible = true;
                 b_return.Visible = true;

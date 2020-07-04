@@ -135,6 +135,22 @@ namespace try_bi
             }
         }
 
+        private void downloadFileBtn_Click(object sender, EventArgs e)
+        {
+            DownloadSyncFile downloadSync = new DownloadSyncFile();
+
+            try
+            {
+                downloadSync.SyncDownload();
+
+                MessageBox.Show("Download file successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void tes_koneksi()
         {           
             try

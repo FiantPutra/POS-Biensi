@@ -34,7 +34,8 @@
             BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.p_kiri = new System.Windows.Forms.Panel();
-            this.b_SyncStore = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.b_syncUpload = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.b_syncDownload = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.b_petyCash = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_close = new System.Windows.Forms.PictureBox();
@@ -42,7 +43,6 @@
             this.b_return = new Bunifu.Framework.UI.BunifuFlatButton();
             this.b_mutasi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.b_deliveryCust = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.b_stockTake = new Bunifu.Framework.UI.BunifuFlatButton();
             this.b_inventory = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -70,7 +70,8 @@
             // p_kiri
             // 
             this.p_kiri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.p_kiri.Controls.Add(this.b_SyncStore);
+            this.p_kiri.Controls.Add(this.b_syncUpload);
+            this.p_kiri.Controls.Add(this.b_syncDownload);
             this.p_kiri.Controls.Add(this.bunifuFlatButton1);
             this.p_kiri.Controls.Add(this.b_petyCash);
             this.p_kiri.Controls.Add(this.btn_close);
@@ -78,7 +79,6 @@
             this.p_kiri.Controls.Add(this.b_return);
             this.p_kiri.Controls.Add(this.b_mutasi);
             this.p_kiri.Controls.Add(this.b_deliveryCust);
-            this.p_kiri.Controls.Add(this.b_stockTake);
             this.p_kiri.Controls.Add(this.b_inventory);
             this.p_kiri.Controls.Add(this.bunifuFlatButton4);
             this.p_kiri.Controls.Add(this.bunifuFlatButton3);
@@ -94,45 +94,84 @@
             this.p_kiri.Size = new System.Drawing.Size(50, 755);
             this.p_kiri.TabIndex = 0;
             // 
-            // b_SyncStore
+            // b_syncUpload
             // 
-            this.b_SyncStore.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_SyncStore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.b_SyncStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.b_SyncStore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.b_SyncStore.BorderRadius = 0;
-            this.b_SyncStore.ButtonText = "   Sync Store";
-            this.b_SyncStore.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AnimatorKiri.SetDecoration(this.b_SyncStore, BunifuAnimatorNS.DecorationType.None);
-            this.LogoClose.SetDecoration(this.b_SyncStore, BunifuAnimatorNS.DecorationType.None);
-            this.LogoMax.SetDecoration(this.b_SyncStore, BunifuAnimatorNS.DecorationType.None);
-            this.b_SyncStore.DisabledColor = System.Drawing.Color.Gray;
-            this.b_SyncStore.Iconcolor = System.Drawing.Color.Transparent;
-            this.b_SyncStore.Iconimage = ((System.Drawing.Image)(resources.GetObject("b_SyncStore.Iconimage")));
-            this.b_SyncStore.Iconimage_right = null;
-            this.b_SyncStore.Iconimage_right_Selected = null;
-            this.b_SyncStore.Iconimage_Selected = null;
-            this.b_SyncStore.IconMarginLeft = 0;
-            this.b_SyncStore.IconMarginRight = 0;
-            this.b_SyncStore.IconRightVisible = true;
-            this.b_SyncStore.IconRightZoom = 0D;
-            this.b_SyncStore.IconVisible = true;
-            this.b_SyncStore.IconZoom = 90D;
-            this.b_SyncStore.IsTab = true;
-            this.b_SyncStore.Location = new System.Drawing.Point(1, 65);
-            this.b_SyncStore.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.b_SyncStore.Name = "b_SyncStore";
-            this.b_SyncStore.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.b_SyncStore.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_SyncStore.OnHoverTextColor = System.Drawing.Color.White;
-            this.b_SyncStore.selected = false;
-            this.b_SyncStore.Size = new System.Drawing.Size(222, 48);
-            this.b_SyncStore.TabIndex = 15;
-            this.b_SyncStore.Text = "   Sync Store";
-            this.b_SyncStore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.b_SyncStore.Textcolor = System.Drawing.Color.White;
-            this.b_SyncStore.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_SyncStore.Click += new System.EventHandler(this.b_SyncStore_Click);
+            this.b_syncUpload.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.b_syncUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.b_syncUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.b_syncUpload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.b_syncUpload.BorderRadius = 0;
+            this.b_syncUpload.ButtonText = "   Sync Upload";
+            this.b_syncUpload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnimatorKiri.SetDecoration(this.b_syncUpload, BunifuAnimatorNS.DecorationType.None);
+            this.LogoClose.SetDecoration(this.b_syncUpload, BunifuAnimatorNS.DecorationType.None);
+            this.LogoMax.SetDecoration(this.b_syncUpload, BunifuAnimatorNS.DecorationType.None);
+            this.b_syncUpload.DisabledColor = System.Drawing.Color.Gray;
+            this.b_syncUpload.Iconcolor = System.Drawing.Color.Transparent;
+            this.b_syncUpload.Iconimage = ((System.Drawing.Image)(resources.GetObject("b_syncUpload.Iconimage")));
+            this.b_syncUpload.Iconimage_right = null;
+            this.b_syncUpload.Iconimage_right_Selected = null;
+            this.b_syncUpload.Iconimage_Selected = null;
+            this.b_syncUpload.IconMarginLeft = 0;
+            this.b_syncUpload.IconMarginRight = 0;
+            this.b_syncUpload.IconRightVisible = true;
+            this.b_syncUpload.IconRightZoom = 0D;
+            this.b_syncUpload.IconVisible = true;
+            this.b_syncUpload.IconZoom = 90D;
+            this.b_syncUpload.IsTab = true;
+            this.b_syncUpload.Location = new System.Drawing.Point(0, 124);
+            this.b_syncUpload.Name = "b_syncUpload";
+            this.b_syncUpload.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.b_syncUpload.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.b_syncUpload.OnHoverTextColor = System.Drawing.Color.White;
+            this.b_syncUpload.selected = false;
+            this.b_syncUpload.Size = new System.Drawing.Size(216, 48);
+            this.b_syncUpload.TabIndex = 7;
+            this.b_syncUpload.Text = "   Sync Upload";
+            this.b_syncUpload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.b_syncUpload.Textcolor = System.Drawing.Color.White;
+            this.b_syncUpload.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_syncUpload.Click += new System.EventHandler(this.b_syncUpload_Click);
+            // 
+            // b_syncDownload
+            // 
+            this.b_syncDownload.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.b_syncDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.b_syncDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.b_syncDownload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.b_syncDownload.BorderRadius = 0;
+            this.b_syncDownload.ButtonText = "   Sync Download";
+            this.b_syncDownload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnimatorKiri.SetDecoration(this.b_syncDownload, BunifuAnimatorNS.DecorationType.None);
+            this.LogoClose.SetDecoration(this.b_syncDownload, BunifuAnimatorNS.DecorationType.None);
+            this.LogoMax.SetDecoration(this.b_syncDownload, BunifuAnimatorNS.DecorationType.None);
+            this.b_syncDownload.DisabledColor = System.Drawing.Color.Gray;
+            this.b_syncDownload.Iconcolor = System.Drawing.Color.Transparent;
+            this.b_syncDownload.Iconimage = ((System.Drawing.Image)(resources.GetObject("b_syncDownload.Iconimage")));
+            this.b_syncDownload.Iconimage_right = null;
+            this.b_syncDownload.Iconimage_right_Selected = null;
+            this.b_syncDownload.Iconimage_Selected = null;
+            this.b_syncDownload.IconMarginLeft = 0;
+            this.b_syncDownload.IconMarginRight = 0;
+            this.b_syncDownload.IconRightVisible = true;
+            this.b_syncDownload.IconRightZoom = 0D;
+            this.b_syncDownload.IconVisible = true;
+            this.b_syncDownload.IconZoom = 90D;
+            this.b_syncDownload.IsTab = true;
+            this.b_syncDownload.Location = new System.Drawing.Point(0, 69);
+            this.b_syncDownload.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.b_syncDownload.Name = "b_syncDownload";
+            this.b_syncDownload.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.b_syncDownload.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
+            this.b_syncDownload.OnHoverTextColor = System.Drawing.Color.White;
+            this.b_syncDownload.selected = false;
+            this.b_syncDownload.Size = new System.Drawing.Size(216, 48);
+            this.b_syncDownload.TabIndex = 15;
+            this.b_syncDownload.Text = "   Sync Download";
+            this.b_syncDownload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.b_syncDownload.Textcolor = System.Drawing.Color.White;
+            this.b_syncDownload.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_syncDownload.Click += new System.EventHandler(this.b_SyncDownload_Click);
             // 
             // bunifuFlatButton1
             // 
@@ -159,7 +198,7 @@
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = true;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 225);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 279);
             this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
@@ -199,7 +238,7 @@
             this.b_petyCash.IconVisible = true;
             this.b_petyCash.IconZoom = 90D;
             this.b_petyCash.IsTab = true;
-            this.b_petyCash.Location = new System.Drawing.Point(0, 383);
+            this.b_petyCash.Location = new System.Drawing.Point(0, 437);
             this.b_petyCash.Name = "b_petyCash";
             this.b_petyCash.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.b_petyCash.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -384,45 +423,6 @@
             this.b_deliveryCust.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_deliveryCust.Click += new System.EventHandler(this.b_deliveryCust_Click);
             // 
-            // b_stockTake
-            // 
-            this.b_stockTake.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_stockTake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.b_stockTake.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.b_stockTake.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.b_stockTake.BorderRadius = 0;
-            this.b_stockTake.ButtonText = "   Stock Take";
-            this.b_stockTake.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AnimatorKiri.SetDecoration(this.b_stockTake, BunifuAnimatorNS.DecorationType.None);
-            this.LogoClose.SetDecoration(this.b_stockTake, BunifuAnimatorNS.DecorationType.None);
-            this.LogoMax.SetDecoration(this.b_stockTake, BunifuAnimatorNS.DecorationType.None);
-            this.b_stockTake.DisabledColor = System.Drawing.Color.Gray;
-            this.b_stockTake.Iconcolor = System.Drawing.Color.Transparent;
-            this.b_stockTake.Iconimage = ((System.Drawing.Image)(resources.GetObject("b_stockTake.Iconimage")));
-            this.b_stockTake.Iconimage_right = null;
-            this.b_stockTake.Iconimage_right_Selected = null;
-            this.b_stockTake.Iconimage_Selected = null;
-            this.b_stockTake.IconMarginLeft = 0;
-            this.b_stockTake.IconMarginRight = 0;
-            this.b_stockTake.IconRightVisible = true;
-            this.b_stockTake.IconRightZoom = 0D;
-            this.b_stockTake.IconVisible = true;
-            this.b_stockTake.IconZoom = 90D;
-            this.b_stockTake.IsTab = true;
-            this.b_stockTake.Location = new System.Drawing.Point(0, 491);
-            this.b_stockTake.Name = "b_stockTake";
-            this.b_stockTake.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.b_stockTake.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
-            this.b_stockTake.OnHoverTextColor = System.Drawing.Color.White;
-            this.b_stockTake.selected = false;
-            this.b_stockTake.Size = new System.Drawing.Size(216, 48);
-            this.b_stockTake.TabIndex = 7;
-            this.b_stockTake.Text = "   Stock Take";
-            this.b_stockTake.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.b_stockTake.Textcolor = System.Drawing.Color.White;
-            this.b_stockTake.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_stockTake.Click += new System.EventHandler(this.b_stockTake_Click);
-            // 
             // b_inventory
             // 
             this.b_inventory.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -448,7 +448,7 @@
             this.b_inventory.IconVisible = true;
             this.b_inventory.IconZoom = 90D;
             this.b_inventory.IsTab = true;
-            this.b_inventory.Location = new System.Drawing.Point(0, 437);
+            this.b_inventory.Location = new System.Drawing.Point(0, 491);
             this.b_inventory.Name = "b_inventory";
             this.b_inventory.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.b_inventory.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -487,7 +487,7 @@
             this.bunifuFlatButton4.IconVisible = true;
             this.bunifuFlatButton4.IconZoom = 90D;
             this.bunifuFlatButton4.IsTab = true;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 329);
+            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 383);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -526,7 +526,7 @@
             this.bunifuFlatButton3.IconVisible = true;
             this.bunifuFlatButton3.IconZoom = 90D;
             this.bunifuFlatButton3.IsTab = true;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 275);
+            this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 329);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -565,7 +565,7 @@
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = true;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 124);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 178);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -604,7 +604,7 @@
             this.b_transaction.IconVisible = true;
             this.b_transaction.IconZoom = 90D;
             this.b_transaction.IsTab = true;
-            this.b_transaction.Location = new System.Drawing.Point(0, 175);
+            this.b_transaction.Location = new System.Drawing.Point(0, 229);
             this.b_transaction.Name = "b_transaction";
             this.b_transaction.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.b_transaction.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(0)))));
@@ -849,7 +849,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton b_return;
         private Bunifu.Framework.UI.BunifuFlatButton b_mutasi;
         private Bunifu.Framework.UI.BunifuFlatButton b_deliveryCust;
-        private Bunifu.Framework.UI.BunifuFlatButton b_stockTake;
+        private Bunifu.Framework.UI.BunifuFlatButton b_syncUpload;
         private Bunifu.Framework.UI.BunifuFlatButton b_inventory;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton4;
         private System.Windows.Forms.PictureBox btn_close;
@@ -862,7 +862,7 @@
         public System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox t_nama;
         private System.Windows.Forms.PictureBox menu_inout;
-        private Bunifu.Framework.UI.BunifuFlatButton b_SyncStore;
+        private Bunifu.Framework.UI.BunifuFlatButton b_syncDownload;
     }
 }
 

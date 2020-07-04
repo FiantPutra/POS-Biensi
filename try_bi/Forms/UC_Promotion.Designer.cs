@@ -32,6 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,10 +52,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -60,20 +64,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel6 = new System.Windows.Forms.Panel();
             this.t_search_trans = new Bunifu.Framework.UI.BunifuTextbox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dc_name = new System.Windows.Forms.Label();
             this.dgv_purchase = new System.Windows.Forms.DataGridView();
+            this.ITEMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITEMNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEDISCCASH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEDISCPERCENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEQTYMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEQTYMAX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEAMOUNTMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LINEAMOUNTMAX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscountCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,10 +92,6 @@
             this.AmountMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_hold = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgv_DiscHeader = new System.Windows.Forms.DataGridView();
             this.DiscCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,14 +103,10 @@
             this.DiscQtyMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscAmountMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscAmountMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITEMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITEMNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEDISCCASH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEDISCPERCENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEQTYMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEQTYMAX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEAMOUNTMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LINEAMOUNTMAX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_purchase)).BeginInit();
@@ -225,6 +225,90 @@
             this.dgv_purchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_purchase.Size = new System.Drawing.Size(797, 447);
             this.dgv_purchase.TabIndex = 8;
+            // 
+            // ITEMID
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ITEMID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ITEMID.HeaderText = "ITEM ID";
+            this.ITEMID.Name = "ITEMID";
+            this.ITEMID.ReadOnly = true;
+            this.ITEMID.Visible = false;
+            // 
+            // ITEMNAME
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ITEMNAME.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ITEMNAME.HeaderText = "ITEM NAME";
+            this.ITEMNAME.Name = "ITEMNAME";
+            this.ITEMNAME.ReadOnly = true;
+            this.ITEMNAME.Visible = false;
+            // 
+            // LINEDISCCASH
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.LINEDISCCASH.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LINEDISCCASH.HeaderText = "DISC CASH";
+            this.LINEDISCCASH.Name = "LINEDISCCASH";
+            this.LINEDISCCASH.ReadOnly = true;
+            this.LINEDISCCASH.Visible = false;
+            // 
+            // LINEDISCPERCENT
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.LINEDISCPERCENT.DefaultCellStyle = dataGridViewCellStyle5;
+            this.LINEDISCPERCENT.HeaderText = "DISC PERCENT";
+            this.LINEDISCPERCENT.Name = "LINEDISCPERCENT";
+            this.LINEDISCPERCENT.ReadOnly = true;
+            this.LINEDISCPERCENT.Visible = false;
+            // 
+            // LINEQTYMIN
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.LINEQTYMIN.DefaultCellStyle = dataGridViewCellStyle6;
+            this.LINEQTYMIN.HeaderText = "QTY MIN";
+            this.LINEQTYMIN.Name = "LINEQTYMIN";
+            this.LINEQTYMIN.ReadOnly = true;
+            this.LINEQTYMIN.Visible = false;
+            // 
+            // LINEQTYMAX
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0";
+            this.LINEQTYMAX.DefaultCellStyle = dataGridViewCellStyle7;
+            this.LINEQTYMAX.HeaderText = "QTY MAX";
+            this.LINEQTYMAX.Name = "LINEQTYMAX";
+            this.LINEQTYMAX.ReadOnly = true;
+            this.LINEQTYMAX.Visible = false;
+            // 
+            // LINEAMOUNTMIN
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.LINEAMOUNTMIN.DefaultCellStyle = dataGridViewCellStyle8;
+            this.LINEAMOUNTMIN.HeaderText = "AMOUNT MIN";
+            this.LINEAMOUNTMIN.Name = "LINEAMOUNTMIN";
+            this.LINEAMOUNTMIN.ReadOnly = true;
+            this.LINEAMOUNTMIN.Visible = false;
+            // 
+            // LINEAMOUNTMAX
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = "0";
+            this.LINEAMOUNTMAX.DefaultCellStyle = dataGridViewCellStyle9;
+            this.LINEAMOUNTMAX.HeaderText = "AMOUNT MAX";
+            this.LINEAMOUNTMAX.Name = "LINEAMOUNTMAX";
+            this.LINEAMOUNTMAX.ReadOnly = true;
+            this.LINEAMOUNTMAX.Visible = false;
             // 
             // DiscountCode
             // 
@@ -368,51 +452,6 @@
             this.dgv_hold.Size = new System.Drawing.Size(380, 545);
             this.dgv_hold.TabIndex = 9;
             this.dgv_hold.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgv_hold_MouseClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridViewTextBoxColumn1.HeaderText = "";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dataGridViewTextBoxColumn2.FillWeight = 25F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle24;
-            this.Column8.HeaderText = "";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column8.Width = 80;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle25;
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Width = 80;
             // 
             // panel1
             // 
@@ -575,89 +614,47 @@
             this.DiscAmountMax.ReadOnly = true;
             this.DiscAmountMax.Visible = false;
             // 
-            // ITEMID
+            // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ITEMID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ITEMID.HeaderText = "ITEM ID";
-            this.ITEMID.Name = "ITEMID";
-            this.ITEMID.ReadOnly = true;
-            this.ITEMID.Visible = false;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridViewTextBoxColumn1.HeaderText = "";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // ITEMNAME
+            // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ITEMNAME.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ITEMNAME.HeaderText = "ITEM NAME";
-            this.ITEMNAME.Name = "ITEMNAME";
-            this.ITEMNAME.ReadOnly = true;
-            this.ITEMNAME.Visible = false;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewTextBoxColumn2.FillWeight = 25F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // LINEDISCCASH
+            // Column8
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.LINEDISCCASH.DefaultCellStyle = dataGridViewCellStyle4;
-            this.LINEDISCCASH.HeaderText = "DISC CASH";
-            this.LINEDISCCASH.Name = "LINEDISCCASH";
-            this.LINEDISCCASH.ReadOnly = true;
-            this.LINEDISCCASH.Visible = false;
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle24;
+            this.Column8.HeaderText = "";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // LINEDISCPERCENT
+            // Column1
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.LINEDISCPERCENT.DefaultCellStyle = dataGridViewCellStyle5;
-            this.LINEDISCPERCENT.HeaderText = "DISC PERCENT";
-            this.LINEDISCPERCENT.Name = "LINEDISCPERCENT";
-            this.LINEDISCPERCENT.ReadOnly = true;
-            this.LINEDISCPERCENT.Visible = false;
-            // 
-            // LINEQTYMIN
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.LINEQTYMIN.DefaultCellStyle = dataGridViewCellStyle6;
-            this.LINEQTYMIN.HeaderText = "QTY MIN";
-            this.LINEQTYMIN.Name = "LINEQTYMIN";
-            this.LINEQTYMIN.ReadOnly = true;
-            this.LINEQTYMIN.Visible = false;
-            // 
-            // LINEQTYMAX
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.LINEQTYMAX.DefaultCellStyle = dataGridViewCellStyle7;
-            this.LINEQTYMAX.HeaderText = "QTY MAX";
-            this.LINEQTYMAX.Name = "LINEQTYMAX";
-            this.LINEQTYMAX.ReadOnly = true;
-            this.LINEQTYMAX.Visible = false;
-            // 
-            // LINEAMOUNTMIN
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.LINEAMOUNTMIN.DefaultCellStyle = dataGridViewCellStyle8;
-            this.LINEAMOUNTMIN.HeaderText = "AMOUNT MIN";
-            this.LINEAMOUNTMIN.Name = "LINEAMOUNTMIN";
-            this.LINEAMOUNTMIN.ReadOnly = true;
-            this.LINEAMOUNTMIN.Visible = false;
-            // 
-            // LINEAMOUNTMAX
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = "0";
-            this.LINEAMOUNTMAX.DefaultCellStyle = dataGridViewCellStyle9;
-            this.LINEAMOUNTMAX.HeaderText = "AMOUNT MAX";
-            this.LINEAMOUNTMAX.Name = "LINEAMOUNTMAX";
-            this.LINEAMOUNTMAX.ReadOnly = true;
-            this.LINEAMOUNTMAX.Visible = false;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle25;
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UC_Promotion
             // 
@@ -703,10 +700,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountMax;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgv_DiscHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiscCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiscType;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiscStatus;
@@ -724,5 +717,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LINEQTYMAX;
         private System.Windows.Forms.DataGridViewTextBoxColumn LINEAMOUNTMIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn LINEAMOUNTMAX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

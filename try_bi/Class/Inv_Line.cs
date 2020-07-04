@@ -60,7 +60,8 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                command = "SELECT * FROM deliveryorder_line WHERE DELIVERY_ORDER_ID = '" + do_id + "' AND (QTY_DISPUTE < 0 OR QTY_DISPUTE > 0)";
+                command = "SELECT a.QTY_RECEIVE, b._id FROM deliveryorder_line a JOIN article b "
+                            + "ON a.ARTICLE_ID = b.ARTICLE_ID WHERE DELIVERY_ORDER_ID = '" + do_id + "' AND QTY_RECEIVE > 0";
                 CRUD sql = new CRUD();
                 ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
 
@@ -68,7 +69,7 @@ namespace try_bi
                 {
                     while (ckon.sqlDataRd.Read())
                     {
-                        art_id_do = ckon.sqlDataRd["ARTICLE_ID"].ToString();
+                        art_id_do = ckon.sqlDataRd["_id"].ToString();
                         qty_receive = Convert.ToInt32(ckon.sqlDataRd["QTY_RECEIVE"].ToString());
                         cek_qty_inv(art_id_do);
                         cek_inv_line(do_id, qty_receive);
@@ -121,7 +122,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                command = "SELECT * FROM transaction_line INNER JOIN article "
+                command = "SELECT article._id as artId, * FROM transaction_line INNER JOIN article "
                             + "ON article.ARTICLE_ID = transaction_line.ARTICLE_ID "
                             + "WHERE transaction_line.TRANSACTION_ID = '" + void_id + "'";
                 CRUD sql = new CRUD();
@@ -132,7 +133,7 @@ namespace try_bi
                     while (ckon.sqlDataRd.Read())
                     {
                         qty_trans_line = Convert.ToInt32(ckon.sqlDataRd["QUANTITY"].ToString());
-                        inv_id = ckon.sqlDataRd["_id"].ToString();
+                        inv_id = ckon.sqlDataRd["artId"].ToString();
                         cek_qty_inv(inv_id);//mengambil good qty dari inventory sesuai id
                         cek_inv_line(void_id, qty_trans_line);
                     }
@@ -341,7 +342,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                command = "SELECT * FROM inventory WHERE ARTICLE_ID = '" + art_id + "'";
+                command = "SELECT * FROM inventory WHERE ARTICLE_ID = '" + art_id + "' AND GOOD_QTY > 0";
                 CRUD sql = new CRUD();
                 ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
 

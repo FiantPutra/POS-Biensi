@@ -24,7 +24,7 @@ namespace try_bi
         public static Form1 f1;
         koneksi ckon = new koneksi();        
         public string articleId, articleName, qty, transactionId, spgId, fromStore, store;
-        public bool shippingByTrans;
+        public bool shippingByTrans, holdTrans;
 
         public W_DeliveryAddress(Form1 form1)
         {
@@ -68,9 +68,18 @@ namespace try_bi
             }
             else
             {
-                string cmd_update = "UPDATE [tmp].[" + store + "] SET DELIVERYCUSTADDRESS = '" + t_DeliveryAddress.Text + "', OMNISHIPPINGCOST = '', OMNICOURIER = '' " +
-                                    "WHERE TRANSACTION_ID = '" + transactionId + "' AND ARTICLE_ID = '" + t_ArtId.Text + "' AND OMNISTORECODE = '" + t_FromStore.Text + "'";
+                //if (!holdTrans)
+                //{
+                string cmd_update = "UPDATE [tmp].[" + store + "] SET DELIVERYCUSTADDRESS = '" + t_DeliveryAddress.Text + "', OMNISHIPPINGCOST = '', OMNICOURIER = '"+ cbDelivType.Text +"' " +
+                                "WHERE TRANSACTION_ID = '" + transactionId + "' AND ARTICLE_ID = '" + t_ArtId.Text + "' AND OMNISTORECODE = '" + t_FromStore.Text + "'";
                 sql.ExecuteNonQuery(cmd_update);
+                //}
+                //else
+                //{
+                //    string cmd_update = "UPDATE transaction_line SET DELIVERYCUSTADDRESS = '" + t_DeliveryAddress.Text + "', OMNISHIPPINGCOST = '', OMNICOURIER = '' " +
+                //                    "WHERE TRANSACTION_ID = '" + transactionId + "' AND ARTICLE_ID = '" + t_ArtId.Text + "' AND OMNISTORECODE = '" + t_FromStore.Text + "'";
+                //    sql.ExecuteNonQuery(cmd_update);
+                //}
             }
 
             this.Close();
@@ -87,7 +96,7 @@ namespace try_bi
             spgId = _spgId;
             fromStore = _fromStore;
             shippingByTrans = isShippingByTrans;
-            store = _storeCode;
+            store = _storeCode;          
         }
 
         public void retreiveByTransLine()

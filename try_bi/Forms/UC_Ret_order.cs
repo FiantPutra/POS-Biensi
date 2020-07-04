@@ -170,7 +170,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT  returnorder_line.ARTICLE_ID ,returnorder_line.QUANTITY, returnorder_line.UNIT,returnorder_line.SUBTOTAL, article._id,article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE FROM returnorder_line, article  WHERE article.ARTICLE_ID = returnorder_line.ARTICLE_ID AND returnorder_line.RETURN_ORDER_ID='" + l_transaksi.Text + "' ";
+                String cmd = "SELECT  returnorder_line.ARTICLE_ID ,returnorder_line.QUANTITY, returnorder_line.UNIT,returnorder_line.SUBTOTAL, article._id,article.ARTICLE_NAME, itemdimensionsize.Description as SIZE_ID, itemdimensioncolor.Description as COLOR_ID, article.PRICE FROM returnorder_line, article, itemdimensioncolor, itemdimensionsize WHERE article.ARTICLE_ID = returnorder_line.ARTICLE_ID AND itemdimensioncolor.Id = article.COLOR_ID AND itemdimensionsize.Id = article.SIZE_ID AND returnorder_line.RETURN_ORDER_ID='" + l_transaksi.Text + "' ";
                 if (filter != "")
                 {
                     filter = filter.Replace("ARTICLE_ID", "returnorder_line.ARTICLE_ID");
@@ -397,7 +397,7 @@ namespace try_bi
                 try
                 {
                     ckon.sqlCon().Open();
-                    String cmd_inv = "SELECT * FROM inventory WHERE _id = '" + _id2 + "'";
+                    String cmd_inv = "SELECT * FROM inventory WHERE ARTICLE_ID = '" + _id2 + "'";
                     ckon.sqlDataRd = sql.ExecuteDataReader(cmd_inv, ckon.sqlCon());
 
                     if (ckon.sqlDataRd.HasRows)
@@ -559,6 +559,8 @@ namespace try_bi
         //=====================SEARCH ARTICLE ===============================================
         private void b_search_Click(object sender, EventArgs e)
         {
+            updateInventArticle();
+
             //fungsi fokus ke scan barcode
             this.ActiveControl = t_barcode;
             t_barcode.Focus();
@@ -575,6 +577,8 @@ namespace try_bi
         {
             try
             {
+                updateInventArticle();
+
                 if (e.KeyChar == (char)Keys.Enter)
                 {
                     if (Properties.Settings.Default.OnnOrOff == "Offline")
@@ -814,6 +818,39 @@ namespace try_bi
                     ckon.sqlCon().Close();
             }
 
-        }    
+        }
+
+        public void updateInventArticle()
+        {
+            CRUD sql = new CRUD();
+            int inventArtId;
+
+            try
+            {
+                ckon.sqlCon().Open();
+                String cmd = "SELECT ARTICLE_ID FROM inventory GROUP BY ARTICLE_ID HAVING COUNT(*) > 1";
+                ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
+                    {
+                        inventArtId = Convert.ToInt32(ckon.sqlDataRd["ARTICLE_ID"].ToString());
+
+                        string cmd_update = "UPDATE inventory SET GOOD_QTY = (SELECT SUM(GOOD_QTY) FROM inventory WHERE ARTICLE_ID = '" + inventArtId + "') WHERE ARTICLE_ID = '" + inventArtId + "'";
+                        sql.ExecuteNonQuery(cmd_update);
+
+                        string cmd_delete = "WITH Temp " +
+                                                "AS(SELECT Article_ID, ROW_NUMBER() OVER(PARTITION by Article_ID ORDER BY Article_ID) AS duplicateRecCount FROM inventory where ARTICLE_ID = '" + inventArtId + "') " +
+                                                "DELETE FROM Temp WHERE duplicateRecCount > 1";
+                        sql.ExecuteNonQuery(cmd_delete);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -37,19 +37,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.b_downloadFTP = new Bunifu.Framework.UI.BunifuThinButton2();
             this.dgv_DownloadFile = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.b_back2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SyncTypes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.download_date = new MetroFramework.Controls.MetroDateTime();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DownloadFile)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.b_back2)).BeginInit();
             this.SuspendLayout();
             // 
             // b_downloadFTP
@@ -131,46 +130,6 @@
             this.dgv_DownloadFile.Size = new System.Drawing.Size(1178, 563);
             this.dgv_DownloadFile.TabIndex = 14;
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.dgv_DownloadFile);
-            this.panel2.Location = new System.Drawing.Point(15, 87);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1184, 580);
-            this.panel2.TabIndex = 16;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.b_back2);
-            this.panel1.Controls.Add(this.b_downloadFTP);
-            this.panel1.Location = new System.Drawing.Point(15, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 66);
-            this.panel1.TabIndex = 15;
-            // 
-            // b_back2
-            // 
-            this.b_back2.BackColor = System.Drawing.Color.Transparent;
-            this.b_back2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.b_back2.Image = ((System.Drawing.Image)(resources.GetObject("b_back2.Image")));
-            this.b_back2.ImageActive = null;
-            this.b_back2.Location = new System.Drawing.Point(1045, 10);
-            this.b_back2.Name = "b_back2";
-            this.b_back2.Size = new System.Drawing.Size(124, 46);
-            this.b_back2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.b_back2.TabIndex = 16;
-            this.b_back2.TabStop = false;
-            this.b_back2.Zoom = 0;
-            this.b_back2.Click += new System.EventHandler(this.b_back2_Click);
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -223,6 +182,42 @@
             this.SyncTypes.ReadOnly = true;
             this.SyncTypes.Width = 200;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.dgv_DownloadFile);
+            this.panel2.Location = new System.Drawing.Point(15, 87);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1184, 580);
+            this.panel2.TabIndex = 16;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.download_date);
+            this.panel1.Controls.Add(this.b_downloadFTP);
+            this.panel1.Location = new System.Drawing.Point(15, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1184, 66);
+            this.panel1.TabIndex = 15;
+            // 
+            // download_date
+            // 
+            this.download_date.CustomFormat = "yyyy-MM-dd";
+            this.download_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.download_date.Location = new System.Drawing.Point(256, 18);
+            this.download_date.MinimumSize = new System.Drawing.Size(0, 29);
+            this.download_date.Name = "download_date";
+            this.download_date.Size = new System.Drawing.Size(186, 29);
+            this.download_date.TabIndex = 17;
+            this.download_date.ValueChanged += new System.EventHandler(this.download_date_ValueChanged_1);
+            // 
             // UC_SyncDownloadFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DownloadFile)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.b_back2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,12 +238,12 @@
         private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_DownloadFile;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuImageButton b_back2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn SyncTypes;
+        private MetroFramework.Controls.MetroDateTime download_date;
     }
 }

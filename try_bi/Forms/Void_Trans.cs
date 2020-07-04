@@ -30,7 +30,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT a.TRANSACTION_ID FROM [transaction] a LEFT JOIN transaction_line b ON a.`TRANSACTION_ID`=b.`TRANSACTION_ID` WHERE b.transaction_ID is null AND STATUS IN ('0','3') and COMP_NAME='" + comp_nam + "' ORDER BY a._id asc LIMIT 1";
+                String cmd = "SELECT top 1 a.TRANSACTION_ID FROM [transaction] a LEFT JOIN transaction_line b ON a.TRANSACTION_ID = b.TRANSACTION_ID WHERE b.transaction_ID is null AND STATUS IN ('0','3') and COMP_NAME='"+ comp_nam +"' ORDER BY a._id asc";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
 
                 if (ckon.sqlDataRd.HasRows)
@@ -183,53 +183,7 @@ namespace try_bi
             {
 
                 throw;
-            }
-
-            //String sql3 = "SELECT ID_SHIFT FROM closing_shift ORDER BY _id DESC LIMIT 1";
-            //ckon.cmd = new MySqlCommand(sql3, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        id_shift = ckon.myReader.GetString("ID_SHIFT");
-            //    }
-            //}
-            //ckon.con.Close();
-            //==================AMBIL ID DARI TABEL CLOSING STORE=====================
-            //ckon.con.Close();
-            //String sql4 = "SELECT ID_C_STORE FROM closing_store ORDER BY _id DESC LIMIT 1";
-            //ckon.cmd = new MySqlCommand(sql4, ckon.con);
-            //ckon.con.Open();
-            //ckon.myReader = ckon.cmd.ExecuteReader();
-            //if (ckon.myReader.HasRows)
-            //{
-            //    while (ckon.myReader.Read())
-            //    {
-            //        id_CStore = ckon.myReader.GetString("ID_C_STORE");
-            //    }
-            //}
-            //ckon.con.Close();
-            //==================AMBIL ID DARI TABLE STORE=============================
-            //ckon.con.Close();
-            //String sql2 = "SELECT CODE FROM store";
-            //ckon.cmd = new MySqlCommand(sql2, ckon.con);
-            //try
-            //{
-            //    ckon.con.Open();
-            //    ckon.myReader = ckon.cmd.ExecuteReader();
-            //    if (ckon.myReader.HasRows)
-            //    {
-            //        while (ckon.myReader.Read())
-            //        {
-            //            store_code = ckon.myReader.GetString("CODE");
-            //        }
-            //    }
-            //    ckon.con.Close();
-            //}
-            //catch
-            //{ MessageBox.Show("Failed when get data from store data"); }
+            }            
         }
         //=================== GET DATA ID===================================================
         public void get_data_id()
@@ -322,14 +276,15 @@ namespace try_bi
             //ckon.con.Close();
             DateTime mydate = DateTime.Now;
 
+            
             if (head_stts == 1)
             { //update by delete
-                String cmd_delete = "DELETE FROM [transaction] WHERE TRANSACTION_ID='"+ new_idTrans + "'";
+                String cmd_delete = "DELETE FROM [transaction] WHERE TRANSACTION_ID='" + new_idTrans + "'";
                 CRUD delete = new CRUD();
                 delete.ExecuteNonQuery(cmd_delete);
             }
 
-            String cmd_insert = "INSERT INTO [transaction] (TRANSACTION_ID,STORE_CODE,CUSTOMER_ID,EMPLOYEE_ID,RECEIPT_ID,SPG_ID,DISCOUNT,TOTAL,STATUS,PAYMENT_TYPE,CASH,EDC,EDC2,CHANGEE,VOUCHER,BANK_NAME,BANK_NAME2,NO_REF,NO_REF2, DATE, TIME,CUST_ID_STORE,CURRENCY,ID_SHIFT,ID_C_STORE,VOUCHER_ID,VOUCHER_CODE,REFERENCE_DOC,COMP_NAME) VALUES ('" + new_idTrans + "', '" + store_code2 + "','" + cust_id + "','" + employee_id + "','" + receipt_id + "','" + spg_id + "','-" + discount + "', '-" + total + "', '2', '" + payment + "', '-" + cash + "', '-" + edc + "','-" + edc2 + "', '-" + changee + "', '-" + voucher + "','" + bank_name + "', '" + bank_name2 + "','" + no_ref + "','" + no_ref2 + "', '" + mydate.ToString("yyyy-MM-dd") + "', '" + mydate.ToLocalTime().ToString("H:mm:ss") + "','" + cust_id_Store + "','" + curr + "','" + id_shift2 + "','" + id_c_store + "','" + vou_id + "', '" + vou_code + "', '" + id_trans + "', '" + comp_nam + "') ";
+            String cmd_insert = "INSERT INTO [transaction] (TRANSACTION_ID,STORE_CODE,CUSTOMER_ID,EMPLOYEE_ID,RECEIPT_ID,SPG_ID,DISCOUNT,TOTAL,STATUS,PAYMENT_TYPE,CASH,EDC,EDC2,CHANGEE,VOUCHER,BANK_NAME,BANK_NAME2,NO_REF,NO_REF2, DATE, TIME,CUST_ID_STORE,CURRENCY,ID_SHIFT,ID_C_STORE,VOUCHER_ID,VOUCHER_CODE,REFERENCE_DOC,COMP_NAME,TRANSACTION_TYPE) VALUES ('" + new_idTrans + "', '" + store_code2 + "','" + cust_id + "','" + employee_id + "','" + receipt_id + "','" + spg_id + "','-" + discount + "', '-" + total + "', '2', '" + payment + "', '-" + cash + "', '-" + edc + "','-" + edc2 + "', '-" + changee + "', '-" + voucher + "','" + bank_name + "', '" + bank_name2 + "','" + no_ref + "','" + no_ref2 + "', '" + mydate.ToString("yyyy-MM-dd") + "', '" + mydate.ToLocalTime().ToString("H:mm:ss") + "','" + cust_id_Store + "','" + curr + "','" + id_shift2 + "','" + id_c_store + "','" + vou_id + "', '" + vou_code + "', '" + id_trans + "', '" + comp_nam + "', '1') ";
             CRUD insert = new CRUD();
             insert.ExecuteNonQuery(cmd_insert);
 
@@ -339,25 +294,25 @@ namespace try_bi
 
             //String query = "UPDATE auto_number SET Month = '" + bulan_now + "', Number = '" + number_trans + "' WHERE Type_Trans='1'";
             //CRUD ubah = new CRUD();
-            //ubah.ExecuteNonQuery(query);                       
+            //ubah.ExecuteNonQuery(query);
         }
 
         //======================INPUT TRANSAKSI HEADER NEW======================================
         public void save_trans_header_new()
-        {            
+        {
             set_running_number();
             new_idTrans2 = final_running_number;
 
             ckon.con.Close();
             DateTime mydate = DateTime.Now;
 
-            String cmd_insert = "INSERT INTO [transaction] (TRANSACTION_ID,STORE_CODE,CUSTOMER_ID,EMPLOYEE_ID,RECEIPT_ID,SPG_ID,STATUS,DATE,TIME,CUST_ID_STORE,CURRENCY,ID_SHIFT,ID_C_STORE,REFERENCE_DOC,COMP_NAME) VALUES ('" + new_idTrans2 + "', '" + store_code + "','" + cust_id + "','" + employee_id + "','" + receipt_id + "','" + spg_id + "','0', '" + mydate.ToString("yyyy-MM-dd") + "', '" + mydate.ToLocalTime().ToString("H:mm:ss") + "','" + cust_store_id + "','" + curr + "','" + id_shift + "','" + id_CStore + "', '" + id_trans + "', '" + comp_nam + "') ";
+            String cmd_insert = "INSERT INTO [transaction] (TRANSACTION_ID,STORE_CODE,CUSTOMER_ID,EMPLOYEE_ID,RECEIPT_ID,SPG_ID,STATUS,DATE,TIME,CUST_ID_STORE,CURRENCY,ID_SHIFT,ID_C_STORE,REFERENCE_DOC,COMP_NAME,TRANSACTION_TYPE) VALUES ('" + new_idTrans2 + "', '" + store_code + "','" + cust_id + "','" + employee_id + "','" + receipt_id + "','" + spg_id + "','0', '" + mydate.ToString("yyyy-MM-dd") + "', '" + mydate.ToLocalTime().ToString("H:mm:ss") + "','" + cust_store_id + "','" + curr + "','" + id_shift + "','" + id_CStore + "', '" + id_trans + "', '" + comp_nam + "','1') ";
             CRUD insert = new CRUD();
-            insert.ExecuteNonQuery(cmd_insert);            
+            insert.ExecuteNonQuery(cmd_insert);
 
-            //String query = "UPDATE auto_number SET Month = '" + bulan_now + "', Number = '" + number_trans + "' WHERE Type_Trans='1'";
-            //CRUD ubah = new CRUD();
-            //ubah.ExecuteNonQuery(query);            
+            String query = "UPDATE auto_number SET Number = '" + number_trans + "' WHERE Type_Trans='1' AND Year='" + tahun_now + "' AND Month='" + bulan_now + "'"; //"UPDATE auto_number SET Month = '" + bulan_now + "', Number = '" + number_trans + "' WHERE Type_Trans='1'";
+            CRUD ubah = new CRUD();
+            ubah.ExecuteNonQuery(query);
         }
         //======================INPUT TRANSAKSI LINE========================================
         public void save_trans_line()
@@ -366,8 +321,8 @@ namespace try_bi
 
             try
             {
-                //ckon.con.Close();
-                //koneksi2 ckon2 = new koneksi2();
+                ckon.con.Close();
+                koneksi2 ckon2 = new koneksi2();
                 ckon.sqlCon().Open();
                 String cmd = "SELECT * FROM transaction_line WHERE TRANSACTION_ID = '" + id_trans + "'";
                 ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
@@ -384,32 +339,61 @@ namespace try_bi
                         String spg_id_line = ckon.sqlDataRd["SPG_ID"].ToString();
                         String dis_code = ckon.sqlDataRd["DISCOUNT_CODE"].ToString();
                         String dis_type = ckon.sqlDataRd["DISCOUNT_TYPE"].ToString();
+                        String dis_desc = ckon.sqlDataRd["DISCOUNT_DESC"].ToString();                        
+                        String is_service = ckon.sqlDataRd["IS_SERVICE"].ToString();
+                        String is_omniTrans = ckon.sqlDataRd["IS_OMNITRANS"].ToString();
+                        String omniStoreCode = ckon.sqlDataRd["OMNISTORECODE"].ToString();
+                        String deliv_cust = ckon.sqlDataRd["DELIVERYCUSTADDRESS"].ToString();
+                        String omniShip = ckon.sqlDataRd["OMNISHIPPINGCOST"].ToString();
+                        String omniCourier = ckon.sqlDataRd["OMNICOURIER"].ToString();
+                        String deliv_type = ckon.sqlDataRd["DELIVERYTYPE"].ToString();
+                        String maxDicsQty = ckon.sqlDataRd["MAXDISCOUNTQUANTITY"].ToString();
+                        String maxDiscAmt = ckon.sqlDataRd["MAXDISCOUNTAMOUNT"].ToString();
+                        String discAmt = ckon.sqlDataRd["DISCOUNTAMOUNT"].ToString();
+                        String dis_setupLine = ckon.sqlDataRd["DiscountSetupLines"].ToString();
 
-                        String cmd_insert = "INSERT INTO transaction_line(TRANSACTION_ID, ARTICLE_ID, QUANTITY, PRICE,DISCOUNT, SUBTOTAL,SPG_ID,DISCOUNT_CODE, DISCOUNT_TYPE) VALUES ('" + new_idTrans + "', '" + article_id + "', '-" + qty + "', '" + price + "', '-" + discount + "','-" + subtotal + "','" + spg_id_line + "','" + dis_code + "', '" + dis_type + "')";
+
+                        String cmd_insert = "INSERT INTO transaction_line(TRANSACTION_ID, ARTICLE_ID, QUANTITY, PRICE,DISCOUNT, SUBTOTAL,SPG_ID,DISCOUNT_CODE, DISCOUNT_TYPE, DISCOUNT_DESC, IS_SERVICE, IS_OMNITRANS, OMNISTORECODE, DELIVERYCUSTADDRESS, OMNISHIPPINGCOST, OMNICOURIER, DELIVERYTYPE, MAXDISCOUNTQUANTITY, MAXDISCOUNTAMOUNT, DISCOUNTAMOUNT, DiscountSetupLines) " + 
+                                                "VALUES ('" + new_idTrans + "', '" + article_id + "', '-" + qty + "', '" + price + "', '-" + discount + "','-" + subtotal + "','" + spg_id_line + "','" + dis_code + "', '" + dis_type + "', '"+ dis_desc +"', '"+ is_service +"', '"+ is_omniTrans +"', '"+ omniStoreCode +"', '"+ deliv_cust +"', '"+ omniShip +"', '"+ omniCourier +"', '"+ deliv_type +"', '"+ maxDicsQty +"', '"+ maxDiscAmt +"', '"+ discAmt +"', '"+ dis_setupLine +"')";
                         sql.ExecuteNonQuery(cmd_insert);
                     }
                 }
-                //ckon.cmd = new MySqlCommand(sql, ckon.con);
-                //ckon.con.Open();
-                //ckon.myReader = ckon.cmd.ExecuteReader();
-                //while (ckon.myReader.Read())
-                //{
-                //    String article_id = ckon.myReader.GetString("ARTICLE_ID");
-                //    String qty = ckon.myReader.GetString("QUANTITY");
-                //    String price = ckon.myReader.GetString("PRICE");
-                //    String subtotal = ckon.myReader.GetString("SUBTOTAL");
-                //    String discount = ckon.myReader.GetString("DISCOUNT");
-                //    String spg_id_line = ckon.myReader.GetString("SPG_ID");
-                //    String dis_code = ckon.myReader.GetString("DISCOUNT_CODE");
-                //    String dis_type = ckon.myReader.GetString("DISCOUNT_TYPE");
 
-                //    String SQL2 = "INSERT INTO transaction_line(TRANSACTION_ID, ARTICLE_ID, QUANTITY, PRICE,DISCOUNT, SUBTOTAL,SPG_ID,DISCOUNT_CODE, DISCOUNT_TYPE) VALUES ('" + new_idTrans + "', '" + article_id + "', '-" + qty + "', '" + price + "', '-" + discount + "','-" + subtotal + "','" + spg_id_line + "','" + dis_code + "', '" + dis_type + "')";
-                //    ckon2.con2.Open();
-                //    ckon2.cmd2 = new MySqlCommand(SQL2, ckon2.con2);
-                //    ckon2.cmd2.ExecuteNonQuery();
-                //    ckon2.con2.Close();
+                //ckon.sqlCon().Open();
+                //String cmd = "SELECT * FROM [tmp].[" + store_code + "] WHERE TRANSACTION_ID = '" + id_trans + "'";
+                //ckon.sqlDataRd = sql.ExecuteDataReader(cmd, ckon.sqlCon());
+
+                //if (ckon.sqlDataRd.HasRows)
+                //{
+                //    while (ckon.sqlDataRd.Read())
+                //    {
+                //        String article_id = ckon.sqlDataRd["ARTICLE_ID"].ToString();
+                //        String article_name = ckon.sqlDataRd["ARTICLE_NAME"].ToString();
+                //        String qty = ckon.sqlDataRd["QUANTITY"].ToString();
+                //        String price = ckon.sqlDataRd["PRICE"].ToString();
+                //        String discount = ckon.sqlDataRd["DISCOUNT"].ToString();
+                //        String discAmt = ckon.sqlDataRd["DISCOUNTAMOUNT"].ToString();
+                //        String maxDicsQty = ckon.sqlDataRd["MAXDISCOUNTQUANTITY"].ToString();
+                //        String maxDiscAmt = ckon.sqlDataRd["MAXDISCOUNTAMOUNT"].ToString();                        
+                //        String subtotal = ckon.sqlDataRd["SUBTOTAL"].ToString();                                         
+                //        String spg_id_line = ckon.sqlDataRd["SPG_ID"].ToString();
+                //        String dis_code = ckon.sqlDataRd["DISCOUNT_CODE"].ToString();
+                //        String dis_type = ckon.sqlDataRd["DISCOUNT_TYPE"].ToString();
+                //        String dis_desc = ckon.sqlDataRd["DISCOUNT_DESC"].ToString();
+                //        String dis_setupLine = ckon.sqlDataRd["DiscountSetupLines"].ToString();
+                //        String is_service = ckon.sqlDataRd["IS_SERVICE"].ToString();
+                //        String is_omniTrans = ckon.sqlDataRd["IS_OMNITRANS"].ToString();
+                //        String omniStoreCode = ckon.sqlDataRd["OMNISTORECODE"].ToString();
+                //        String deliv_cust = ckon.sqlDataRd["DELIVERYCUSTADDRESS"].ToString();
+                //        String omniShip = ckon.sqlDataRd["OMNISHIPPINGCOST"].ToString();
+                //        String omniCourier = ckon.sqlDataRd["OMNICOURIER"].ToString();
+                //        String dis_code_promo = ckon.sqlDataRd["DISCOUNT_CODE_PROMOTION"].ToString();
+
+                //        string cmd_insert = "INSERT INTO [tmp].[" + store_code + "](TRANSACTION_ID,ARTICLE_ID,ARTICLE_NAME,QUANTITY,PRICE,DISCOUNT,DISCOUNTAMOUNT,MAXDISCOUNTQUANTITY,MAXDISCOUNTAMOUNT,SUBTOTAL,SPG_ID,DISCOUNT_CODE,DISCOUNT_TYPE,DISCOUNT_DESC,DiscountSetupLines,IS_SERVICE,IS_OMNITRANS,OMNISTORECODE,DELIVERYCUSTADDRESS,OMNISHIPPINGCOST,OMNICOURIER,DISCOUNT_CODE_PROMOTION) " +
+                //                                "values('"+ new_idTrans + "', '"+ article_id + "', '"+ article_name + "', '-"+ qty +"', '"+ price + "', '"+ discount +"', '-"+ discAmt +"', '"+ maxDicsQty +"', '"+ maxDiscAmt +"', '-"+ subtotal +"', '"+ spg_id_line + "', '"+ dis_code + "', '"+ dis_type + "', '"+ dis_desc + "', '"+ dis_setupLine + "', '"+ is_service + "', '"+ is_omniTrans + "', '"+ omniStoreCode + "', '"+ deliv_cust + "', '"+ omniShip + "', '"+ omniCourier + "', '"+ dis_code_promo + "')";
+                //        sql.ExecuteNonQuery(cmd_insert);
+                //    }
                 //}
-                //ckon.con.Close();
             }
             catch(Exception e)
             {
@@ -475,7 +459,7 @@ namespace try_bi
                         cmd_insert = "INSERT INTO auto_number (Store_Code,Year,Month,Number,Type_Trans,Dev_Code) VALUES ('" + store_code + "','" + tahun_now + "','" + bulan_now + "','" + number_trans + "','1','" + Properties.Settings.Default.DevCode + "')";
                     }                    
                     sql.ExecuteNonQuery(cmd_insert);
-                }
+                }                
             }
             catch (Exception e)
             {

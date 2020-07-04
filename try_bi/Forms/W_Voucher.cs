@@ -90,7 +90,7 @@ namespace try_bi
         {
             CRUD sql = new CRUD();
             string desc = "";
-            int value = 0, id = 0;
+            int value = 0, id = 0, valuePct = 0;
 
             try
             {
@@ -104,13 +104,14 @@ namespace try_bi
                     {
                         desc = ckon.sqlDataRd["DiscountName"].ToString();
                         value = Convert.ToInt32(ckon.sqlDataRd["DiscountCash"]);
+                        valuePct = Convert.ToInt32(ckon.sqlDataRd["DiscountPercent"]);
                         id = Convert.ToInt32(ckon.sqlDataRd["Id"].ToString());
                     }                    
 
                     //=== buka form untuk menggunakan voucher
                     W_Vou_Confirm confirm = new W_Vou_Confirm();
                     confirm.id_transaksi3 = id_transaksi2; //digunakan untuk membawa id transaksi
-                    confirm.get_voucher_valid(t_voucher.Text, desc, value, id);//memberikan data ke form penggunaan voucher
+                    confirm.get_voucher_valid(t_voucher.Text, desc, value, valuePct, id);//memberikan data ke form penggunaan voucher
                     confirm.ShowDialog();//buka form nya
                     //====tutup form ini
                     this.Close();

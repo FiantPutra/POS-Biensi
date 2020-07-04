@@ -65,7 +65,10 @@ namespace try_bi
                         int dgRows = dgv_hold.Rows.Add();
                         dgv_hold.Rows[dgRows].Cells[0].Value = id_trans;
                         dgv_hold.Rows[dgRows].Cells[1].Value = tr_date + " " + jam;
-                        dgv_hold.Rows[dgRows].Cells[2].Value = st_api.ToString();
+                        if (st_api == 1)
+                            dgv_hold.Rows[dgRows].Cells[2].Value = "Confirmed";
+                        else
+                            dgv_hold.Rows[dgRows].Cells[2].Value = "Unconfirmed";
                     }
                 }
             }
@@ -200,7 +203,7 @@ namespace try_bi
             try
             {
                 ckon.sqlCon().Open();
-                String cmd = "SELECT  returnorder_line.ARTICLE_ID ,returnorder_line.QUANTITY, returnorder_line.UNIT, article.ARTICLE_NAME, article.SIZE_ID, article.COLOR_ID, article.PRICE FROM returnorder_line, article  WHERE article.ARTICLE_ID = returnorder_line. ARTICLE_ID AND returnorder_line.RETURN_ORDER_ID='" + l_transaksi.Text + "' ";
+                String cmd = "SELECT  returnorder_line.ARTICLE_ID ,returnorder_line.QUANTITY, returnorder_line.UNIT, article.ARTICLE_NAME, itemdimensionsize.Description as SIZE_ID, itemdimensioncolor.Description as COLOR_ID, article.PRICE FROM returnorder_line, article, itemdimensioncolor, itemdimensionsize WHERE article.ARTICLE_ID = returnorder_line. ARTICLE_ID AND itemdimensioncolor.Id = article.COLOR_ID AND itemdimensionsize.Id = article.SIZE_ID AND returnorder_line.RETURN_ORDER_ID='" + l_transaksi.Text + "' ";
                 if (filter != "")
                 {
                     filter = filter.Replace("ARTICLE_ID", "returnorder_line.ARTICLE_ID");

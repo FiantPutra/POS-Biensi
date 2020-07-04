@@ -436,30 +436,50 @@ namespace try_bi
 
             try
             {
-                for (int i = 0; i < dgv_shipping.Rows.Count; i++)
-                {                    
-                    string type = Convert.ToString(dgv_shipping.Rows[i].Cells["Type"].EditedFormattedValue);
-                    string omniStore = Convert.ToString(dgv_shipping.Rows[i].Cells["FromStore"].Value);
-                    string articleId = Convert.ToString(dgv_shipping.Rows[i].Cells["Article_Id"].Value);
+                //for (int i = 0; i < dgv_shipping.Rows.Count; i++)
+                //{                    
+                //    string type = Convert.ToString(dgv_shipping.Rows[i].Cells["Type"].EditedFormattedValue);
+                //    string omniStore = Convert.ToString(dgv_shipping.Rows[i].Cells["FromStore"].Value);
+                //    string articleId = Convert.ToString(dgv_shipping.Rows[i].Cells["Article_Id"].Value);
 
-                    if (type == "")
+                //    if (type == "")
+                //    {
+                //        isValid = false;
+                //        MessageBox.Show("Please select type in shipping details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        String cmd_update = "UPDATE transaction_line SET DELIVERYTYPE = '" + type + "' "
+                //                            + "WHERE TRANSACTION_ID = '" + l_transaksi2.Text + "' AND OMNISTORECODE = '" + omniStore + "' AND ARTICLE_ID = '" + articleId + "'";
+                //        sql.ExecuteNonQuery(cmd_update); 
+                //    }
+                //}
+                
+                //if (isValid)
+                //{
+                ckon.sqlCon().Open();
+                command = "SELECT DELIVERY_CUST_ID FROM deliverycustomer WHERE Status = '0'";
+
+                ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
+
+                if (ckon.sqlDataRd.HasRows)
+                {
+                    while (ckon.sqlDataRd.Read())
                     {
-                        isValid = false;
-                        MessageBox.Show("Please select type in shipping details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    }
-                    else
-                    {
-                        String cmd_update = "UPDATE transaction_line SET DELIVERYTYPE = '" + type + "' "
-                                            + "WHERE TRANSACTION_ID = '" + l_transaksi2.Text + "' AND OMNISTORECODE = '" + omniStore + "' AND ARTICLE_ID = '" + articleId + "'";
-                        sql.ExecuteNonQuery(cmd_update); 
+                        deliveryCustId = ckon.sqlDataRd["DELIVERY_CUST_ID"].ToString();
                     }
                 }
-                
-                if (isValid)
+
+
+                if (deliveryCustId == "")
                 {
-                    ckon.sqlCon().Open();
-                    command = "SELECT DELIVERY_CUST_ID FROM deliverycustomer WHERE Status = '0'";
+                    save_deliveryCust_header();
+                    deliveryCustId = final_running_number;
+
+                    command = "SELECT transaction_line.QUANTITY, transaction_line.DELIVERYCUSTADDRESS, transaction_line.OMNICOURIER, transaction_line.OMNISTORECODE, "
+                                + "transaction_line.ARTICLE_ID, transaction_line.DELIVERYTYPE FROM transaction_line "
+                                + "WHERE transaction_line.TRANSACTION_ID = '" + l_transaksi2.Text + "' AND transaction_line.OMNISTORECODE != '' ORDER BY transaction_line._id ASC";
 
                     ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
 
@@ -467,57 +487,37 @@ namespace try_bi
                     {
                         while (ckon.sqlDataRd.Read())
                         {
-                            deliveryCustId = ckon.sqlDataRd["DELIVERY_CUST_ID"].ToString();
+                            art_id = ckon.sqlDataRd["ARTICLE_ID"].ToString();
+                            qty = ckon.sqlDataRd["QUANTITY"].ToString();
+                            deliveryAddress = ckon.sqlDataRd["DELIVERYCUSTADDRESS"].ToString();
+                            courier = ckon.sqlDataRd["OMNICOURIER"].ToString();
+                            fromStore = ckon.sqlDataRd["OMNISTORECODE"].ToString();
+                            deliveryType = ckon.sqlDataRd["DELIVERYTYPE"].ToString();
+
+                            String cmd_insert = "INSERT INTO deliverycustomer_line (DELIVERY_CUST_ID, ARTICLE_ID, QTY, STORE_FROM, STORE_TO, NO_RESI, COURIER, DELIVERYADDRESS, DELIVERYTYPE) VALUES ('" + deliveryCustId + "','" + art_id + "','" + qty + "','" + fromStore + "','" + store_code + "', '','" + courier + "', '" + deliveryAddress + "','" + deliveryType + "') ";
+                            sql.ExecuteNonQuery(cmd_insert);
                         }
-                    }
 
-
-                    if (deliveryCustId == "")
-                    {
-                        save_deliveryCust_header();
-                        deliveryCustId = final_running_number;
-
-                        command = "SELECT transaction_line.QUANTITY, transaction_line.DELIVERYCUSTADDRESS, transaction_line.OMNICOURIER, transaction_line.OMNISTORECODE, "
-                                    + "transaction_line.ARTICLE_ID, transaction_line.DELIVERYTYPE FROM transaction_line "
-                                    + "WHERE transaction_line.TRANSACTION_ID = '" + l_transaksi2.Text + "' AND transaction_line.OMNISTORECODE != '' ORDER BY transaction_line._id ASC";
-
-                        ckon.sqlDataRd = sql.ExecuteDataReader(command, ckon.sqlCon());
-
-                        if (ckon.sqlDataRd.HasRows)
-                        {
-                            while (ckon.sqlDataRd.Read())
-                            {
-                                art_id = ckon.sqlDataRd["ARTICLE_ID"].ToString();
-                                qty = ckon.sqlDataRd["QUANTITY"].ToString();
-                                deliveryAddress = ckon.sqlDataRd["DELIVERYCUSTADDRESS"].ToString();
-                                courier = ckon.sqlDataRd["OMNICOURIER"].ToString();
-                                fromStore = ckon.sqlDataRd["OMNISTORECODE"].ToString();
-                                deliveryType = ckon.sqlDataRd["DELIVERYTYPE"].ToString();
-
-                                String cmd_insert = "INSERT INTO deliverycustomer_line (DELIVERY_CUST_ID, ARTICLE_ID, QTY, STORE_FROM, STORE_TO, NO_RESI, COURIER, DELIVERYADDRESS, DELIVERYTYPE) VALUES ('" + deliveryCustId + "','" + art_id + "','" + qty + "','" + fromStore + "','" + store_code + "', '','" + courier + "', '" + deliveryAddress + "','" + deliveryType + "') ";
-                                sql.ExecuteNonQuery(cmd_insert);
-                            }
-
-                            String cmd_update = "UPDATE deliverycustomer SET TOTAL_QTY = (SELECT SUM(QTY) FROM deliverycustomer_line WHERE DELIVERY_CUST_ID = '" + deliveryCustId + "') "
-                                                + "WHERE DELIVERY_CUST_ID = '" + deliveryCustId + "'";
-                            sql.ExecuteNonQuery(cmd_update);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No shipping", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }                    
-
-                    apiResponse = delivCust.deliveryCustPost(deliveryCustId).Result;
-                    if (apiResponse)
-                    {
-                        MessageBox.Show("Shipping confirmed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        String cmd_update = "UPDATE deliverycustomer SET TOTAL_QTY = (SELECT SUM(QTY) FROM deliverycustomer_line WHERE DELIVERY_CUST_ID = '" + deliveryCustId + "') "
+                                            + "WHERE DELIVERY_CUST_ID = '" + deliveryCustId + "'";
+                        sql.ExecuteNonQuery(cmd_update);
                     }
                     else
                     {
-                        MessageBox.Show("Make sure you are connected to internet and try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No shipping", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }                                          
+                }                    
+
+                apiResponse = delivCust.deliveryCustPost(deliveryCustId).Result;
+                if (apiResponse)
+                {
+                    MessageBox.Show("Shipping confirmed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Make sure you are connected to internet and try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //}                                          
             }
             catch (Exception ex)
             {
